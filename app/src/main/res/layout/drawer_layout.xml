@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/drawer_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/black"
+    android:orientation="vertical">
+    <!--侧滑栏必须用android:layout_gravity="start"要不内容 到不了侧滑区域-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/backgrounds"
+        />
+
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/honey_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="亲爱的今天有没有想我啊"
+        android:textColor="@color/toolbar_background2"
+        android:textSize="30sp"
+        />
+
+</LinearLayout>

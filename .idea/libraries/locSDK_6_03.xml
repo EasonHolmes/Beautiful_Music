@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="locSDK_6.03">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/locSDK_6.03.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

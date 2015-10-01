@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="float_transparent">#00000000</color>
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+    <color name="blue_btn_bg_color">#AEDEF4</color>
+    <color name="blue_btn_bg_pressed_color">#96BFD2</color>
+    <color name="red_btn_bg_color">#DD6B55</color>
+    <color name="red_btn_bg_pressed_color">#CD5B55</color>
+    <color name="error_stroke_color">#F27474</color>
+    <color name="success_stroke_color">#A5DC86</color>
+    <color name="trans_success_stroke_color">#33A5DC86</color>
+    <color name="warning_stroke_color">#F8BB86</color>
+    <color name="text_color">#575757</color>
+    <color name="material_blue_grey_80">#ff37474f</color>
+    <color name="material_blue_grey_90">#ff263238</color>
+    <color name="material_blue_grey_95">#ff21272b</color>
+    <color name="material_deep_teal_20">#ff80cbc4</color>
+    <color name="material_deep_teal_50">#ff009688</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+
+
+    <color name="btn_send_normal">#02c754</color>
+    <color name="fab_color_shadow">#44000000</color>
+    <color name="btn_send_pressed">#006633</color>
+    <!--My color-->
+    <color name="text_like_counter">#2b5a83</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#181818</color>
+    <color name="toolbar_background">@android:color/transparent</color>
+    <color name="toolbar_background2">#EA6560</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_forFragment">#F6F6F6</color>
+    <color name="background_forupload">#fff3f3f3</color>
+    <color name="background_black">#000000</color>
+    <color name="background_gray">#757575</color>
+    <color name="background_gray2">#BBBBBB</color>
+    <color name="background_blue2">#3F51B5</color>
+    <color name="background_peach">#c75dff</color>
+    <color name="sweet_progress">#F27474</color>
+    <color name="background_blue_sky_normal">#11B7D1</color>
+    <color name="background_blue_sky_press">#ff1692d1</color>
+    <color name="albumback">#E1E0DE</color>
+    <color name="background_others">#FFC37DFF</color>
+    <color name="btn_normal">#fab760</color>
+    <color name="btn_press">@color/toolbar_background</color>
+    <color name="btn_color">#AEAEAE</color>
+    <color name="main_color">#f4f4f4</color>
+    <color name="main_title_color">#F5A2A3</color>
+    <color name="bottom_background">#F8F8F8</color>
+    <color name="gray_backgroud">#EFEEF4</color>
+    <color name="gray_line">#DEDFE0</color>
+    <color name="title_img_circle">#FDB96B</color>
+    <!--<color name="statc_color">#F1494C</color>-->
+    <color name="statc_color">#c33e41</color>
+
+    <color name="background_allShareFragment1">#31334A</color>
+    <color name="background_allShareFragment2">#F1B135</color>
+    <color name="background_allShareFragment3">#12B0A2</color>
+    <color name="background_allShareFragment4">#EA6560</color>
+    <color name="background_allShareFragment5">#315A6E</color>
+    <color name="background_allShareFragment6">#B96759</color>
+    <color name="background_allShareFragment7">#A74A5F</color>
+    <color name="classification_clothess">#F27474</color>
+    <color name="line_color">#C6C7CE</color>
+
+    <color name="wheel_timebtn_nor">#54a3fa</color>
+    <color name="wheel_timebtn_pre">#CCCCCC</color>
+
+    <color name="gray_de">#666666</color>
+    <color name="list_item_press">#216b74ff</color>
+
+    <color name="theme_primary">#4387F0</color>
+    <color name="theme_primary_dark">#ff2b4d90</color>
+    <color name="colorAccent">#18b000</color>
+    <!-- 上传图片添加的颜色 -->
+    <color name="none_color">#00000000</color>
+    <color name="plugin_camera_black">#000000</color>
+
+
+    <!--floationactionbutton-->
+    <color name="material_blue_500">#5677fc</color>
+    <color name="material_blue_600">#4e6cef</color>
+    <color name="primary">#3f51b5</color>
+    <color name="primary_pressed">#303f9f</color>
+    <color name="ripple">#ff80ab</color>
+    <color name="accent">#ff4081</color>
+    <color name="accent_pressed">#f50057</color>
+</resources>

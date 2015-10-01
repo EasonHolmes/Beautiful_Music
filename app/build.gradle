@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'//retrolambda
+
+android {
+//    dexOptions {
+//        incremental true
+//    }
+    signingConfigs {
+        config {
+            keyAlias 'jvyshow'
+            keyPassword 'jvyshow'
+            storeFile file('/Users/cuiyang/Documents/work/honey.jks')
+            storePassword 'jvyshow'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+    defaultConfig {
+        applicationId "com.life.me"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+retrolambda {
+    println("JAVA_HOME: " + System.getenv("JAVA_HOME"))
+    println("JAVA7_HOME: " + System.getenv("JAVA7_HOME"))
+    println("JAVA8_HOME: " + System.getenv("JAVA8_HOME"))
+    javaVersion JavaVersion.VERSION_1_7//最低兼容java版本
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':SlidingLibrary')
+    compile 'com.github.mmin18.layoutcast:library:1.+@aar'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:support-v4:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+
+    compile 'com.minimize.library:seekbar-compat:0.2.4'
+    //google屏幕布局按百分比
+    compile 'com.android.support:percent:23.0.1'
+    compile 'com.jakewharton:butterknife:6.1.0'
+    //闪光的textview
+    compile 'com.romainpiel.shimmer:library:1.4.0@aar'
+    //制作SVG图路线
+    compile 'com.eftimoff:android-pathview:1.0.6@aar'
+    //litepal
+    compile 'org.litepal.android:core:1.2.1'
+//        compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile files('libs/gson-2.2.4.jar')
+    compile files('libs/jpush-sdk-release1.7.5.jar')
+    compile files('libs/volley.jar')
+    compile files('libs/locSDK_6.03.jar')
+    compile files('libs/Bmob_Push_V0.6beta_20150408.jar')
+    compile files('libs/BmobSDK_V3.4.3_0828.jar')
+    compile files('libs/Msc.jar')
+}

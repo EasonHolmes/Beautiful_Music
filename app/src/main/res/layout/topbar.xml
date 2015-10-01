@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    android:id="@+id/mToolBar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toolbar_background2"
+    android:gravity="center"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    xmlns:app1="http://schemas.android.com/apk/res-auto">
+
+    <!--android:background="@color/transparent"透明色
+    android:theme="@style/ThemeOverlay.AppCompat.Light"这个pop是白底黑色但返回键是黑色
+
+     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+
+</android.support.v7.widget.Toolbar>

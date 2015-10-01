@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <!--数据库名-->
+    <dbname value="life"/>
+    <!--如果有升级数据库就更这个数字就行-->
+    <version value="1"/>
+
+
+    <list>
+        <!--表-->
+        <mapping class="com.life.me.dao.WeatherDao"/>
+    </list>
+</litepal>
