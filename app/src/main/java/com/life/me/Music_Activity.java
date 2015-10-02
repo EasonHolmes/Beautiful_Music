@@ -61,7 +61,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
                 case BULER:
-                    bulerImg.setImageBitmap(presenter.blur((Bitmap) msg.obj,mContext));
+                    bulerImg.setImageBitmap(presenter.blur((Bitmap) msg.obj, mContext));
                     if (title != null) MusicTitle.setText(title + "");
                     break;
             }
@@ -99,7 +99,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         for (int i = 0; i < entity.size(); i++) {//拼接讯飞的结果
             sb.append(entity.get(i).getCw().get(0).getW());
         }
-        Log.e(getClass().getName(), "xunfei===" + sb.toString());
+        Log.e(getClass().getName(), "xunfei===" + sb.toString().replaceAll(" ", "").trim());
         presenter.getMusic_Result(sb.toString(), mContext, this);
     }
 
@@ -111,14 +111,14 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
                 myPlayer.playUrl(musicUrl);
             }
         }).start();
-        title = singerName + "：" + songName;
+        title = singerName + ":" + songName;
         presenter.getMusic_Img(mContext, singerName + songName, this);
     }
 
     @Override
     public void getMusicImg(String imgUrl) {
         ImageRequest imgRequest = new ImageRequest(imgUrl,
-                bitmap1 -> hand.obtainMessage(BULER,bitmap1).sendToTarget(),
+                bitmap1 -> hand.obtainMessage(BULER, bitmap1).sendToTarget(),
                 0, 0, Bitmap.Config.ARGB_8888, null);
         SingleRequestQueue.getRequestQueue(mContext).add(imgRequest);
         ImageLoader.ImageListener listener = ImageLoader.getImageListener(imgBackground, R.mipmap.img_center_fu, R.mipmap.img_center_fu);// 加载的控件，默认未加载前的图片，加载失败的图片

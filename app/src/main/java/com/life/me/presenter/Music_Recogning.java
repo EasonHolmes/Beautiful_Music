@@ -14,13 +14,8 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
-import com.life.me.Music_Activity;
 import com.life.me.entity.SpeakBean;
 import com.life.me.mutils.SingleGson;
-
-import java.util.Observer;
-
-import rx.Observable;
 
 /**
  * Created by cuiyang on 15/9/30.
@@ -44,11 +39,10 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
         mIat = SpeechRecognizer.createRecognizer(mContext, mInitListener);
         setParam();
         mIat.startListening(this);
-        // 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer
+        // 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer(dialog和SpeechRecognizer只一个就可以)
         // 使用UI听写功能，请根据sdk文件目录下的notice.txt,放置布局文件和图片资源
         mIatDialog = new RecognizerDialog(mContext, mInitListener);
         mIatDialog.setListener(mRecognizerDialogListener);
-        mIatDialog.setTitle("请说");
         mIatDialog.show();
     }
 

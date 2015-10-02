@@ -112,6 +112,6 @@ public class Music_Player_Presenter implements MediaPlayer.OnBufferingUpdateList
         seekBar.setSecondaryProgress(percent);//设置二级缓冲显示位置。
         int currentProgress = seekBar.getMax()
                 * mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration();
-        Log.e(currentProgress + "% play播放进度", percent + " buffer-缓冲进度");
+        Log.i(currentProgress + "% play播放进度", percent + " buffer-缓冲进度");
     }
 }

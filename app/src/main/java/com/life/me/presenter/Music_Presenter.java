@@ -28,10 +28,11 @@ public class Music_Presenter {
      * page{1}=查询的页码数
      * <p>
      * size{2}=当前页的返回数量
+     * 讯飞的结果中有可能会有空格要去掉
      */
     public void getMusic_Result(String code, Context mContext, Music_Model callback) {
         HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
-                "http://so.ard.iyyin.com/s/song_with_out?q={" + code + "}&page={1}&size={1}", new HttpUtils.RequestCallBack() {
+                "http://so.ard.iyyin.com/s/song_with_out?q={" + code.replaceAll(" ", "").trim() + "}&page={1}&size={1}", new HttpUtils.RequestCallBack() {
                     @Override
                     public void success(String result) {
                         MusicBean bean = SingleGson.getRequestQueue().fromJson(result, MusicBean.class);
@@ -44,24 +45,26 @@ public class Music_Presenter {
                                 String MusicUrl = data.get(i).getUrl_list().get(0).getUrl();
                                 String singerName = data.get(i).getSinger_name();
                                 String songName = data.get(i).getSong_name();
-                                callback.getMusic(MusicUrl, singerName,songName);
+                                callback.getMusic(MusicUrl, singerName, songName);
                                 return;
                             }
                         }
                     }
                 });
-
     }
 
     /**
      * 拿歌曲图片
-     * */
+     * 关键词中有可能会有空格要去掉
+     */
     public void getMusic_Img(Context mContext, String Keyword, Music_Model callback) {
-        HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
-                "http://lp.music.ttpod.com/pic/down?artist={" + Keyword + "}",
-                result -> callback.getMusicImg(SingleGson.getRequestQueue().fromJson(result, MusicImgBean.class).
-                        getData().
-                        getSingerPic()));
+        try {
+            HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
+                    "http://lp.music.ttpod.com/pic/down?artist={" + Keyword.replaceAll(" ", "").trim() + "}",
+                    result -> callback.getMusicImg(SingleGson.getRequestQueue().fromJson(result, MusicImgBean.class).
+                            getData().getSingerPic() + ""));
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -69,7 +72,6 @@ public class Music_Presenter {
      */
     public Bitmap blur(Bitmap bkg, Context mContext) {
         try {
-            Log.e(getClass().getName(), "bigbigb===" + bkg);
             RenderScript rs = RenderScript.create(mContext);
             Allocation overlayAlloc = Allocation.createFromBitmap(rs, bkg);
             ScriptIntrinsicBlur blur =
@@ -80,7 +82,6 @@ public class Music_Presenter {
             overlayAlloc.copyTo(bkg);
             return bkg;
         } catch (Exception e) {
-            Log.e(getClass().getName(), "eeeee==" + e.getMessage());
         }
         return null;
     }
