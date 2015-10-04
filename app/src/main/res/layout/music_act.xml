@@ -3,10 +3,12 @@
     android:id="@+id/root_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
     <include layout="@layout/topbar"/>
 
@@ -29,15 +31,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@mipmap/moon"/>
+                android:src="@mipmap/music_mic"
+                />
 
             <ImageView
                 android:id="@+id/img_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:src="@mipmap/moon"/>
+                android:src="@mipmap/music_mic"/>
 
+            <com.life.me.view.ProgressWheel
+                android:id="@+id/progress_wheel"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                wheel:matProg_barColor="#5588FF"
+                wheel:matProg_barWidth="7dp"
+                wheel:matProg_fillRadius="true"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                wheel:matProg_progressIndeterminate="true" />
 
         </FrameLayout>
 
@@ -50,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:padding="10dp">
 
@@ -65,9 +79,11 @@
 
                 <TextView
                     android:id="@+id/Music_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:gravity="center"
+                    android:singleLine="true"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
@@ -81,8 +97,8 @@
 
             <ImageView
                 android:id="@+id/img_musics"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/mic"/>
         </LinearLayout>

@@ -7,6 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+
     <include layout="@layout/topbar"/>
 
     <android.support.v4.widget.DrawerLayout
@@ -16,41 +17,42 @@
         android:background="@color/white"
         android:orientation="vertical">
         <!---Drawer会把第一个节点做为内容区，第二个做为侧滑内容 -->
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/refresh_layout"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@mipmap/weath">
 
-            <ScrollView
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-
-
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    >
 
-                    <include layout="@layout/weather_cast"/>
-
-                    <View
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:background="@color/gray_line"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/img_music"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="30dp"
-                        android:background="@mipmap/mic"/>
-                </LinearLayout>
-            </ScrollView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+                        <include layout="@layout/weather_cast"/>
+
+                    </LinearLayout>
+                </ScrollView>
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+            <ImageView
+                android:id="@+id/img_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:src="@mipmap/mic"/>
+        </RelativeLayout>
 
         <include layout="@layout/drawer_layout"/>
     </android.support.v4.widget.DrawerLayout>
-
 </LinearLayout>

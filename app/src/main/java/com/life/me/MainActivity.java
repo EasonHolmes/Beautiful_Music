@@ -2,6 +2,7 @@ package com.life.me;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,16 +21,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.life.me.dao.WeatherDao;
 import com.life.me.entity.CacheBean;
 import com.life.me.model.Main_Model;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.SingleRequestQueue;
 import com.life.me.presenter.Main_presenter;
+import com.life.me.presenter.Wel_presenter;
 import com.life.me.view.SystemBarTintManager;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
@@ -42,6 +47,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Main_Model, SwipeRefreshLayout.OnRefreshListener {
 
@@ -89,13 +95,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @InjectView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
     @InjectView(R.id.img_music)
-    ImageButton imgMusic;
+    ImageView imgMusic;
 
 
     private ActionBarDrawerToggle mDrawerToggle;
     private Context mContext;
     private Main_presenter presenter;
     private final int UPDATE_IMG = 0;
+
+    //BaiduLocation Servers
+    private LocationClient mLocationClient;
+    private LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
+    private String tempcoor = "bd09ll";
+
+
     private Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -115,10 +128,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         mContext = this;
-        initToolbar("宝贝", false);
-        new Shimmer().setDuration(1000).start(honeyTxt);//侧边栏的字
+
+        initToolbar(getResources().getString(R.string.main_act_title), false);
+        new Shimmer().setDuration(1500).start(honeyTxt);//侧边栏的字
+
+        String drawerContent = getIntent().getStringExtra(getResources().getString(R.string.push_content));//拿推送传过来的内容
+        SharedPreferences share = mContext.getSharedPreferences(getResources().getString(R.string.drawer_content_file), MODE_PRIVATE);
+        if (drawerContent != null) {//如果是推送进来的就保存内容并显示否则拿之前保存的内容
+            SharedPreferences.Editor editor = share.edit();
+            editor.putString(getResources().getString(R.string.push_content), drawerContent);
+            editor.apply();
+            honeyTxt.setText(drawerContent + "");
+        } else {
+            honeyTxt.setText(share.getString(getResources().getString(R.string.push_content), "亲爱的今天有没有想我啊"));
+        }
+
         presenter = new Main_presenter();
+
         initView();
+
+        initLocation();//开启地图定位 myapplication回调上传
     }
 
     private void initView() {
@@ -237,8 +266,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_music:
-                startActivity(new Intent(mContext,Music_Activity.class));
-                overridePendingTransition(R.anim.small_2_big,R.anim.fade_out);
+                startActivity(new Intent(mContext, Music_Activity.class));
+                overridePendingTransition(R.anim.small_2_big, R.anim.fade_out);
                 break;
         }
     }
@@ -259,4 +288,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         presenter.getWeather(mContext, this);
     }
+
+    private void initLocation() {
+        Myapplication application = (Myapplication) getApplication();
+        mLocationClient = application.mLocationClient;
+        mLocationClient.start();//定位SDK start之后会默认发起一次定位请求，开发者无须判断isstart并主动调用request
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(tempMode);//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
+        option.setCoorType(tempcoor);//可选，默认gcj02，设置返回的定位结果坐标系，
+        int span = 1000;
+        option.setScanSpan(span);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
+        option.setOpenGps(true);//可选，默认false,设置是否使用gps
+        option.setLocationNotify(true);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
+        option.setIgnoreKillProcess(true);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
+        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
+        option.setIsNeedLocationDescribe(false);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
+        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+        mLocationClient.setLocOption(option);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(MainActivity.this);//是做用户统计的
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(MainActivity.this);//是做用户统计的
+    }
+
 }

@@ -4,8 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    app:layout_heightPercent="50%"
     >
 
 
@@ -14,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:gravity="top"
         android:layout_marginTop="11dp"
+        android:gravity="top"
         android:orientation="horizontal">
 
 
@@ -29,20 +27,19 @@
             android:src="@mipmap/qingtian">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:src="@mipmap/qingtian"/>
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:src="@mipmap/qingtian"/>
         </ImageSwitcher>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
             android:orientation="vertical"
             >
 
@@ -50,19 +47,16 @@
                 android:id="@+id/main_Wcity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="city"
-                android:textColor="@color/black"
-
-                android:textSize="27sp"/>
+                android:text="上海"
+                android:textColor="@color/white"
+                android:textSize="28sp"/>
 
             <TextView
                 android:id="@+id/main_Wweather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:text="阴转多云"
-                android:textColor="@color/black"
-
+                android:textColor="@color/white"
                 android:textSize="18sp"/>
         </LinearLayout>
 
@@ -74,8 +68,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="29dp"
                 android:layout_gravity="top"
                 android:background="@drawable/txtweather"
                 android:gravity="center_vertical"
@@ -100,16 +94,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="21℃"
-                android:textColor="@color/black"
-                android:textSize="45sp"/>
+                android:textColor="@color/white"
+                android:textSize="43sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="21℃"
-                android:textColor="@color/black"
-                android:textSize="45sp"/>
+                android:textColor="@color/white"
+                android:textSize="43sp"/>
         </TextSwitcher>
 
 
@@ -120,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="3dp"
         app:layout_marginTopPercent="1%">
 
         <LinearLayout
@@ -135,8 +129,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="明天"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
             <TextView
                 android:id="@+id/date_two"
@@ -145,9 +139,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="后天"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
 
-                android:textSize="15sp"/>
+                android:textSize="17sp"/>
 
             <TextView
                 android:id="@+id/date_three"
@@ -156,8 +150,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="后天"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -179,14 +173,14 @@
 
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
             </ImageSwitcher>
@@ -203,14 +197,14 @@
 
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
             </ImageSwitcher>
@@ -226,14 +220,14 @@
                 android:outAnimation="@anim/slide_out_likes_counter">
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
             </ImageSwitcher>
@@ -258,14 +252,14 @@
 
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
             </ImageSwitcher>
@@ -282,14 +276,14 @@
 
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
             </ImageSwitcher>
@@ -306,14 +300,14 @@
 
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/qingtian"/>
             </ImageSwitcher>
@@ -332,8 +326,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="21℃"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
 
             <TextView
@@ -343,8 +337,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="21℃"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
 
             <TextView
@@ -354,8 +348,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="21℃"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
         </LinearLayout>
     </LinearLayout>
 </android.support.percent.PercentRelativeLayout>

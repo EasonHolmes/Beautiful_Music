@@ -1,9 +1,11 @@
 package com.life.me;
+
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +13,7 @@ import android.view.MenuItem;
 import com.life.me.view.SystemBarTintManager;
 
 
-public class BaseActivity extends BaseSwipeBackActivity {
+public class BaseActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -61,27 +63,8 @@ public class BaseActivity extends BaseSwipeBackActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    /**
-     * 如果用base那其他不需要返回动画的也会随上一个动画
-     */
     @Override
     public void onBackPressed() {
-        /**
-         * //material onBackPressed用这两行代码
-         * */
-//        注意onBackPressed()方法——这很重要。因为它让操作系统知道在关闭第二个activity之前要完成动画的执行。
-//        finishAfterTransition();
-        /**
-         * activityOPtionICs就这个
-         * */
         super.onBackPressed();//activityOPtionICs不能用super要不失效
-//    TransitionCompat.setExitTransition(new MySceneAnim(this));//a test anim.Should not be use with customAnimation
-//    TransitionCompat.setAnimStartDelay(0);// default
-//        TransitionCompat.setAnimDuration(500);// default
-//    TransitionCompat.setTimeInterpolator(new AccelerateDecelerateInterpolator());// default
-//    TransitionCompat.finishAfterTransition(activity, enterAnim, exitAnim);// custom animation
-//    // 这段代码必须放在ActivityOptionsCompat各种设置之后
-//        TransitionCompat.finishAfterTransition(this);
     }
 }

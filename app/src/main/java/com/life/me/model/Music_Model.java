@@ -16,4 +16,7 @@ public interface  Music_Model {
     void getMusic(String musicUrl,String singerName,String songName);
 
     void getMusicImg(String imgUrl);
+
+
+    void error(String error);
 }

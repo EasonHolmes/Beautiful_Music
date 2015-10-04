@@ -45,6 +45,7 @@ public class Myapplication extends Application {
     private Wel_presenter presenter;
 
     public static ImageLoader imageLoader;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -52,15 +53,15 @@ public class Myapplication extends Application {
             LayoutCast.init(this);
         }
         presenter = new Wel_presenter();
-        Bmob.initialize(this, "03d70b2e98eee0a88cf31f0423409771");//初始化bmob
-        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5608ae61");
-        LitePalApplication.initialize(this);//初始化litepal
+        Bmob.initialize(Myapplication.this, "03d70b2e98eee0a88cf31f0423409771");//初始化bmob
+        SpeechUtility.createUtility(Myapplication.this, SpeechConstant.APPID + "=5608ae61");//初始化讯飞
+        LitePalApplication.initialize(Myapplication.this);//初始化litepal
         initJpush();//初始化极光
         initBaidu();//初始化百度并上传位置
         initImageLoader();
-
     }
-    private void initImageLoader(){
+
+    private void initImageLoader() {
         int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         int cacheSize = maxMemory / 8;
         final LruCache<String, Bitmap> lruCache = new LruCache<String, Bitmap>(cacheSize);
@@ -69,6 +70,7 @@ public class Myapplication extends Application {
             public Bitmap getBitmap(String s) {
                 return lruCache.get(s);
             }
+
             @Override
             public void putBitmap(String s, Bitmap bitmap) {
                 lruCache.put(s, bitmap);

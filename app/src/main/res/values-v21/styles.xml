@@ -9,6 +9,7 @@
         <item name="windowActionModeOverlay">true</item>
         <!-- 允许使用transitions -->
         <item name="android:windowIsTranslucent">true</item>
+
         <!--<item name="android:windowTranslucentStatus">true</item> 这两行会去除状态栏底-->
         <!--<item name="android:windowTranslucentNavigation">true</item>-->
     </style>

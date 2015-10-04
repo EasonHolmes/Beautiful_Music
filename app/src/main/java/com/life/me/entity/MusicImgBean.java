@@ -13,6 +13,11 @@ public class MusicImgBean {
 
     private int code;
     private DataEntity data;
+    /**
+     * msg : PARAMS ERROR
+     */
+
+    private String msg;
 
     public void setCode(int code) {
         this.code = code;
@@ -28,6 +33,14 @@ public class MusicImgBean {
 
     public DataEntity getData() {
         return data;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 
     public class DataEntity {

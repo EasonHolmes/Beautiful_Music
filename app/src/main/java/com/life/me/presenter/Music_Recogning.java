@@ -31,13 +31,11 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
     public SpeakBean result;
 
 
-    public Music_Recogning(Context mContext) {
-        initRecogn(mContext);
+    public Music_Recogning() {
     }
 
-    private void initRecogn(Context mContext) {
+    public void initRecogn(Context mContext) {
         mIat = SpeechRecognizer.createRecognizer(mContext, mInitListener);
-        setParam();
         mIat.startListening(this);
         // 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer(dialog和SpeechRecognizer只一个就可以)
         // 使用UI听写功能，请根据sdk文件目录下的notice.txt,放置布局文件和图片资源
@@ -64,7 +62,7 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
      *
      * @return
      */
-    public void setParam() {
+    public void setParam(boolean isChina) {
         // 清空参数
         mIat.setParameter(SpeechConstant.PARAMS, null);
         // 设置听写引擎
@@ -73,7 +71,11 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
         mIat.setParameter(SpeechConstant.RESULT_TYPE, "json");
         //2.设置听写参数，详见《科大讯飞MSC API手册(Android)》SpeechConstant类
         mIat.setParameter(SpeechConstant.DOMAIN, "iat");//设置应用领域
-        mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");//返回语言的类型
+        if (isChina) {//返回语言的类型
+            mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+        } else {
+            mIat.setParameter(SpeechConstant.LANGUAGE, "en_us");
+        }
         mIat.setParameter(SpeechConstant.ACCENT, "mandarin");//用于设置语言区域mandarin中文
         // 设置语音前端点:静音超时时间，即用户多长时间不说话则当做超时处理
         mIat.setParameter(SpeechConstant.VAD_BOS, "3000");
@@ -98,7 +100,6 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
                 mIatDialog.dismiss();
                 result = SingleGson.getRequestQueue().fromJson(results.getResultString(), SpeakBean.class);
                 setChanged();
-                Log.e(getClass().getName(), "tttt===" + results.getResultString());
                 Music_Recogning.this.notifyObservers(result);
             }
         }
@@ -138,8 +139,7 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
     public void onResult(RecognizerResult results, boolean isLast) {
         Log.e(getClass().getName(), "resultttt" + results.getResultString() + "ffffff==" + isLast);
         if (!isLast) {
-            //取消弹框通知观察者
-            mIatDialog.dismiss();
+            //通知观察者
             result = SingleGson.getRequestQueue().fromJson(results.getResultString(), SpeakBean.class);
             setChanged();
             Log.e(getClass().getName(), "tttt222===" + results.getResultString());
@@ -165,13 +165,19 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
 
     public void unConncetion() {
         // 退出时释放连接
-        mIat.cancel();
-        mIat.destroy();
-        mIat = null;
-        mIatDialog = null;
+        if (mIat != null) {
+            mIat.cancel();
+            mIat.destroy();
+            mIat = null;
+            mIatDialog = null;
+        }
     }
 
     public void showDialog() {
-        mIatDialog.show();
+        if (mIatDialog != null) mIatDialog.show();
+    }
+
+    public void dissDialog() {
+        if (mIatDialog != null) mIatDialog.dismiss();
     }
 }

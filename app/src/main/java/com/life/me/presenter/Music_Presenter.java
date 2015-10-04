@@ -7,6 +7,7 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 
+import com.life.me.entity.CacheBean;
 import com.life.me.entity.MusicBean;
 import com.life.me.entity.MusicImgBean;
 import com.life.me.model.Music_Model;
@@ -20,8 +21,6 @@ import java.util.List;
  * Created by cuiyang on 15/10/1.
  */
 public class Music_Presenter {
-
-
     /**
      * q{0}=需要搜索的歌曲或歌手
      * <p>
@@ -30,24 +29,42 @@ public class Music_Presenter {
      * size{2}=当前页的返回数量
      * 讯飞的结果中有可能会有空格要去掉
      */
-    public void getMusic_Result(String code, Context mContext, Music_Model callback) {
+    public void getMusic_Result(String code, Context mContext, Music_Model callback, boolean quality) {
         HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
                 "http://so.ard.iyyin.com/s/song_with_out?q={" + code.replaceAll(" ", "").trim() + "}&page={1}&size={1}", new HttpUtils.RequestCallBack() {
                     @Override
                     public void success(String result) {
-                        MusicBean bean = SingleGson.getRequestQueue().fromJson(result, MusicBean.class);
-                        List<MusicBean.DataEntity> data = bean.getData();
-                        for (int i = 0; i < data.size(); i++) {
-                            if (data.get(i).getPick_count() > 10000 || data.get(i).getPick_count() > 8000
-                                    || data.get(i).getPick_count() > 6000 || data.get(i).getPick_count() > 4000
-                                    || data.get(i).getPick_count() > 3000) {//有些是乱七八糟的歌。pick_count大于3000一般是正确的从高往低的拿越高越准
-                                //get(0)是压缩品质1是标准品质3是超高品质
-                                String MusicUrl = data.get(i).getUrl_list().get(0).getUrl();
-                                String singerName = data.get(i).getSinger_name();
-                                String songName = data.get(i).getSong_name();
-                                callback.getMusic(MusicUrl, singerName, songName);
+                        try {
+                            Log.e(getClass().getName(), "dfdfdf==" + result);
+                            MusicBean bean = SingleGson.getRequestQueue().fromJson(result, MusicBean.class);
+                            List<MusicBean.DataEntity> data = bean.getData();
+                            if (data == null || data.size() == 0) {
+                                callback.error("没有找到对应歌曲哦");
                                 return;
                             }
+                            for (int i = 0; i < data.size(); i++) {
+                                //有些是乱七八糟的歌。首先优先歌名匹配 再pick_count大于3000一般是正确的从高往低的拿越高越准
+                                if ((data.get(i).getSong_name().contains(code) && data.get(i).getPick_count() > 200)
+                                        || data.get(i).getPick_count() > 10000 || data.get(i).getPick_count() > 8000
+                                        || data.get(i).getPick_count() > 6000 || data.get(i).getPick_count() > 4000
+                                        || data.get(i).getPick_count() > 2000) {
+                                    //get(0)是压缩品质1是标准品质3是超高品质
+                                    String MusicUrl;
+                                    if (quality) {
+                                        MusicUrl = data.get(i).getAudition_list().get(0).getUrl();
+                                    } else {
+                                        MusicUrl = data.get(i).getAudition_list().get(1).getUrl();
+                                    }
+                                    String singerName = data.get(i).getSinger_name();
+                                    String songName = data.get(i).getSong_name();
+                                    callback.getMusic(MusicUrl, singerName, songName);
+                                    return;
+                                } else {
+                                    callback.error("没有找到对应歌曲哦");
+                                }
+                            }
+                        } catch (Exception e) {
+                            callback.error("没有找到对应歌曲哦");
                         }
                     }
                 });
@@ -61,9 +78,19 @@ public class Music_Presenter {
         try {
             HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
                     "http://lp.music.ttpod.com/pic/down?artist={" + Keyword.replaceAll(" ", "").trim() + "}",
-                    result -> callback.getMusicImg(SingleGson.getRequestQueue().fromJson(result, MusicImgBean.class).
-                            getData().getSingerPic() + ""));
+                    new HttpUtils.RequestCallBack() {
+                        @Override
+                        public void success(String result) {
+                            MusicImgBean bean = SingleGson.getRequestQueue().fromJson(result, MusicImgBean.class);
+                            if (bean.getMsg() == null) {
+                                callback.getMusicImg(bean.getData().getSingerPic());
+                            } else {
+                                callback.error("没有找到对应图片哦");
+                            }
+                        }
+                    });
         } catch (Exception e) {
+            callback.error("没有找到对应图片哦");
         }
     }
 
