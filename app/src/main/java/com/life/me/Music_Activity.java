@@ -27,10 +27,13 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
+import com.life.me.entity.ConfigTb;
 import com.life.me.entity.SpeakBean;
 import com.life.me.model.Music_Model;
+import com.life.me.mutils.Commutils;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.SingleRequestQueue;
+import com.life.me.mutils.Utils;
 import com.life.me.presenter.Music_Player_Presenter;
 import com.life.me.presenter.Music_Presenter;
 import com.life.me.presenter.Music_Recogning;
@@ -43,6 +46,7 @@ import java.util.Observer;
 import app.minimize.com.seek_bar_compat.SeekBarCompat;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import rx.schedulers.NewThreadScheduler;
 
 /**
  * Created by cuiyang on 15/9/28.
@@ -77,8 +81,6 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
     private boolean isOne = true;
 
     private String title;
-    private boolean china;
-    private boolean quality;
     private final Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -119,10 +121,6 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         recogin = new Music_Recogning();
         recogin.addObserver(this);
 
-        //获取设置界面的数据
-        SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(mContext);
-        china = share.getBoolean(getResources().getString(R.string.language), true);
-        quality = share.getBoolean(getResources().getString(R.string.quality), true);
     }
 
     /**
@@ -138,7 +136,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         }
         Log.e(getClass().getName(), "search_content==" + sb.toString());
         Snackbar.make(rootLayout, sb.toString(), Snackbar.LENGTH_SHORT).show();
-        presenter.getMusic_Result(sb.toString(), mContext, this, quality);
+        presenter.getMusic_Result(sb.toString(), mContext, this);
     }
 
     @Override
@@ -198,28 +196,17 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setOnQueryTextListener(this);
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_settings:
-                startActivity(new Intent(mContext, Setting_Activity.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
+    //搜索框搜索
     @Override
     public boolean onQueryTextSubmit(String query) {
-        presenter.getMusic_Result(query, mContext, Music_Activity.this, quality);
+        presenter.getMusic_Result(query, mContext, Music_Activity.this);
         progressWheel.setVisibility(View.VISIBLE);
         return false;
     }
@@ -242,14 +229,13 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
                     myPlayer.mediaPlayer.pause();
                     isOne = false;
                 } else {
-                    recogin.setParam(china);
+                    recogin.setParam(mContext);
                     hand.obtainMessage(SHOW_DIALOG).sendToTarget();
                     myPlayer.mediaPlayer.pause();
                 }
                 break;
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

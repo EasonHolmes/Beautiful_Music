@@ -13,6 +13,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.Poi;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.mmin18.layoutcast.LayoutCast;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;

@@ -20,8 +20,15 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/weath">
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/main_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/weath"/>
 
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/refresh_layout"

@@ -3,6 +3,7 @@ package com.life.me;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -10,6 +11,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 
 /**
@@ -55,6 +57,17 @@ public class Setting_Activity extends BaseActivity {
             }
             return true;
         }
+
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            Log.e(getClass().getName(), "ddddd==" + data);
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e(getClass().getName(), "ffffff===" + data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

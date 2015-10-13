@@ -10,11 +10,16 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -25,8 +30,11 @@ import android.widget.TextView;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.life.me.dao.WeatherDao;
+import com.life.me.entity.ConfigTb;
 import com.life.me.model.Main_Model;
+import com.life.me.mutils.Commutils;
 import com.life.me.mutils.HttpUtils;
+import com.life.me.mutils.myimageloder.ImageLoader;
 import com.life.me.presenter.Main_presenter;
 import com.life.me.view.SystemBarTintManager;
 import com.romainpiel.shimmer.Shimmer;
@@ -34,6 +42,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -89,18 +98,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout linearLayout;
     @InjectView(R.id.img_music)
     ImageView imgMusic;
+    @InjectView(R.id.main_background)
+    ImageView mainBackground;
 
 
     private ActionBarDrawerToggle mDrawerToggle;
     private Context mContext;
     private Main_presenter presenter;
     private final int UPDATE_IMG = 0;
+    private final int GET_FORM_GALLERY = 1;
+    private Commutils commutils;
+
 
     //BaiduLocation Servers
     private LocationClient mLocationClient;
     private LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
     private String tempcoor = "bd09ll";
-
+    /**
+     * 自己写的imageloader
+     */
+    private ImageLoader imageLoader;
 
     private Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
@@ -139,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         presenter = new Main_presenter();
 
         initView();
-
+        setBackground();
         initLocation();//开启地图定位 myapplication回调上传
     }
 
@@ -152,6 +169,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             hand.obtainMessage(UPDATE_IMG, DataSupport.order("id asc").find(WeatherDao.class)).sendToTarget();
         } else {
             presenter.getWeather(mContext, this);
+        }
+        commutils = new Commutils();
+
+    }
+
+    private void setBackground() {
+        //有文件再去加载
+        if (commutils.hasFile()) {
+            imageLoader = ImageLoader.getInstance();
+            imageLoader.loadImage(ConfigTb.SDCard + ConfigTb.PhotoName, mainBackground, false);
         }
     }
 
@@ -299,6 +326,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         option.setIsNeedLocationDescribe(false);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
         option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
         mLocationClient.setLocOption(option);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_settings:
+                startActivity(new Intent(mContext, Setting_Activity.class));
+                break;
+            case R.id.background:
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, GET_FORM_GALLERY);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == GET_FORM_GALLERY) {
+            //复制存入图片
+            commutils.fileChannelCopy(new File(commutils.getPath(mContext, data.getData())), new File(ConfigTb.SDCard+ConfigTb.PhotoName));
+            setBackground();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

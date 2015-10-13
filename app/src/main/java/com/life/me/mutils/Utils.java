@@ -1,10 +1,21 @@
 package com.life.me.mutils;
 
+import android.annotation.SuppressLint;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 
 import java.io.File;
+import java.io.FilenameFilter;
+import java.lang.reflect.Method;
 
 /**
  * Created by cuiyang on 15/5/13.
@@ -26,6 +37,14 @@ public class Utils {
         return path1.getAbsolutePath();
     }
 
+//    public static String getConfigSharedPreferences(Context mContext, String FileName, String key) {
+//        return mContext.getSharedPreferences(FileName, Context.MODE_PRIVATE).getString(key, null);
+//    }
+//    public static void setConfigSharedPreferences(Context mContext,String FileName,String key){
+//        SharedPreferences share = mContext.getSharedPreferences(FileName,Context.MODE_PRIVATE);
+//        SharedPreferences.Editor edit = share.edit();
+//        edit.putString()
+//    }
     /**
      * Unicode转utf-8
      */

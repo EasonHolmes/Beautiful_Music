@@ -1,8 +1,10 @@
 package com.life.me.presenter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.iflytek.cloud.ErrorCode;
@@ -14,6 +16,7 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
+import com.life.me.R;
 import com.life.me.entity.SpeakBean;
 import com.life.me.mutils.SingleGson;
 
@@ -62,7 +65,7 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
      *
      * @return
      */
-    public void setParam(boolean isChina) {
+    public void setParam(Context mContext) {
         // 清空参数
         mIat.setParameter(SpeechConstant.PARAMS, null);
         // 设置听写引擎
@@ -71,7 +74,10 @@ public class Music_Recogning extends java.util.Observable implements RecognizerL
         mIat.setParameter(SpeechConstant.RESULT_TYPE, "json");
         //2.设置听写参数，详见《科大讯飞MSC API手册(Android)》SpeechConstant类
         mIat.setParameter(SpeechConstant.DOMAIN, "iat");//设置应用领域
-        if (isChina) {//返回语言的类型
+
+        //获取设置界面的数据
+        SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(mContext);
+        if (share.getBoolean(mContext.getResources().getString(R.string.language), true)) {//返回语言的类型
             mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
         } else {
             mIat.setParameter(SpeechConstant.LANGUAGE, "en_us");

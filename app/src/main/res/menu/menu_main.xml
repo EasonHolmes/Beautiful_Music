@@ -8,12 +8,8 @@
         android:title="@string/action_settings"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_search"
-        android:icon="@android:drawable/ic_menu_search"
-        android:iconifiedByDefault="true"
-        android:imeOptions="actionSearch"
-        android:inputType="textCapWords"
-        android:title="search"
-        app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView"/>
+        android:id="@+id/background"
+        android:orderInCategory="90"
+        android:title="@string/main_background"
+        app:showAsAction="never"/>
 </menu>

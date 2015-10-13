@@ -25,15 +25,6 @@
             android:summaryOn="压缩品质(默认)"
             android:title="音频质量"/>
 
-        <Preference
-            android:layout="@layout/preference_item"
-            android:summary="选择主题背景"
-            android:title="相册">
-            <intent>
-
-
-            </intent>
-        </Preference>
     </PreferenceCategory>
     <PreferenceCategory
         android:layout="@layout/preference_category_widget"

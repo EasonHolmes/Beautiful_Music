@@ -1,12 +1,15 @@
 package com.life.me.presenter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.preference.PreferenceManager;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 
+import com.life.me.R;
 import com.life.me.entity.CacheBean;
 import com.life.me.entity.MusicBean;
 import com.life.me.entity.MusicImgBean;
@@ -29,7 +32,7 @@ public class Music_Presenter {
      * size{2}=当前页的返回数量
      * 讯飞的结果中有可能会有空格要去掉
      */
-    public void getMusic_Result(String code, Context mContext, Music_Model callback, boolean quality) {
+    public void getMusic_Result(String code, Context mContext, Music_Model callback) {
         HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
                 "http://so.ard.iyyin.com/s/song_with_out?q={" + code.replaceAll(" ", "").trim() + "}&page={1}&size={1}", new HttpUtils.RequestCallBack() {
                     @Override
@@ -50,7 +53,8 @@ public class Music_Presenter {
                                         || data.get(i).getPick_count() > 2000) {
                                     //get(0)是压缩品质1是标准品质3是超高品质
                                     String MusicUrl;
-                                    if (quality) {
+                                    SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(mContext);
+                                    if (share.getBoolean(mContext.getResources().getString(R.string.quality), true)) {
                                         MusicUrl = data.get(i).getAudition_list().get(0).getUrl();
                                     } else {
                                         MusicUrl = data.get(i).getAudition_list().get(1).getUrl();

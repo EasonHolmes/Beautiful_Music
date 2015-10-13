@@ -35,8 +35,6 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <!--允许程序改变网络连接状态 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-
-
     <!--极光start-->
     <permission
         android:name="com.life.me.permission.JPUSH_MESSAGE"
@@ -50,8 +48,6 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <!-- Optional for location -->
     <!--极光end-->
-
-
     <!--加入该节点可以让程序支持多种分辨率同时也就可以获得不同手机的真正尺寸-->
     <supports-screens
         android:anyDensity="true"
@@ -67,23 +63,6 @@
         android:launchMode="singleInstance"
         android:persistent="true"
         android:theme="@style/JK.SwipeBack.Transparent.Theme">
-
-        <!--baidu location start-->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="FuyvSudm3jRYddk1Xq1yRI6B"/>
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote">
-            <intent-filter>
-                <action android:name="com.baidu.location.service_v2.2">
-                </action>
-            </intent-filter>
-        </service>
-        <!--baidu location end-->
-
-
         <activity
             android:name=".Wel_Activity"
             android:launchMode="singleTop"
@@ -109,6 +88,10 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".PhotoPerview_Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <!--极光start-->
 
@@ -200,6 +183,21 @@
         <!--  </>值来自开发者平台取得的AppKey-->
         <!--极光send-->
 
+
+        <!--baidu location start-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="FuyvSudm3jRYddk1Xq1yRI6B"/>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2">
+                </action>
+            </intent-filter>
+        </service>
+        <!--baidu location end-->
     </application>
 
 </manifest>

@@ -61,6 +61,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
 
+    compile 'com.facebook.fresco:fresco:0.7.0+'
+
     compile 'com.minimize.library:seekbar-compat:0.2.4'
     //google屏幕布局按百分比
     compile 'com.android.support:percent:23.0.1'
@@ -71,7 +73,6 @@ dependencies {
     compile 'com.eftimoff:android-pathview:1.0.6@aar'
     //litepal
     compile 'org.litepal.android:core:1.2.1'
-//        compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.0.14'
     compile files('libs/gson-2.2.4.jar')
     compile files('libs/jpush-sdk-release1.7.5.jar')
