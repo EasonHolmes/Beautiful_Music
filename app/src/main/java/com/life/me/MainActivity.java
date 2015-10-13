@@ -9,17 +9,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,20 +25,15 @@ import android.widget.TextView;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.life.me.dao.WeatherDao;
-import com.life.me.entity.CacheBean;
 import com.life.me.model.Main_Model;
 import com.life.me.mutils.HttpUtils;
-import com.life.me.mutils.SingleRequestQueue;
 import com.life.me.presenter.Main_presenter;
-import com.life.me.presenter.Wel_presenter;
 import com.life.me.view.SystemBarTintManager;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 import org.litepal.crud.DataSupport;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -94,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DrawerLayout mDrawerlayout;
     @InjectView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
+    @InjectView(R.id.linearLayout)
+    LinearLayout linearLayout;
     @InjectView(R.id.img_music)
     ImageView imgMusic;
 

@@ -13,8 +13,8 @@
             android:defaultValue="true"
             android:key="@string/language"
             android:layout="@layout/preference_item"
-            android:summaryOff="英文"
             android:shadowColor="@color/toolbar_background2"
+            android:summaryOff="英文"
             android:summaryOn="中文(默认)"
             android:title="语音类型"/>
         <CheckBoxPreference
@@ -24,6 +24,16 @@
             android:summaryOff="标准品质"
             android:summaryOn="压缩品质(默认)"
             android:title="音频质量"/>
+
+        <Preference
+            android:layout="@layout/preference_item"
+            android:summary="选择主题背景"
+            android:title="相册">
+            <intent>
+
+
+            </intent>
+        </Preference>
     </PreferenceCategory>
     <PreferenceCategory
         android:layout="@layout/preference_category_widget"
