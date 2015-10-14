@@ -49,6 +49,8 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
 
     private LocationClient mLocationClient;
 
+    String drawerContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,7 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     }
 
     private void initView() {
+        drawerContent = getIntent().getStringExtra(getResources().getString(R.string.push_content));//拿推送传过来的内容
         welAnimation();//欢迎动画
     }
 
@@ -102,7 +105,9 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                startActivity(new Intent(Wel_Activity.this, MainActivity.class));
+                Intent i = new Intent(Wel_Activity.this, MainActivity.class);
+                i.putExtra(mContext.getResources().getString(R.string.push_content), drawerContent);//把推送的内容带过去
+                startActivity(i);
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);//push推的          style.xml中添加<item name="android:windowIsTranslucent">true</item>因为有这个属性会变成进入的activity push覆盖上来的效果
                 finish();
             }

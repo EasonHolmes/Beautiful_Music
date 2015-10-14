@@ -3,10 +3,14 @@ package com.life.me.mutils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -49,12 +53,14 @@ public class MyReceiver extends BroadcastReceiver {
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户点击打开了通知");
             //打开自定义的Activity
-            Intent i = new Intent(context, MainActivity.class);
+            if (!checkApkExist(context, context.getPackageName())) {
+                Intent i = new Intent(context, Wel_Activity.class);
 //            i.putExtras(bundle);
 //            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.putExtra(context.getResources().getString(R.string.push_content), printBundle(bundle));//把推送的内容带过去
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            context.startActivity(i);
+                i.putExtra(context.getResources().getString(R.string.push_content), printBundle(bundle));//把推送的内容带过去
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(i);
+            }
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
             //在这里根据 JPushInterface.EXTRA_EXTRA 的内容处理代码，比如打开新的Activity， 打开一个网页等..
@@ -83,6 +89,27 @@ public class MyReceiver extends BroadcastReceiver {
         }
         return sb.toString();
     }
+
+    /**
+     * 判断app是否在前台
+     *
+     * @param context
+     * @param packageName
+     * @return
+     */
+    public boolean checkApkExist(Context context, String packageName) {
+        if (packageName == null || "".equals(packageName))
+            return false;
+        try {
+            ApplicationInfo info = context.getPackageManager()
+                    .getApplicationInfo(packageName,
+                            PackageManager.GET_UNINSTALLED_PACKAGES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
 
 //	//send msg to MainActivity
 //	private void processCustomMessage(Context context, Bundle bundle) {
