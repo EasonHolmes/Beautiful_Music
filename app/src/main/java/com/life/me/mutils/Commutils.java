@@ -16,41 +16,12 @@ import com.life.me.entity.ConfigTb;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.channels.FileChannel;
 
 /**
  * Created by cuiyang on 15/10/13.
  */
 public class Commutils {
-
-    public void copyFile(String oldPath, String newPath) {
-        try {
-            int bytesum = 0;
-            File oldfile = new File(oldPath);
-            if (oldfile.exists()) { //文件存在时
-                File file = new File(newPath);
-                if (!file.exists()) {
-                    file.mkdir();
-                }
-                InputStream inStream = new FileInputStream(oldPath); //读入原文件
-                FileOutputStream fs = new FileOutputStream(newPath + ConfigTb.PhotoName);
-                byte[] buffer = new byte[1024];
-                int length = 0;
-                while ((length = inStream.read(buffer)) != -1) {
-                    bytesum += length; //字节数 文件大小
-                    System.out.println(bytesum);
-                    fs.write(buffer, 0, length);
-                }
-                inStream.close();
-                fs.close();
-            }
-        } catch (Exception e) {
-            Log.e(getClass().getName(), "dfdf==" + e.getMessage());
-        }
-    }
-
     public void fileChannelCopy(File s, File t) {
         if (s.exists()) { //文件存在时
             File file = new File(ConfigTb.SDCard);
@@ -78,10 +49,9 @@ public class Commutils {
     }
 
     public boolean hasFile() {
-        File file = new File(ConfigTb.SDCard);
+        File file = new File(ConfigTb.PhotoName);
         return file.exists();
     }
-
 
     /**
      * 根据选取照片Uri返回路径

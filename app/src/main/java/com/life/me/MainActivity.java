@@ -3,6 +3,7 @@ package com.life.me;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,12 +11,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -34,7 +33,6 @@ import com.life.me.entity.ConfigTb;
 import com.life.me.model.Main_Model;
 import com.life.me.mutils.Commutils;
 import com.life.me.mutils.HttpUtils;
-import com.life.me.mutils.myimageloder.ImageLoader;
 import com.life.me.presenter.Main_presenter;
 import com.life.me.view.SystemBarTintManager;
 import com.romainpiel.shimmer.Shimmer;
@@ -114,11 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LocationClient mLocationClient;
     private LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
     private String tempcoor = "bd09ll";
-    /**
-     * 自己写的imageloader
-     */
-    private ImageLoader imageLoader;
-
     private Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -171,14 +164,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             presenter.getWeather(mContext, this);
         }
         commutils = new Commutils();
-
     }
 
     private void setBackground() {
         //有文件再去加载
         if (commutils.hasFile()) {
-            imageLoader = ImageLoader.getInstance();
-            imageLoader.loadImage(ConfigTb.SDCard + ConfigTb.PhotoName, mainBackground, false);
+            mainBackground.setImageBitmap(BitmapFactory.decodeFile(ConfigTb.PhotoName));
         }
     }
 
@@ -352,9 +343,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == GET_FORM_GALLERY) {
+        if (requestCode == GET_FORM_GALLERY && data != null) {
             //复制存入图片
-            commutils.fileChannelCopy(new File(commutils.getPath(mContext, data.getData())), new File(ConfigTb.SDCard+ConfigTb.PhotoName));
+            commutils.fileChannelCopy(new File(commutils.getPath(mContext, data.getData())), new File(ConfigTb.PhotoName));
             setBackground();
         }
         super.onActivityResult(requestCode, resultCode, data);
