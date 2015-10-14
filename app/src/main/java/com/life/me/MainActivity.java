@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -283,6 +284,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void weatherCallback(List<WeatherDao> weatherList) {
         if (weatherList != null) {
             hand.obtainMessage(UPDATE_IMG, weatherList).sendToTarget();
+        } else {
+            refreshLayout.setRefreshing(false);
         }
     }
 
@@ -324,6 +327,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //复制存入图片
             Utils.fileChannelCopy(new File(new Commutils().getPath(mContext, data.getData())), new File(ConfigTb.PhotoName));
             setBackground();
+        } else {
+            Snackbar.make(linearLayout, "选择图片失败", Snackbar.LENGTH_LONG).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

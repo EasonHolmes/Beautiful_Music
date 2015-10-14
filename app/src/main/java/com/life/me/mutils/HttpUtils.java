@@ -88,7 +88,7 @@ public class HttpUtils {
             }
         };
         //设置请求超时时间
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
         v.add(stringRequest);
     }
 
@@ -96,7 +96,7 @@ public class HttpUtils {
         Log.e(getClass().getName(), "get_url===" + url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, s -> callback.success(Utils.decodeUnicode(s).trim())
                 , null);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
         v.add(stringRequest);
     }
 

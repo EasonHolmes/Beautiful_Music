@@ -47,7 +47,6 @@ public class Myapplication extends Application {
         SpeechUtility.createUtility(Myapplication.this, SpeechConstant.APPID + "=5608ae61");//初始化讯飞
         LitePalApplication.initialize(Myapplication.this);//初始化litepal
         initJpush();//初始化极光
-//        initBaidu();//初始化百度并上传位置
         initImageLoader();
     }
 
@@ -67,14 +66,6 @@ public class Myapplication extends Application {
             }
         });
     }
-
-//    private void initBaidu() {
-//        mLocationClient = new LocationClient(this.getApplicationContext());
-//        mMyLocationListener = new MyLocationListener();
-//        mLocationClient.registerLocationListener(mMyLocationListener);
-//        mVibrator = (Vibrator) getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
-//    }
-
     private void initJpush() {
         JPushInterface.init(this);            // 初始化 JPush
         pushTags.add("1");//添加tag分组
@@ -90,29 +81,4 @@ public class Myapplication extends Application {
             }
         });
     }
-
-//    /**
-//     * 实现实时位置回调监听
-//     */
-//    public class MyLocationListener implements BDLocationListener {
-//
-//        @Override
-//        public void onReceiveLocation(BDLocation location) {
-//            CacheBean.addr = location.getAddrStr();
-//            CacheBean.Latitude = String.valueOf(location.getLatitude());
-//            CacheBean.Longitude = String.valueOf(location.getLongitude());
-//            List<Poi> list1 = location.getPoiList();// POI信息
-//            if (list1 != null) {
-//                CacheBean.addr = CacheBean.addr + list1.get(0).getName();
-//            }
-//            Log.e(getClass().getName(), "location====" + CacheBean.addr + "Latitude====" +
-//                    CacheBean.Latitude + "Longitude====" + CacheBean.Longitude);
-//            mLocationClient.stop();
-//            /**
-//             * 上传位置
-//             * */
-//            presenter.upLocation(Myapplication.this);
-//        }
-//    }
-
 }
