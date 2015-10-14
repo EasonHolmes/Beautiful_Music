@@ -18,6 +18,10 @@ import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.SingleGson;
 import com.life.me.mutils.SingleRequestQueue;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.security.spec.ECField;
 import java.util.List;
 
 /**
@@ -25,6 +29,7 @@ import java.util.List;
  */
 public class Music_Presenter {
     /**
+     * 天天动听的接口需要转编码 中文会乱码
      * q{0}=需要搜索的歌曲或歌手
      * <p>
      * page{1}=查询的页码数
@@ -33,11 +38,13 @@ public class Music_Presenter {
      * 讯飞的结果中有可能会有空格要去掉
      */
     public void getMusic_Result(String code, Context mContext, Music_Model callback) {
-        HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
-                "http://so.ard.iyyin.com/s/song_with_out?q={" + code.replaceAll(" ", "").trim() + "}&page={1}&size={1}", new HttpUtils.RequestCallBack() {
-                    @Override
-                    public void success(String result) {
-                        try {
+        try {
+            String temp = URLEncoder.encode(code, "UTF-8");
+            final String finalTemp = temp;
+            HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
+                    "http://so.ard.iyyin.com/s/song_with_out?q={" + temp.replaceAll(" ", "").trim() + "}&page={1}&size={1}", new HttpUtils.RequestCallBack() {
+                        @Override
+                        public void success(String result) {
                             Log.e(getClass().getName(), "dfdfdf==" + result);
                             MusicBean bean = SingleGson.getRequestQueue().fromJson(result, MusicBean.class);
                             List<MusicBean.DataEntity> data = bean.getData();
@@ -47,7 +54,7 @@ public class Music_Presenter {
                             }
                             for (int i = 0; i < data.size(); i++) {
                                 //有些是乱七八糟的歌。首先优先歌名匹配 再pick_count大于3000一般是正确的从高往低的拿越高越准
-                                if ((data.get(i).getSong_name().contains(code) && data.get(i).getPick_count() > 200)
+                                if ((data.get(i).getSong_name().contains(finalTemp) && data.get(i).getPick_count() > 200)
                                         || data.get(i).getPick_count() > 10000 || data.get(i).getPick_count() > 8000
                                         || data.get(i).getPick_count() > 6000 || data.get(i).getPick_count() > 4000
                                         || data.get(i).getPick_count() > 2000) {
@@ -67,21 +74,22 @@ public class Music_Presenter {
                                     callback.error("没有找到对应歌曲哦");
                                 }
                             }
-                        } catch (Exception e) {
-                            callback.error("没有找到对应歌曲哦");
                         }
-                    }
-                });
+                    });
+        } catch (Exception e) {
+        }
     }
 
     /**
+     * 天天动听的接口需要转编码 中文会乱码
      * 拿歌曲图片
      * 关键词中有可能会有空格要去掉
      */
     public void getMusic_Img(Context mContext, String Keyword, Music_Model callback) {
         try {
+            String temp = URLEncoder.encode(Keyword, "UTF-8");
             HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
-                    "http://lp.music.ttpod.com/pic/down?artist={" + Keyword.replaceAll(" ", "").trim() + "}",
+                    "http://lp.music.ttpod.com/pic/down?artist={" + temp.replaceAll(" ", "").trim() + "}",
                     new HttpUtils.RequestCallBack() {
                         @Override
                         public void success(String result) {
@@ -94,7 +102,6 @@ public class Music_Presenter {
                         }
                     });
         } catch (Exception e) {
-            callback.error("没有找到对应图片哦");
         }
     }
 
@@ -113,6 +120,7 @@ public class Music_Presenter {
             overlayAlloc.copyTo(bkg);
             return bkg;
         } catch (Exception e) {
+            Log.e(getClass().getName(),"blur_error=="+e.getMessage());
         }
         return null;
     }

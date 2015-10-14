@@ -2,207 +2,207 @@
 <items version="2" >
 
     <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-c52d321f2cea36839a0918ff0284e30f123af096.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-7ce69ae9656031d9a57b077eef2e570e3630b73a.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/Beautiful_Music/SlidingLibrary/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="402e1965eaf5cb0a83db67c7f2037f6713db6fd3">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-441f24476b323614449d8b896dc7c667e43d5d75.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.7.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="7eb126039737b3ada03141cba019d2c385cceca8">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-39bdb03fc59d35b4ca73a5bb7f8321b540460e5a.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-27c33dac10e023e8ac7f473e39df2a5ada323956.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.github.mmin18.layoutcast/library/1.1.4/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="cdafc256cfa033f2425f83758ef64d28e236fbe5">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-ce854318c0d44a14c46aec6b163c1f363f178090.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.7.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c4334f20001e3ceaa00b203290961224aca8744f">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-e764869368609e18b254a69fb348770545eaedeb.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/Bmob_Push_V0.6beta_20150408.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="db21ec99c2c7bf91c67bf80f5c5c49a92dd0562e">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/Bmob_Push_V0.6beta_20150408-65f31597d5caa13776763a94a055f9a4bceee440.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.eftimoff/android-pathview/1.0.6/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b90040ba91530dc8f6282a94306ecb9f3a1339ee">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-51d51c7969c0cf28ccba9d1ba43d80cc5b20fb6f.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-478bf91f5c4cf01078c4a4ca80b2a7e09da8e67d.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-1285434c60207368658bafa1d3428134dc58437d.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-f17848720049bb0a2426c859257fec194a20ca2c.jar" />
-    </item>
-    <item
         jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/locSDK_6.03.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="f97b00e2e5a384be96ab4d668fa3e2ff62cdbbb7">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/locSDK_6.03-f2e1b09ee87d213c88ec16bc0883a297e242000c.jar" />
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/locSDK_6.03-f2e1b09ee87d213c88ec16bc0883a297e242000c.jar" />
     </item>
     <item
         jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/percent/23.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="cddfbb68753c7b1222ffb7af97bfd9ecf413aba7">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-c97d865d43e6f2dc54b9bfeed444488401a15ce3.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.minimize.library/seekbar-compat/0.2.4/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c74ad0aeb6cb99f660bea8eb2a558fbc7b8401ad">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-a1ac2d459893f63e7d8512ebe63545423c19cdcb.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="605019d3e4be636f5dd74c83d05198994e3a2ce9">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-d7792029db989c2e94e8b376f14c6eb340f38cd5.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/org.litepal.android/core/1.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b70a73bc9ab5b1e40f29d40c752f0d43fc54808b">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-70b8a451589a859ddfe56883b9166b9b764a742f.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.14/898f9ab61e2a23afd615f0b0389478bec86f49f9/rxjava-1.0.14.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/rxjava-1.0.14-75f724aac002b72ffe9e48c03c8622a819a7ab6a.jar" />
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-c97d865d43e6f2dc54b9bfeed444488401a15ce3.jar" />
     </item>
     <item
         jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/Msc.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="a2f592bfdb1dd7694fc715847747396aa2f8d8cb">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/Msc-7b73cacfb5ab78a0bf31064355ebb80addb49b2a.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/gson-2.2.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/gson-2.2.4-7bcf0b1bf6481449586b8322a18ab996bd73ae64.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.7.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a31fd4d68ac17ad1988f4b44eed1f69327315a55">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-337ef11bbfdbf703cb9395ebce137459f7f51429.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/BmobSDK_V3.4.3_0828.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="48db49e68d35b562a6a848d56f619b8c9f213611">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/BmobSDK_V3.4.3_0828-7abb90e36fc2fab5b7742977e3ecad78de591f84.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.1.0/63735f48b82bcd24cdd33821342428252eb1ca5a/butterknife-6.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/butterknife-6.1.0-ac724ae799341cb7053d90ad50ac7bb6bb8bd1e5.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/volley.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/volley-fc95e53b0bbb4c1b1c7581f138537f090ee609a2.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.7.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="956a7969705640c8790b983aaa7ff805dff80cf6">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-22a4a32a8850233275ac982b5801795c93e0ef39.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/library-2.4.0-644681978976d6db9929c9e4a374c308a30ec267.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/classes-be67edb12f102a96ee6d2cbe81e3c090da95462b.jar" />
-    </item>
-    <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.eftimoff/android-pathview/1.0.6/jars/libs/androidsvg-1.2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d0cb3453e18fffeb053e9b7f052af3dcec9f75b4">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/androidsvg-1.2.1-a2a1f6b1ff983e325c3e9f0fd217ba0f85f8409c.jar" />
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/Msc-7b73cacfb5ab78a0bf31064355ebb80addb49b2a.jar" />
     </item>
     <item
         jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/jpush-sdk-release1.7.5.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="c10bf1a834e7a2caa3832c29b530e1ae7cfad0a2">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/jpush-sdk-release1.7.5-9d9483de6922c0a80f73d39c735077a178d67aef.jar" />
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/jpush-sdk-release1.7.5-9d9483de6922c0a80f73d39c735077a178d67aef.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.eftimoff/android-pathview/1.0.6/jars/libs/androidsvg-1.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0cb3453e18fffeb053e9b7f052af3dcec9f75b4">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/androidsvg-1.2.1-a2a1f6b1ff983e325c3e9f0fd217ba0f85f8409c.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.minimize.library/seekbar-compat/0.2.4/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c74ad0aeb6cb99f660bea8eb2a558fbc7b8401ad">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-a1ac2d459893f63e7d8512ebe63545423c19cdcb.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-7ce69ae9656031d9a57b077eef2e570e3630b73a.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/volley.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/volley-fc95e53b0bbb4c1b1c7581f138537f090ee609a2.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-1285434c60207368658bafa1d3428134dc58437d.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/bolts-android-1.1.4-f17848720049bb0a2426c859257fec194a20ca2c.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/support-annotations-23.0.1-27c33dac10e023e8ac7f473e39df2a5ada323956.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-478bf91f5c4cf01078c4a4ca80b2a7e09da8e67d.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.1.0/63735f48b82bcd24cdd33821342428252eb1ca5a/butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/butterknife-6.1.0-ac724ae799341cb7053d90ad50ac7bb6bb8bd1e5.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/Bmob_Push_V0.6beta_20150408.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="db21ec99c2c7bf91c67bf80f5c5c49a92dd0562e">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/Bmob_Push_V0.6beta_20150408-65f31597d5caa13776763a94a055f9a4bceee440.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/library-2.4.0-644681978976d6db9929c9e4a374c308a30ec267.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.7.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7eb126039737b3ada03141cba019d2c385cceca8">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-39bdb03fc59d35b4ca73a5bb7f8321b540460e5a.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.7.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c4334f20001e3ceaa00b203290961224aca8744f">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-e764869368609e18b254a69fb348770545eaedeb.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.7.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a31fd4d68ac17ad1988f4b44eed1f69327315a55">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-337ef11bbfdbf703cb9395ebce137459f7f51429.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-be67edb12f102a96ee6d2cbe81e3c090da95462b.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="605019d3e4be636f5dd74c83d05198994e3a2ce9">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-d7792029db989c2e94e8b376f14c6eb340f38cd5.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.14/898f9ab61e2a23afd615f0b0389478bec86f49f9/rxjava-1.0.14.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/rxjava-1.0.14-75f724aac002b72ffe9e48c03c8622a819a7ab6a.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/BmobSDK_V3.4.3_0828.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="48db49e68d35b562a6a848d56f619b8c9f213611">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/BmobSDK_V3.4.3_0828-7abb90e36fc2fab5b7742977e3ecad78de591f84.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.eftimoff/android-pathview/1.0.6/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b90040ba91530dc8f6282a94306ecb9f3a1339ee">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-51d51c7969c0cf28ccba9d1ba43d80cc5b20fb6f.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/gson-2.2.4-7bcf0b1bf6481449586b8322a18ab996bd73ae64.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/internal_impl-23.0.1-c52d321f2cea36839a0918ff0284e30f123af096.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.github.mmin18.layoutcast/library/1.1.4/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="cdafc256cfa033f2425f83758ef64d28e236fbe5">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-ce854318c0d44a14c46aec6b163c1f363f178090.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.7.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="956a7969705640c8790b983aaa7ff805dff80cf6">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-22a4a32a8850233275ac982b5801795c93e0ef39.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/org.litepal.android/core/1.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b70a73bc9ab5b1e40f29d40c752f0d43fc54808b">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-70b8a451589a859ddfe56883b9166b9b764a742f.jar" />
+    </item>
+    <item
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/exploded-aar/Beautiful_Music/SlidingLibrary/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="402e1965eaf5cb0a83db67c7f2037f6713db6fd3">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/release/classes-441f24476b323614449d8b896dc7c667e43d5d75.jar" />
     </item>
 
 </items>

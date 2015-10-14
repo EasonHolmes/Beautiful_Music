@@ -79,6 +79,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
     private final int DISS_DIALOG = 2;
     private final int SET_TITLE = 3;
     private boolean isOne = true;
+    private String url;//专辑图片url地址
 
     private String title;
     private final Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
@@ -86,7 +87,13 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
                 case BULER:
-                    bulerImg.setImageBitmap(presenter.blur((Bitmap) msg.obj, mContext));
+                    Bitmap b = presenter.blur((Bitmap) msg.obj, mContext);
+                    if (b != null) {//一些机子会报Unsuported element type.无法制作模糊图片 就直接拉原图了
+                        bulerImg.setImageBitmap(presenter.blur((Bitmap) msg.obj, mContext));
+                    } else {
+                        ImageLoader.ImageListener listener1 = ImageLoader.getImageListener(bulerImg, R.mipmap.music_mic, R.mipmap.music_mic);
+                        Myapplication.imageLoader.get(url, listener1);
+                    }
                     break;
                 case SHOW_DIALOG:
                     recogin.showDialog();
@@ -151,8 +158,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
 
     @Override
     public void getMusicImg(String imgUrl) {
-        progressWheel.setVisibility(View.GONE);
-        hand.obtainMessage(DISS_DIALOG).sendToTarget();
+        url = imgUrl;
         ImageRequest imgRequest = new ImageRequest(imgUrl,
                 bitmap1 -> hand.obtainMessage(BULER, bitmap1).sendToTarget(),
                 0, 0, Bitmap.Config.ARGB_8888, null);
@@ -176,6 +182,13 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress,
                                       boolean fromUser) {
+            /**
+             * 等歌开始放了的时候再让他消失
+             */
+            if (progress < 2) {//小于2就只进一次了不会一直changed就更新
+                progressWheel.setVisibility(View.GONE);
+                hand.obtainMessage(DISS_DIALOG).sendToTarget();
+            }
             // 原本是(progress/seekBar.getMax())*player.mediaPlayer.getDuration()
             this.progress = progress * myPlayer.mediaPlayer.getDuration()
                     / seekBar.getMax();
@@ -191,8 +204,8 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
             // seekTo()的参数是相对与影片时间的数字，而不是与seekBar.getMax()相对的数字
             myPlayer.mediaPlayer.seekTo(progress);
         }
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -236,6 +249,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
                 break;
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

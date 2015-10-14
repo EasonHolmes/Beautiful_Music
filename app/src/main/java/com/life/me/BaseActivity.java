@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import com.life.me.view.SystemBarTintManager;
 
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends BaseSwipeBackActivity {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mDrawerToggle;

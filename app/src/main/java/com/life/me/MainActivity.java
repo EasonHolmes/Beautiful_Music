@@ -1,5 +1,6 @@
 package com.life.me;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,14 +27,19 @@ import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
+import com.baidu.location.Poi;
 import com.life.me.dao.WeatherDao;
+import com.life.me.entity.CacheBean;
 import com.life.me.entity.ConfigTb;
 import com.life.me.model.Main_Model;
 import com.life.me.mutils.Commutils;
 import com.life.me.mutils.HttpUtils;
+import com.life.me.mutils.Utils;
 import com.life.me.presenter.Main_presenter;
+import com.life.me.view.ProgressWheel;
 import com.life.me.view.SystemBarTintManager;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
@@ -105,13 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Main_presenter presenter;
     private final int UPDATE_IMG = 0;
     private final int GET_FORM_GALLERY = 1;
-    private Commutils commutils;
 
 
-    //BaiduLocation Servers
-    private LocationClient mLocationClient;
-    private LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
-    private String tempcoor = "bd09ll";
     private Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     });
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,19 +140,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String drawerContent = getIntent().getStringExtra(getResources().getString(R.string.push_content));//拿推送传过来的内容
         SharedPreferences share = mContext.getSharedPreferences(getResources().getString(R.string.drawer_content_file), MODE_PRIVATE);
         if (drawerContent != null) {//如果是推送进来的就保存内容并显示否则拿之前保存的内容
-            SharedPreferences.Editor editor = share.edit();
-            editor.putString(getResources().getString(R.string.push_content), drawerContent);
-            editor.apply();
+            share.edit().putString(getResources().getString(R.string.push_content), drawerContent).apply();
             honeyTxt.setText(drawerContent + "");
         } else {
-            honeyTxt.setText(share.getString(getResources().getString(R.string.push_content), "亲爱的今天有没有想我啊"));
+            honeyTxt.setText(share.getString(getResources().getString(R.string.push_content), "I love you my Lover"));
         }
 
-        presenter = new Main_presenter();
-
+        presenter = new Main_presenter();//初始化控制器
         initView();
         setBackground();
-        initLocation();//开启地图定位 myapplication回调上传
+
     }
 
     private void initView() {
@@ -158,17 +157,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgMusic.setOnClickListener(this);
         refreshLayout.setColorSchemeResources(R.color.toolbar_background2);
         refreshLayout.setOnRefreshListener(this);
-        if (!HttpUtils.getSingleton().hasNetwork(mContext)) {//未联网时拿缓存
+        if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
             hand.obtainMessage(UPDATE_IMG, DataSupport.order("id asc").find(WeatherDao.class)).sendToTarget();
         } else {
             presenter.getWeather(mContext, this);
         }
-        commutils = new Commutils();
     }
 
     private void setBackground() {
         //有文件再去加载
-        if (commutils.hasFile()) {
+        if (Utils.hasFile()) {
             mainBackground.setImageBitmap(BitmapFactory.decodeFile(ConfigTb.PhotoName));
         }
     }
@@ -269,9 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mDrawerToggle.syncState();
             mDrawerlayout.setDrawerListener(mDrawerToggle);
         }
-
     }
-
 
     @Override
     public void onClick(View v) {
@@ -300,25 +296,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         presenter.getWeather(mContext, this);
     }
 
-    private void initLocation() {
-        Myapplication application = (Myapplication) getApplication();
-        mLocationClient = application.mLocationClient;
-        mLocationClient.start();//定位SDK start之后会默认发起一次定位请求，开发者无须判断isstart并主动调用request
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(tempMode);//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
-        option.setCoorType(tempcoor);//可选，默认gcj02，设置返回的定位结果坐标系，
-        int span = 1000;
-        option.setScanSpan(span);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
-        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
-        option.setOpenGps(true);//可选，默认false,设置是否使用gps
-        option.setLocationNotify(true);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
-        option.setIgnoreKillProcess(true);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
-        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
-        option.setIsNeedLocationDescribe(false);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
-        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
-        mLocationClient.setLocOption(option);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -345,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == GET_FORM_GALLERY && data != null) {
             //复制存入图片
-            commutils.fileChannelCopy(new File(commutils.getPath(mContext, data.getData())), new File(ConfigTb.PhotoName));
+            Utils.fileChannelCopy(new File(new Commutils().getPath(mContext, data.getData())), new File(ConfigTb.PhotoName));
             setBackground();
         }
         super.onActivityResult(requestCode, resultCode, data);

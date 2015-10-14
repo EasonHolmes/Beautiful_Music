@@ -93,25 +93,11 @@ public class HttpUtils {
     }
 
     public void getResultForHttpGet(RequestQueue v, String url, final RequestCallBack callback) {
+        Log.e(getClass().getName(), "get_url===" + url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, s -> callback.success(Utils.decodeUnicode(s).trim())
                 , null);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
         v.add(stringRequest);
-    }
-
-    public void getResultForHttpGetForMusic(RequestQueue v, String url, final RequestCallBack callback) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, s -> callback.success(Utils.decodeUnicode(s).trim())
-                , null) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("apikey", "4c68f99aaa48f05b527d591c7a4931b5");
-                return headers;
-            }
-        };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
-        v.add(stringRequest);
-
     }
 
     public interface RequestCallBack {

@@ -22,37 +22,6 @@ import java.nio.channels.FileChannel;
  * Created by cuiyang on 15/10/13.
  */
 public class Commutils {
-    public void fileChannelCopy(File s, File t) {
-        if (s.exists()) { //文件存在时
-            File file = new File(ConfigTb.SDCard);
-            if (!file.exists()) {
-                file.mkdir();
-            }
-            FileInputStream fi = null;
-            FileOutputStream fo = null;
-            FileChannel in = null;
-            FileChannel out = null;
-            try {
-                fi = new FileInputStream(s);
-                fo = new FileOutputStream(t);
-                in = fi.getChannel();//得到对应的文件通道
-                out = fo.getChannel();//得到对应的文件通道
-                in.transferTo(0, in.size(), out);//连接两个通道，并且从in通道读取，然后写入out通道
-                fi.close();
-                in.close();
-                fo.close();
-                out.close();
-            } catch (Exception e) {
-                Log.e(getClass().getName(), "dfdf==" + e.getMessage());
-            }
-        }
-    }
-
-    public boolean hasFile() {
-        File file = new File(ConfigTb.PhotoName);
-        return file.exists();
-    }
-
     /**
      * 根据选取照片Uri返回路径
      */
@@ -60,7 +29,6 @@ public class Commutils {
     public String getPath(final Context context, final Uri uri) {
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-
         // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
             // ExternalStorageProvider

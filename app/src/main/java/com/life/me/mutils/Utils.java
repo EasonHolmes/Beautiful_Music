@@ -13,9 +13,14 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.life.me.entity.ConfigTb;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.lang.reflect.Method;
+import java.nio.channels.FileChannel;
 
 /**
  * Created by cuiyang on 15/5/13.
@@ -25,7 +30,7 @@ public class Utils {
     /**
      * 在SD卡上创建一个文件夹
      */
-    private static String createSDCardDir(String path) {
+    private  String createSDCardDir(String path) {
         File path1 = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) { //如果 有SDK卡
             path1 = new File(path);
@@ -36,15 +41,37 @@ public class Utils {
         }
         return path1.getAbsolutePath();
     }
+    public static void fileChannelCopy(File s, File t) {
+        if (s.exists()) { //文件存在时
+            File file = new File(ConfigTb.SDCard);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+            FileInputStream fi = null;
+            FileOutputStream fo = null;
+            FileChannel in = null;
+            FileChannel out = null;
+            try {
+                fi = new FileInputStream(s);
+                fo = new FileOutputStream(t);
+                in = fi.getChannel();//得到对应的文件通道
+                out = fo.getChannel();//得到对应的文件通道
+                in.transferTo(0, in.size(), out);//连接两个通道，并且从in通道读取，然后写入out通道
+                fi.close();
+                in.close();
+                fo.close();
+                out.close();
+            } catch (Exception e) {
+                Log.e("utils", "dfdf==" + e.getMessage());
+            }
+        }
+    }
 
-//    public static String getConfigSharedPreferences(Context mContext, String FileName, String key) {
-//        return mContext.getSharedPreferences(FileName, Context.MODE_PRIVATE).getString(key, null);
-//    }
-//    public static void setConfigSharedPreferences(Context mContext,String FileName,String key){
-//        SharedPreferences share = mContext.getSharedPreferences(FileName,Context.MODE_PRIVATE);
-//        SharedPreferences.Editor edit = share.edit();
-//        edit.putString()
-//    }
+    public static boolean hasFile() {
+        File file = new File(ConfigTb.PhotoName);
+        return file.isFile();
+    }
+
     /**
      * Unicode转utf-8
      */

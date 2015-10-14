@@ -1,31 +1,20 @@
 package com.life.me;
 
 import android.app.Application;
-import android.app.Service;
 import android.graphics.Bitmap;
 import android.os.Vibrator;
 import android.support.v4.util.LruCache;
-import android.text.Annotation;
-import android.util.Log;
-
 import com.android.volley.toolbox.ImageLoader;
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
-import com.baidu.location.Poi;
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.mmin18.layoutcast.LayoutCast;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
-import com.life.me.entity.CacheBean;
-import com.life.me.mutils.DeviceInfo;
 import com.life.me.mutils.SingleRequestQueue;
-import com.life.me.presenter.Wel_presenter;
+import com.life.me.presenter.Main_presenter;
 
 import org.litepal.LitePalApplication;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import cn.bmob.v3.Bmob;
@@ -41,9 +30,9 @@ public class Myapplication extends Application {
 
     //baiduLocation servers
     public LocationClient mLocationClient;
-    public MyLocationListener mMyLocationListener;
+//    public MyLocationListener mMyLocationListener;
     public Vibrator mVibrator;
-    private Wel_presenter presenter;
+    private Main_presenter presenter;
 
     public static ImageLoader imageLoader;
 
@@ -53,12 +42,12 @@ public class Myapplication extends Application {
         if (BuildConfig.DEBUG) {
             LayoutCast.init(this);
         }
-        presenter = new Wel_presenter();
+        presenter = new Main_presenter();
         Bmob.initialize(Myapplication.this, "03d70b2e98eee0a88cf31f0423409771");//初始化bmob
         SpeechUtility.createUtility(Myapplication.this, SpeechConstant.APPID + "=5608ae61");//初始化讯飞
         LitePalApplication.initialize(Myapplication.this);//初始化litepal
         initJpush();//初始化极光
-        initBaidu();//初始化百度并上传位置
+//        initBaidu();//初始化百度并上传位置
         initImageLoader();
     }
 
@@ -79,12 +68,12 @@ public class Myapplication extends Application {
         });
     }
 
-    private void initBaidu() {
-        mLocationClient = new LocationClient(this.getApplicationContext());
-        mMyLocationListener = new MyLocationListener();
-        mLocationClient.registerLocationListener(mMyLocationListener);
-        mVibrator = (Vibrator) getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
-    }
+//    private void initBaidu() {
+//        mLocationClient = new LocationClient(this.getApplicationContext());
+//        mMyLocationListener = new MyLocationListener();
+//        mLocationClient.registerLocationListener(mMyLocationListener);
+//        mVibrator = (Vibrator) getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
+//    }
 
     private void initJpush() {
         JPushInterface.init(this);            // 初始化 JPush
@@ -102,28 +91,28 @@ public class Myapplication extends Application {
         });
     }
 
-    /**
-     * 实现实时位置回调监听
-     */
-    public class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            CacheBean.addr = location.getAddrStr();
-            CacheBean.Latitude = String.valueOf(location.getLatitude());
-            CacheBean.Longitude = String.valueOf(location.getLongitude());
-            List<Poi> list1 = location.getPoiList();// POI信息
-            if (list1 != null) {
-                CacheBean.addr = CacheBean.addr + list1.get(0).getName();
-            }
-            Log.e(getClass().getName(), "location====" + CacheBean.addr + "Latitude====" +
-                    CacheBean.Latitude + "Longitude====" + CacheBean.Longitude);
-            mLocationClient.stop();
-            /**
-             * 上传位置
-             * */
-            presenter.upLocation(Myapplication.this);
-        }
-    }
+//    /**
+//     * 实现实时位置回调监听
+//     */
+//    public class MyLocationListener implements BDLocationListener {
+//
+//        @Override
+//        public void onReceiveLocation(BDLocation location) {
+//            CacheBean.addr = location.getAddrStr();
+//            CacheBean.Latitude = String.valueOf(location.getLatitude());
+//            CacheBean.Longitude = String.valueOf(location.getLongitude());
+//            List<Poi> list1 = location.getPoiList();// POI信息
+//            if (list1 != null) {
+//                CacheBean.addr = CacheBean.addr + list1.get(0).getName();
+//            }
+//            Log.e(getClass().getName(), "location====" + CacheBean.addr + "Latitude====" +
+//                    CacheBean.Latitude + "Longitude====" + CacheBean.Longitude);
+//            mLocationClient.stop();
+//            /**
+//             * 上传位置
+//             * */
+//            presenter.upLocation(Myapplication.this);
+//        }
+//    }
 
 }
