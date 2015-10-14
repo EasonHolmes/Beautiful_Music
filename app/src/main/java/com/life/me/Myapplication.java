@@ -4,6 +4,8 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.os.Vibrator;
 import android.support.v4.util.LruCache;
+import android.util.Log;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.baidu.location.LocationClient;
 import com.github.mmin18.layoutcast.LayoutCast;
@@ -30,7 +32,7 @@ public class Myapplication extends Application {
 
     //baiduLocation servers
     public LocationClient mLocationClient;
-//    public MyLocationListener mMyLocationListener;
+    //    public MyLocationListener mMyLocationListener;
     public Vibrator mVibrator;
     private Main_presenter presenter;
 
@@ -66,17 +68,18 @@ public class Myapplication extends Application {
             }
         });
     }
+
     private void initJpush() {
         JPushInterface.init(this);            // 初始化 JPush
         pushTags.add("1");//添加tag分组
         pushTags.add("2");
         //根据token设置设备别名
-        String id = presenter.getToken(Myapplication.this);
+        String id = presenter.getToken(Myapplication.this).substring(0, 13);
         JPushInterface.setAliasAndTags(this, id, pushTags, new TagAliasCallback() {
             @Override
             public void gotResult(int i, String s, Set<String> strings) {
                 if (i == 0) {
-                    //Log.e(TAG,"ok successful==");
+                    Log.e(getClass().getName(), "ok successful==");
                 }
             }
         });

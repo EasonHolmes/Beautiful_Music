@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,6 +19,8 @@ import android.util.Log;
 import com.life.me.MainActivity;
 import com.life.me.R;
 import com.life.me.Wel_Activity;
+
+import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -53,12 +56,14 @@ public class MyReceiver extends BroadcastReceiver {
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户点击打开了通知");
             //打开自定义的Activity如果已经打开就直接改sharepreference
-            if (!checkApkExist(context, context.getPackageName())) {
+            if (!isAppOnForeground(context)) {
+                Log.e(getClass().getName(), "isssisisi");
                 Intent i = new Intent(context, Wel_Activity.class);
                 i.putExtra(context.getResources().getString(R.string.push_content), printBundle(bundle));//把推送的内容带过去
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);
             } else {
+                Log.e(getClass().getName(), "nononoonon");
                 //如果已经打开就直接改sharepreference
                 SharedPreferences share = context.getSharedPreferences(context.getString(R.string.drawer_content_file), Context.MODE_PRIVATE);
                 share.edit().putString(context.getString(R.string.push_content), printBundle(bundle)).apply();
@@ -112,7 +117,31 @@ public class MyReceiver extends BroadcastReceiver {
         }
     }
 
+    /**
+     * 判断app是否在前台
+     *
+     * @param mContext
+     * @return
+     */
+    public boolean isAppOnForeground(Context mContext) {
+        // Returns a list of application processes that are running on the
+        // device
+        ActivityManager activityManager = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+        String packageName = mContext.getPackageName();
 
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager
+                .getRunningAppProcesses();
+        if (appProcesses == null)
+            return false;
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            // The name of the process that this object is associated with.
+            if (appProcess.processName.equals(packageName)
+                    && appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                return true;
+            }
+        }
+        return false;
+    }
 //	//send msg to MainActivity
 //	private void processCustomMessage(Context context, Bundle bundle) {
 //		if (MainActivity.isForeground) {
