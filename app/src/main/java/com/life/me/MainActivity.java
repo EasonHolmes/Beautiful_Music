@@ -112,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Main_presenter presenter;
     private final int UPDATE_IMG = 0;
     private final int GET_FORM_GALLERY = 1;
-
+    private final int REFRESH = 2;
+    private HttpUtils httpUtils;
 
     private Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
@@ -121,6 +122,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case UPDATE_IMG:
                     refreshLayout.setRefreshing(false);
                     updateUI((List<WeatherDao>) msg.obj);
+                    break;
+                case REFRESH:
+                    refreshLayout.setRefreshing(false);
                     break;
             }
             return false;
@@ -136,9 +140,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mContext = this;
 
         initToolbar(getResources().getString(R.string.main_act_title), false);
-        new Shimmer().setDuration(1500).start(honeyTxt);//侧边栏的字
+        new Shimmer().setDuration(1500).start(honeyTxt);
 
-        String drawerContent = getIntent().getStringExtra(getResources().getString(R.string.push_content));//拿推送传过来的内容
+        presenter = new Main_presenter();
+        httpUtils = HttpUtils.getSingleton();
+        initView();
+        setBackground();
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void initView() {
+        String drawerContent = getIntent().getStringExtra(getResources().getString(R.string.push_content));//推送传过来的内容
         SharedPreferences share = mContext.getSharedPreferences(getResources().getString(R.string.drawer_content_file), MODE_PRIVATE);
         if (drawerContent != null) {//如果是推送进来的就保存内容并显示否则拿之前保存的内容
             share.edit().putString(getResources().getString(R.string.push_content), drawerContent).apply();
@@ -146,22 +159,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             honeyTxt.setText(share.getString(getResources().getString(R.string.push_content), "I love you my Lover"));
         }
-
-        presenter = new Main_presenter();//初始化控制器
-        initView();
-        setBackground();
-
-    }
-
-    private void initView() {
         drawerView.setOnClickListener(this);//设置一个空的键听要不侧边栏会透过去影响后面的手势
         imgMusic.setOnClickListener(this);
         refreshLayout.setColorSchemeResources(R.color.toolbar_background2);
         refreshLayout.setOnRefreshListener(this);
-        if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
-            hand.obtainMessage(UPDATE_IMG, DataSupport.order("id asc").find(WeatherDao.class)).sendToTarget();
+        if (!httpUtils.hasNetwork(mContext)) {
+            httpUtils.showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
+            hand.postDelayed(() -> hand.obtainMessage(UPDATE_IMG, DataSupport.order("id asc").find(WeatherDao.class)).sendToTarget(), 700);
         } else {
-            presenter.getWeather(mContext, this);
+            //自动刷新
+//            refreshLayout.post(() -> refreshLayout.setRefreshing(true));
+            this.onRefresh();
         }
     }
 
@@ -282,18 +290,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void weatherCallback(List<WeatherDao> weatherList) {
-        if (weatherList != null) {
-            hand.obtainMessage(UPDATE_IMG, weatherList).sendToTarget();
+        if (weatherList == null) {
+            httpUtils.showDialog(mContext, "定位失败,请开启定位重试");
+            hand.obtainMessage(REFRESH).sendToTarget();
         } else {
-            refreshLayout.setRefreshing(false);
+            hand.obtainMessage(UPDATE_IMG, weatherList).sendToTarget();
         }
     }
 
     @Override
     public void onRefresh() {
-        if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
-            HttpUtils.getSingleton().showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
-            refreshLayout.setRefreshing(false);
+        if (!httpUtils.hasNetwork(mContext)) {
+            httpUtils.showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
+            hand.obtainMessage(REFRESH).sendToTarget();
             return;
         }
         presenter.getWeather(mContext, this);

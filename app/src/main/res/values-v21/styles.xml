@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="ActionBarTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- toolbar（actionbar）颜色 -->
         <item name="colorPrimary">@color/toolbar_background2</item>
         <!-- 状态栏颜色 -->

@@ -4,7 +4,7 @@
        AppBaseTheme from BOTH res/values/styles.xml and
        res/values-v11/styles.xml on API 19+ devices.
    -->
-    <style name="ActionBarTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--&lt;!&ndash; toolbar（actionbar）颜色 &ndash;&gt;-->
         <!--<item name="colorPrimary">@color/toolbar_background</item>-->
         <!--&lt;!&ndash;&lt;!&ndash; 状态栏颜色 &ndash;&gt;&ndash;&gt;-->

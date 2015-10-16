@@ -2,7 +2,7 @@
 
     <!--toolbar-->
     <!--<style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-    <style name="ActionBarTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--&lt;!&ndash; toolbar（actionbar）颜色 &ndash;&gt;-->
         <!--<item name="colorPrimary">@color/background_blue</item>-->
         <!--&lt;!&ndash; 状态栏颜色 &ndash;&gt;-->

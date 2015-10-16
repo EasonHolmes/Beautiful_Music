@@ -39,6 +39,10 @@ public class Main_presenter {
      * @param callback
      */
     public void getWeather(Context mContext, Main_Model callback) {
+        if (CacheBean.Longitude == null || CacheBean.Latitude == null) {//有可能定位延迟
+            callback.weatherCallback(null);
+            return;
+        }
         HttpUtils.getSingleton().getResultForHttpGet(SingleRequestQueue.getRequestQueue(mContext),
                 ConfigTb.WeatherHttpUrl + CacheBean.Longitude + "," + CacheBean.Latitude + "&output=json&ak=FuyvSudm3jRYddk1Xq1yRI6B&mcode=30:30:0E:2E:96:D0:15:36:B9:27:4C:95:F7:28:7E:76:C1:23:28:33;com.life.me"
                 , new HttpUtils.RequestCallBack() {
@@ -50,15 +54,17 @@ public class Main_presenter {
                                 List<WeatherDao> data = tb.getResults().get(0).getWeather_data();
                                 WeatherDao.deleteAll(WeatherDao.class);// 删除所有
                                 for (WeatherDao dao : data) {
-                                    //放入天气返回的城市因为没开网百度定不到位就会为null
-                                    // 后面再取地址就nullexception不过没开网可以拿到经纬度
+                                    //放入天气返回的城市因为没开网百度定不到位就会为null..后面再取地址就nullexception不过没开网可以拿到经纬度
                                     dao.setCity(tb.getResults().get(0).getCurrentCity());
                                     dao.save();
                                 }
                                 List<WeatherDao> list = DataSupport.order("id asc").find(WeatherDao.class);
                                 callback.weatherCallback(list);
+                            } else {
+                                callback.weatherCallback(null);
                             }
                         } catch (Exception e) {
+                            callback.weatherCallback(null);
                             Log.e(getClass().getName(), "eeee==" + e.getMessage());
                         }
                     }
