@@ -30,7 +30,6 @@ import java.util.Map;
  */
 public class HttpUtils {
     private static HttpUtils singleton = null;
-    private AlertDialog.Builder dialog;
 
     private HttpUtils() {
     }
@@ -44,12 +43,6 @@ public class HttpUtils {
         return singleton;
     }
 
-    /**
-     * 判断是否存在网络连接
-     *
-     * @param context
-     * @return
-     */
     public boolean hasNetwork(Context context) {
         ConnectivityManager connectManager = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -57,51 +50,36 @@ public class HttpUtils {
         return null != networkInfo && networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
-    public void showDialog(Context mContext, String Content) {
-        dialog = new AlertDialog.Builder(mContext);
-        dialog.setMessage(Content);
-        dialog.setNegativeButton("好的", null);
-        dialog.show();
-    }
-
-    /**
-     * 以一个键对值提交
-     *
-     * @param v        requesQueue
-     * @param object   要转换成json的对象
-     * @param callback 返回结果
-     * @para url http地址
-     */
-    public void getPostForByJson(RequestQueue v, String url, final Object object, final RequestCallBack callback) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                s -> callback.success(Utils.decodeUnicode(s).trim()), null) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                StringBuffer sb = new StringBuffer();
-                GsonBuilder gson = new GsonBuilder();
-                gson.disableHtmlEscaping();
-                sb.append(gson.create().toJson(object));
-                Log.e(getClass().getName(), "upjson====" + sb.toString());
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("param", sb.toString());
-                return map;
-            }
-        };
-        //设置请求超时时间
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
-        v.add(stringRequest);
-    }
-
-    public void getResultForHttpGet(RequestQueue v, String url, final RequestCallBack callback) {
-        Log.e(getClass().getName(), "get_url===" + url);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, s -> callback.success(Utils.decodeUnicode(s).trim())
-                , null);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
-        v.add(stringRequest);
-    }
-
-    public interface RequestCallBack {
-        void success(String result);
-//        void volleyError(String error);
-    }
+//    public void getPostForByJson(RequestQueue v, String url, final Object object, final RequestCallBack callback) {
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//                s -> callback.success(Utils.decodeUnicode(s).trim()), null) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                StringBuffer sb = new StringBuffer();
+//                GsonBuilder gson = new GsonBuilder();
+//                gson.disableHtmlEscaping();
+//                sb.append(gson.create().toJson(object));
+//                Log.e(getClass().getName(), "upjson====" + sb.toString());
+//                Map<String, String> map = new HashMap<String, String>();
+//                map.put("param", sb.toString());
+//                return map;
+//            }
+//        };
+//        //设置请求超时时间
+//        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
+//        v.add(stringRequest);
+//    }
+//
+//    public void getResultForHttpGet(RequestQueue v, String url, final RequestCallBack callback) {
+//        Log.e(getClass().getName(), "get_url===" + url);
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, s -> callback.success(Utils.decodeUnicode(s).trim())
+//                , null);
+//        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
+//        v.add(stringRequest);
+//    }
+//
+//    public interface RequestCallBack {
+//        void success(String result);
+////        void volleyError(String error);
+//    }
 }

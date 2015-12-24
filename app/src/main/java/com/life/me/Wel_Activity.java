@@ -8,12 +8,15 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Path;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -23,12 +26,18 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
 import com.eftimoff.androipathview.PathView;
 import com.life.me.entity.CacheBean;
+import com.life.me.entity.bmobentity.LocationTb;
+import com.life.me.entity.bmobentity.TokenTb;
 import com.life.me.presenter.Main_presenter;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
+import cn.jpush.android.api.JPushInterface;
+import rx.Observable;
 
 /**
  * Created by cuiyang on 15/9/22.
@@ -43,12 +52,15 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
 
 
     //BaiduLocation Servers
-    private LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
-    private String tempcoor = "bd09ll";
+    private final LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
+    private final String tempcoor = "bd09ll";
     public Vibrator mVibrator;
 
     private LocationClient mLocationClient;
 
+    private final int ALPHA_ANIMATION_DEFAULT = 1200;
+    private final int PATH_ANIMATION_DEFAULT = 2000;
+    private final int PATH_DELAY_DEFAULT = 100;
     String drawerContent;
 
     @Override
@@ -56,16 +68,23 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wel_act);
         ButterKnife.inject(this);
-        mContext = this;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
 
-        mLocationClient = new LocationClient(mContext);//初始化百度client
-        initLocation(mContext, mLocationClient, new MyLocationListener());//开启地图定位 上传位置和查询天气
+        mContext = this;
+        //初始化百度client
+        mLocationClient = new LocationClient(mContext);
+        //开启地图定位 上传位置和查询天气
+        initLocation(mContext, mLocationClient, new MyLocationListener());
+
         initView();
     }
 
     private void initView() {
         drawerContent = getIntent().getStringExtra(getResources().getString(R.string.push_content));//拿推送传过来的内容
-        welAnimation();//欢迎动画
+        welAnimation();
     }
 
     private void welAnimation() {
@@ -75,9 +94,9 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
         pathView.useNaturalColors();
         //设置播放
         pathView.getPathAnimator().
-                delay(100).
-                duration(2000).
-                interpolator(new AccelerateDecelerateInterpolator()).listenerEnd(this).start();
+                delay(PATH_DELAY_DEFAULT).
+                duration(PATH_ANIMATION_DEFAULT).
+                interpolator(new DecelerateInterpolator(1f)).listenerEnd(this).start();
     }
 
     private Path makeConvexArrow(float length, float height) {
@@ -99,17 +118,18 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
         ObjectAnimator wel_animation = ObjectAnimator.ofFloat(welTxt, "alpha", 0f, 1f);
         AnimatorSet animSet = new AnimatorSet();
         animSet.play(wel_animation);
-        animSet.setDuration(1200);
+        animSet.setDuration(ALPHA_ANIMATION_DEFAULT);
         animSet.start();
         animSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 Intent i = new Intent(Wel_Activity.this, MainActivity.class);
-                i.putExtra(mContext.getResources().getString(R.string.push_content), drawerContent);//把推送的内容带过去
+                //把推送的内容带过去
+                i.putExtra(mContext.getResources().getString(R.string.push_content), drawerContent);
                 startActivity(i);
-                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);//push推的          style.xml中添加<item name="android:windowIsTranslucent">true</item>因为有这个属性会变成进入的activity push覆盖上来的效果
-                finish();
+                //push推的  style.xml中添加<item name="android:windowIsTranslucent">true</item>因为有这个属性会变成进入的activity push覆盖上来的效果
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
     }
@@ -134,7 +154,8 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
             /**
              * 上传位置
              * */
-            new Main_presenter().upLocation(mContext);
+            upLocation(mContext);
+            finish();
         }
     }
 
@@ -164,4 +185,40 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
         option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
         mLocationClient.setLocOption(option);
     }
+
+    /**
+     * 上传地理位置
+     */
+    public void upLocation(Context mContext) {
+        BmobQuery<TokenTb> query = new BmobQuery<TokenTb>();
+        query.addWhereEqualTo("deviceId", ((Myapplication) getApplication()).getToken(mContext));
+        query.findObjects(mContext, new FindListener<TokenTb>() {
+            @Override
+            public void onSuccess(List<TokenTb> object) {
+                LocationTb location = new LocationTb();
+                location.setLocName(CacheBean.addr);
+                if (object != null && object.size() > 0) {
+                    location.setDeviceId((TokenTb) object.get(0));
+                }
+                location.save(mContext, null);
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+            }
+        });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(Wel_Activity.this);//是做用户统计的
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(Wel_Activity.this);//是做用户统计的
+    }
+
+
 }

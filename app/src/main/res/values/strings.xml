@@ -17,4 +17,6 @@
     <string name="main_act_title">史燕博专用APP</string>
 
     <string name="main_background">主题背景</string>
+
+    <string name="not_have_location">还没有定位到哦~</string>
 </resources>

@@ -1,22 +1,18 @@
 package com.life.me;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.preference.Preference;
-import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.SearchView;
+import android.support.v7.widget.ListPopupWindow;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.SearchView;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,20 +21,23 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
-import com.life.me.entity.ConfigTb;
-import com.life.me.entity.SpeakBean;
+import com.life.me.adapter.PopView_Adapter;
+import com.life.me.entity.Contains_keyWord_bean;
+import com.life.me.entity.Post_Get_Search;
+import com.life.me.entity.XunFei_Speak_Bean;
+import com.life.me.http.ApiClient;
 import com.life.me.model.Music_Model;
-import com.life.me.mutils.Commutils;
+import com.life.me.mutils.BulerTransformation;
 import com.life.me.mutils.HttpUtils;
-import com.life.me.mutils.SingleRequestQueue;
-import com.life.me.mutils.Utils;
+import com.life.me.mutils.ScreenUtils;
+import com.life.me.mutils.Widget_Utils;
 import com.life.me.presenter.Music_Player_Presenter;
 import com.life.me.presenter.Music_Presenter;
-import com.life.me.presenter.Music_Recogning;
-import com.life.me.view.ProgressWheel;
+import com.life.me.presenter.XunFei_Recogning;
+import com.life.me.widget.ProgressWheel;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -46,12 +45,13 @@ import java.util.Observer;
 import app.minimize.com.seek_bar_compat.SeekBarCompat;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import rx.schedulers.NewThreadScheduler;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by cuiyang on 15/9/28.
  */
-public class Music_Activity extends BaseActivity implements Observer, Music_Model,
+public class Music_Activity extends Music_Presenter implements Observer, Music_Model,
         View.OnClickListener, SearchView.OnQueryTextListener {
 
 
@@ -69,32 +69,27 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
     TextView MusicTitle;
     @InjectView(R.id.progress_wheel)
     ProgressWheel progressWheel;
-    private Music_Recogning recogin;//被观察者
-    private Music_Player_Presenter myPlayer;//播放控制器
-    private Music_Presenter presenter;//网络控制器
-    private Context mContext;
 
-    private final int BULER = 0;
+    SearchView searchView;
+    private ListPopupWindow PopupWindow_Contains;
+    private XunFei_Recogning recogin;//被观察者
+    private Music_Player_Presenter myPlayer;//播放控制器
+    private Context mContext;
+    private PopView_Adapter adapter;
+    private List<String> contains_list = new ArrayList<String>();
+
     private final int SHOW_DIALOG = 1;
     private final int DISS_DIALOG = 2;
     private final int SET_TITLE = 3;
     private boolean isOne = true;
-    private String url;//专辑图片url地址
+
+    private BulerTransformation bulerTransformation;
 
     private String title;
     private final Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
-                case BULER:
-                    Bitmap b = presenter.blur((Bitmap) msg.obj, mContext);
-                    if (b != null) {//一些机子会报Unsuported element type.无法制作模糊图片 就直接拉原图了
-                        bulerImg.setImageBitmap(presenter.blur((Bitmap) msg.obj, mContext));
-                    } else {
-                        ImageLoader.ImageListener listener1 = ImageLoader.getImageListener(bulerImg, R.mipmap.music_mic, R.mipmap.music_mic);
-                        Myapplication.imageLoader.get(url, listener1);
-                    }
-                    break;
                 case SHOW_DIALOG:
                     recogin.showDialog();
                     break;
@@ -114,18 +109,24 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_act);
         ButterKnife.inject(this);
-        super.initToolbar(getResources().getString(R.string.music_act_title), true);
         mContext = this;
+        bulerTransformation = new BulerTransformation(mContext);
         initView();
     }
 
     private void initView() {
-        myPlayer = new Music_Player_Presenter(musicProgress);
-        musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
-        imgMusics.setOnClickListener(this);
-        presenter = new Music_Presenter();
+        super.initToolbar(getResources().getString(R.string.music_act_title), true);
 
-        recogin = new Music_Recogning();
+        createPopView();
+
+        myPlayer = new Music_Player_Presenter(musicProgress);
+
+        musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
+
+        imgMusics.setOnClickListener(this);
+
+        recogin = new XunFei_Recogning();
+
         recogin.addObserver(this);
 
     }
@@ -135,15 +136,15 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
      */
     @Override
     public void update(Observable observable, Object data) {
-        SpeakBean speakBean = ((SpeakBean) data);
+        XunFei_Speak_Bean speakBean = ((XunFei_Speak_Bean) data);
         StringBuilder sb = new StringBuilder();
-        List<SpeakBean.WsEntity> entity = speakBean.getWs();
+        List<XunFei_Speak_Bean.WsEntity> entity = speakBean.getWs();
         for (int i = 0; i < entity.size(); i++) {//拼接讯飞的结果
             sb.append(entity.get(i).getCw().get(0).getW());
         }
         Log.e(getClass().getName(), "search_content==" + sb.toString());
         Snackbar.make(rootLayout, sb.toString(), Snackbar.LENGTH_SHORT).show();
-        presenter.getMusic_Result(sb.toString(), mContext, this);
+//        presenter.getMusic_Result(sb.toString(), mContext, this);
     }
 
     @Override
@@ -153,18 +154,13 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         }).start();
         title = singerName + ":" + songName;
         hand.obtainMessage(SET_TITLE, title).sendToTarget();
-        presenter.getMusic_Img(mContext, singerName + songName, this);
+//        presenter.getMusic_Img(mContext, singerName + songName, this);
     }
 
     @Override
     public void getMusicImg(String imgUrl) {
-        url = imgUrl;
-        ImageRequest imgRequest = new ImageRequest(imgUrl,
-                bitmap1 -> hand.obtainMessage(BULER, bitmap1).sendToTarget(),
-                0, 0, Bitmap.Config.ARGB_8888, null);
-        SingleRequestQueue.getRequestQueue(mContext).add(imgRequest);
-        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imgBackground, R.mipmap.music_mic, R.mipmap.music_mic);// 加载的控件，默认未加载前的图片，加载失败的图片
-        Myapplication.imageLoader.get(imgUrl, listener);
+        Picasso.with(this).load(imgUrl).into(imgBackground);
+        Picasso.with(this).load(imgUrl).transform(bulerTransformation).into(bulerImg);
     }
 
     @Override
@@ -211,7 +207,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main2, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setOnQueryTextListener(this);
         return super.onCreateOptionsMenu(menu);
     }
@@ -219,14 +215,52 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
     //搜索框搜索
     @Override
     public boolean onQueryTextSubmit(String query) {
-        presenter.getMusic_Result(query, mContext, Music_Activity.this);
+//        presenter.getMusic_Result(query, mContext, Music_Activity.this);
         progressWheel.setVisibility(View.VISIBLE);
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        Post_Get_Search get = new Post_Get_Search();
+        get.setKey(newText);
+        ApiClient.SERVICE_rx.getContains_key_MusicName(get)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(contains_keyWord_bean -> {
+                        contains_list.clear();
+                    for (Contains_keyWord_bean.ResListEntity cr : contains_keyWord_bean.getResList()) {
+                        contains_list.add(cr.getResName() + " " + cr.getSinger());
+                    }
+                    adapter.notifyDataSetChanged();
+                    if (!PopupWindow_Contains.isShowing())
+                        PopupWindow_Contains.show();
+                });
         return false;
+    }
+
+    /**
+     * popwindow
+     */
+    private void createPopView() {
+        adapter = new PopView_Adapter(Music_Activity.this, contains_list);
+        PopupWindow_Contains = new ListPopupWindow(Music_Activity.this);
+        PopupWindow_Contains.setAdapter(adapter);
+        PopupWindow_Contains.setWidth(ScreenUtils.getScreenH(Music_Activity.this) * 5 / 12);
+        PopupWindow_Contains.setHeight(ScreenUtils.getScreenH(Music_Activity.this) / 2);
+        PopupWindow_Contains.setAnchorView(super.mToolbar);
+        PopupWindow_Contains.setDropDownGravity(Gravity.CENTER);
+        PopupWindow_Contains.setModal(true);
+
+        PopupWindow_Contains.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                FolderBean bean = folders_list.get(position);
+//                getMediaThumbnailsPathByCategroy(bean.bucketId, MultiImageChooser_Activity.this);
+//                txt_current_folder.setText(bean.bucketName);
+//                showOrDissPop();
+            }
+        });
     }
 
     @Override
@@ -234,7 +268,7 @@ public class Music_Activity extends BaseActivity implements Observer, Music_Mode
         switch (v.getId()) {
             case R.id.img_musics:
                 if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
-                    HttpUtils.getSingleton().showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
+                    Widget_Utils.showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
                     return;
                 }
                 if (isOne) {

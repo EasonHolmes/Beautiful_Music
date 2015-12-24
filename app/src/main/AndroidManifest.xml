@@ -61,7 +61,7 @@
         android:label="@string/app_name"
         android:launchMode="singleInstance"
         android:persistent="true"
-        android:theme="@style/JK.SwipeBack.Transparent.Theme">
+        android:theme="@style/ActionBarTheme">
         <activity
             android:name=".Wel_Activity"
             android:launchMode="singleTop"
@@ -75,20 +75,13 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
-
             android:screenOrientation="portrait"/>
         <activity
             android:name=".Music_Activity"
             android:launchMode="singleTop"
-
             android:screenOrientation="portrait"/>
         <activity
             android:name=".Setting_Activity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name=".PhotoPerview_Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
 

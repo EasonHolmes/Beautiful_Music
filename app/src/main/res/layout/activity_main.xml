@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-
-    <include layout="@layout/topbar"/>
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/mDrawerlayout"
@@ -18,10 +15,9 @@
         android:orientation="vertical">
         <!---Drawer会把第一个节点做为内容区，第二个做为侧滑内容 -->
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <ImageView
                 android:id="@+id/main_background"
@@ -33,11 +29,13 @@
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="90dp">
 
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clipToPadding="false"
                     >
 
                     <LinearLayout
@@ -56,9 +54,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="30dp"
-                android:src="@mipmap/mic"/>
-        </RelativeLayout>
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="50dp"
+                android:src="@mipmap/mic"
+                tools:ignore="ObsoleteLayoutParam"/>
+
+            <include layout="@layout/topbar"/>
+
+        </FrameLayout>
 
         <include layout="@layout/drawer_layout"/>
     </android.support.v4.widget.DrawerLayout>

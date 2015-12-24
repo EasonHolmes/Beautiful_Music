@@ -54,20 +54,24 @@ public class MyReceiver extends BroadcastReceiver {
             Log.d(TAG, "[MyReceiver] 接收到推送下来的通知的ID: " + notifactionId);
 
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
+
+
+
             Log.d(TAG, "[MyReceiver] 用户点击打开了通知");
             //打开自定义的Activity如果已经打开就直接改sharepreference
             if (!isAppOnForeground(context)) {
-                Log.e(getClass().getName(), "isssisisi");
                 Intent i = new Intent(context, Wel_Activity.class);
                 i.putExtra(context.getResources().getString(R.string.push_content), printBundle(bundle));//把推送的内容带过去
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);
             } else {
-                Log.e(getClass().getName(), "nononoonon");
                 //如果已经打开就直接改sharepreference
                 SharedPreferences share = context.getSharedPreferences(context.getString(R.string.drawer_content_file), Context.MODE_PRIVATE);
                 share.edit().putString(context.getString(R.string.push_content), printBundle(bundle)).apply();
             }
+
+
+
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
             //在这里根据 JPushInterface.EXTRA_EXTRA 的内容处理代码，比如打开新的Activity， 打开一个网页等..
@@ -142,25 +146,4 @@ public class MyReceiver extends BroadcastReceiver {
         }
         return false;
     }
-//	//send msg to MainActivity
-//	private void processCustomMessage(Context context, Bundle bundle) {
-//		if (MainActivity.isForeground) {
-//			String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
-//			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-//			Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
-//			msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);
-//			if (!ExampleUtil.isEmpty(extras)) {
-//				try {
-//					JSONObject extraJson = new JSONObject(extras);
-//					if (null != extraJson && extraJson.length() > 0) {
-//						msgIntent.putExtra(MainActivity.KEY_EXTRAS, extras);
-//					}
-//				} catch (JSONException e) {
-//
-//				}
-//
-//			}
-//			context.sendBroadcast(msgIntent);
-//		}
-//	}
 }

@@ -1,16 +1,6 @@
 package com.life.me.mutils;
 
-import android.annotation.SuppressLint;
-import android.content.ContentUris;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.life.me.entity.ConfigTb;
@@ -18,8 +8,8 @@ import com.life.me.entity.ConfigTb;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.lang.reflect.Method;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
 
 /**
@@ -27,21 +17,14 @@ import java.nio.channels.FileChannel;
  */
 public class Utils {
 
+
     /**
-     * 在SD卡上创建一个文件夹
+     * 复制文件
+     *
+     * @param s
+     * @param t
      */
-    private  String createSDCardDir(String path) {
-        File path1 = null;
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) { //如果 有SDK卡
-            path1 = new File(path);
-            if (!path1.exists()) {
-                //若不存在，创建目录，可以在应用启动的时候创建
-                path1.mkdirs();
-            }
-        }
-        return path1.getAbsolutePath();
-    }
-    public static void fileChannelCopy(File s, File t) {
+    public static boolean fileChannelCopy(File s, File t) {
         if (s.exists()) { //文件存在时
             File file = new File(ConfigTb.SDCard);
             if (!file.exists()) {
@@ -61,16 +44,29 @@ public class Utils {
                 in.close();
                 fo.close();
                 out.close();
+                return true;
             } catch (Exception e) {
                 Log.e("utils", "dfdf==" + e.getMessage());
+                return false;
             }
         }
+        return false;
     }
 
     public static boolean hasFile() {
-        File file = new File(ConfigTb.PhotoName);
+        File file = new File(ConfigTb.Photo_Path);
         return file.isFile();
     }
+
+    public static String urlEncode(String code) {
+        try {
+            return URLEncoder.encode(code, "UTF-8").replaceAll(" ", "").trim();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     /**
      * Unicode转utf-8

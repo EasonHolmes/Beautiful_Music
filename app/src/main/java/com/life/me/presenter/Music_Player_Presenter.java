@@ -59,7 +59,7 @@ public class Music_Player_Presenter implements MediaPlayer.OnBufferingUpdateList
             public void run() {
 //                mediaPlayer在播放并且seebar没有被按下
                 if (mediaPlayer != null && mediaPlayer.isPlaying() && !seekBar.isPressed()) {
-                    handler.sendEmptyMessage(0); //发送消息
+                    Music_Player_Presenter.this.handler.sendEmptyMessage(0); //发送消息
                 }
             }
         };
