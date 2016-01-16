@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
@@ -112,8 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
         android:orientation="vertical"
-        android:padding="3dp"
-        app:layout_marginTopPercent="1%">
+        android:padding="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -236,8 +234,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_marginTopPercent="13%">
+            android:orientation="horizontal">
 
             <ImageSwitcher
                 android:id="@+id/img_one_fu"
@@ -351,4 +348,4 @@
                 android:textSize="17sp"/>
         </LinearLayout>
     </LinearLayout>
-</android.support.percent.PercentRelativeLayout>
+</RelativeLayout>

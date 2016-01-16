@@ -22,7 +22,7 @@ import android.widget.ImageView;
 /**
  * 图片加载类
  * http://blog.csdn.net/lmj623565791/article/details/41874561
- *
+ * 因为picasso加载总会闪一下所以按鸿杨大神的写法写了一个imageloader这个不会闪
  * @author zhy
  */
 public class ImageLoader {

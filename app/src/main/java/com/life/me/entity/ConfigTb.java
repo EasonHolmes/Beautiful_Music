@@ -15,4 +15,6 @@ public class ConfigTb {
 
     public static final String SDCard = Environment.getExternalStorageDirectory() + "/life";
     public static final String Photo_Path = SDCard + "/life.png";
+
+    public static final boolean DEBUG = true;
 }

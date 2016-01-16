@@ -12,21 +12,21 @@ public class ScreenUtils {
     private static int screenW;
     private static int screenH;
 
-    public static int getScreenW(Activity mActivity){
-        if (screenW == 0){
+    public static int getScreenW(Activity mActivity) {
+        if (screenW == 0) {
             initScreen(mActivity);
         }
         return screenW;
     }
 
-    public static int getScreenH(Activity mActivity){
-        if (screenH == 0){
+    public static int getScreenH(Activity mActivity) {
+        if (screenH == 0) {
             initScreen(mActivity);
         }
         return screenH;
     }
 
-    private static void initScreen(Activity mActivity){
+    private static void initScreen(Activity mActivity) {
         DisplayMetrics metric = new DisplayMetrics();
         mActivity.getWindowManager().getDefaultDisplay().getMetrics(metric);
         screenW = metric.widthPixels;
@@ -36,5 +36,13 @@ public class ScreenUtils {
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }

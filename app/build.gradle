@@ -48,7 +48,7 @@ android {
     }
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['jniLibs']
         }
     }
 }
@@ -61,16 +61,16 @@ retrolambda {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':SlidingLibrary')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.balysv:material-ripple:1.0.2'
 
     compile 'com.minimize.library:seekbar-compat:0.2.4'
-    //google屏幕布局按百分比
-    compile 'com.android.support:percent:23.1.1'
     //闪光的textview
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
     //制作SVG图路线
@@ -89,8 +89,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.0'
 //    compile 'com.google.code.gson:gson:2.4'
     //Rx + retrofit end
-
-    compile 'com.r0adkll:slidableactivity:2.0.4'
 
     compile files('libs/jpush-sdk-release1.7.5.jar')
     compile files('libs/volley.jar')

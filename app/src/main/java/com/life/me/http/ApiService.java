@@ -19,7 +19,6 @@ public interface ApiService {
     @GET
     Observable<SearchWeather_Bean> getWeather(@Url String url);
 
-
     @POST("V2")
     Observable<Contains_keyWord_bean> getContains_key_MusicName(@Body Post_Get_Search search);
 

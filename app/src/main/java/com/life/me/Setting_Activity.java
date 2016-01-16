@@ -13,6 +13,8 @@ import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.life.me.app.BaseActivity;
+
 
 /**
  * Created by cuiyang on 15/10/3.

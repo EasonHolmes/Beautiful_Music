@@ -14,7 +14,5 @@ import java.io.File;
  */
 public class CacheBean {
     public static String addr;
-    public static String Latitude;
-    public static String Longitude;
 
 }

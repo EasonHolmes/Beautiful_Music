@@ -13,6 +13,7 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <!--android:background="@color/transparent"透明色
+    android:paddingTop="@dimen/toolbar_padding_top"
     android:theme="@style/ThemeOverlay.AppCompat.Light"这个pop是白底黑色但返回键是黑色
      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
 

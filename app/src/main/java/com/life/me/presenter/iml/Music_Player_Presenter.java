@@ -1,15 +1,11 @@
-package com.life.me.presenter;
+package com.life.me.presenter.iml;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-
-import com.life.me.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -13,14 +13,10 @@ import com.life.me.R;
 public class Widget_Utils {
     private static AlertDialog.Builder dialog;
 
-    public static void showSnacker(View view, String message) {
-        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
-    }
-
     public static void showDialog(Context mContext, String Content) {
         dialog = new AlertDialog.Builder(mContext);
         dialog.setMessage(Content);
-        dialog.setNegativeButton("好的", null);
+        dialog.setNegativeButton("确定", null);
         dialog.show();
     }
 }

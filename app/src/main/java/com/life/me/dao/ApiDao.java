@@ -25,7 +25,7 @@ public class ApiDao {
         return single;
     }
 
-    public static void saveWeather(SearchWeather_Bean data) {
+    public static SearchWeather_Bean saveWeather(SearchWeather_Bean data) {
         DataSupport.deleteAll(WeatherDao.class);
         SQLiteDatabase db = Connector.getWritableDatabase();
         db.beginTransaction();
@@ -42,5 +42,6 @@ public class ApiDao {
         }
         db.setTransactionSuccessful();
         db.endTransaction();
+        return data;
     }
 }

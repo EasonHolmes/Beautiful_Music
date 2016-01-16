@@ -7,15 +7,16 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.ListPopupWindow;
-import android.view.Gravity;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.SearchView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -31,9 +32,9 @@ import com.life.me.mutils.BulerTransformation;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.ScreenUtils;
 import com.life.me.mutils.Widget_Utils;
-import com.life.me.presenter.Music_Player_Presenter;
-import com.life.me.presenter.Music_Presenter;
-import com.life.me.presenter.XunFei_Recogning;
+import com.life.me.presenter.iml.Music_Player_Presenter;
+import com.life.me.presenter.iml.Music_Presenter;
+import com.life.me.presenter.iml.XunFei_Recogning;
 import com.life.me.widget.ProgressWheel;
 import com.squareup.picasso.Picasso;
 
@@ -52,7 +53,7 @@ import rx.schedulers.Schedulers;
  * Created by cuiyang on 15/9/28.
  */
 public class Music_Activity extends Music_Presenter implements Observer, Music_Model,
-        View.OnClickListener, SearchView.OnQueryTextListener {
+        View.OnClickListener, SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
 
     @InjectView(R.id.img_background)
@@ -71,7 +72,8 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
     ProgressWheel progressWheel;
 
     SearchView searchView;
-    private ListPopupWindow PopupWindow_Contains;
+    @InjectView(R.id.pop_list)
+    RecyclerView popList;
     private XunFei_Recogning recogin;//被观察者
     private Music_Player_Presenter myPlayer;//播放控制器
     private Context mContext;
@@ -117,7 +119,17 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
     private void initView() {
         super.initToolbar(getResources().getString(R.string.music_act_title), true);
 
-        createPopView();
+        adapter = new PopView_Adapter(Music_Activity.this, contains_list);
+        popList.setLayoutManager(new LinearLayoutManager(mContext));
+        popList.setAdapter(adapter);
+        popList.setBackground(getResources().getDrawable(R.drawable.list_pop_background));
+        popList.getBackground().setAlpha(100);
+        adapter.setOnItemClickListener(new PopView_Adapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+
+            }
+        });
 
         myPlayer = new Music_Player_Presenter(musicProgress);
 
@@ -169,6 +181,7 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
         Snackbar.make(rootLayout, error, Snackbar.LENGTH_LONG).show();
     }
 
+
     /**
      * 进度改变
      */
@@ -209,58 +222,44 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
         MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
         searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setOnQueryTextListener(this);
+        searchView.setOnCloseListener(this);
         return super.onCreateOptionsMenu(menu);
     }
 
     //搜索框搜索
     @Override
     public boolean onQueryTextSubmit(String query) {
-//        presenter.getMusic_Result(query, mContext, Music_Activity.this);
         progressWheel.setVisibility(View.VISIBLE);
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        Post_Get_Search get = new Post_Get_Search();
-        get.setKey(newText);
-        ApiClient.SERVICE_rx.getContains_key_MusicName(get)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(contains_keyWord_bean -> {
-                        contains_list.clear();
-                    for (Contains_keyWord_bean.ResListEntity cr : contains_keyWord_bean.getResList()) {
-                        contains_list.add(cr.getResName() + " " + cr.getSinger());
-                    }
-                    adapter.notifyDataSetChanged();
-                    if (!PopupWindow_Contains.isShowing())
-                        PopupWindow_Contains.show();
-                });
+        if (newText.length() > 0) {
+            popList.setVisibility(View.VISIBLE);
+            Post_Get_Search get = new Post_Get_Search();
+            get.setKey(newText);
+            ApiClient.SERVICE_rx.getContains_key_MusicName(get)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(contains_keyWord_bean -> setQueryChangeData(contains_keyWord_bean));
+        } else {
+            popList.setVisibility(View.GONE);
+        }
         return false;
     }
 
-    /**
-     * popwindow
-     */
-    private void createPopView() {
-        adapter = new PopView_Adapter(Music_Activity.this, contains_list);
-        PopupWindow_Contains = new ListPopupWindow(Music_Activity.this);
-        PopupWindow_Contains.setAdapter(adapter);
-        PopupWindow_Contains.setWidth(ScreenUtils.getScreenH(Music_Activity.this) * 5 / 12);
-        PopupWindow_Contains.setHeight(ScreenUtils.getScreenH(Music_Activity.this) / 2);
-        PopupWindow_Contains.setAnchorView(super.mToolbar);
-        PopupWindow_Contains.setDropDownGravity(Gravity.CENTER);
-        PopupWindow_Contains.setModal(true);
+    private void setQueryChangeData(Contains_keyWord_bean contains_keyWord_bean) {
+        contains_list.clear();
+        for (Contains_keyWord_bean.ResListEntity cr : contains_keyWord_bean.getResList()) {
+            contains_list.add(cr.getResName() + " " + cr.getSinger());
+        }
+        adapter.notifyDataSetChanged();
+    }
 
-        PopupWindow_Contains.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                FolderBean bean = folders_list.get(position);
-//                getMediaThumbnailsPathByCategroy(bean.bucketId, MultiImageChooser_Activity.this);
-//                txt_current_folder.setText(bean.bucketName);
-//                showOrDissPop();
-            }
-        });
+    @Override
+    public boolean onClose() {
+        return false;
     }
 
     @Override
