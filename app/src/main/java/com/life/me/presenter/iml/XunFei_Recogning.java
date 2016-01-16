@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.util.Log;
+import android.support.annotation.NonNull;
 
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
@@ -18,12 +18,16 @@ import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.life.me.R;
 import com.life.me.entity.XunFei_Speak_Bean;
+import com.life.me.mutils.LogUtils;
 import com.life.me.mutils.SingleGson;
+import com.life.me.view.MusicView;
+
+import java.util.List;
 
 /**
  * Created by cuiyang on 15/9/30.
  */
-public class XunFei_Recogning extends java.util.Observable implements RecognizerListener {
+public class XunFei_Recogning implements RecognizerListener {
 
     // 语音听写对象
     private SpeechRecognizer mIat;
@@ -33,18 +37,17 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
     public String mEngineType = SpeechConstant.TYPE_CLOUD;
     public XunFei_Speak_Bean result;
 
+    public MusicView callback;
 
-    public XunFei_Recogning() {
-    }
-
-    public void initRecogn(Context mContext) {
+    public XunFei_Recogning(@NonNull Context mContext, @NonNull MusicView callback) {
+        this.callback = callback;
         mIat = SpeechRecognizer.createRecognizer(mContext, mInitListener);
         mIat.startListening(this);
         // 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer(dialog和SpeechRecognizer只一个就可以)
         // 使用UI听写功能，请根据sdk文件目录下的notice.txt,放置布局文件和图片资源
         mIatDialog = new RecognizerDialog(mContext, mInitListener);
         mIatDialog.setListener(mRecognizerDialogListener);
-        mIatDialog.show();
+        setParam(mContext);
     }
 
     /**
@@ -55,7 +58,7 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
         @Override
         public void onInit(int code) {
             if (code != ErrorCode.SUCCESS) {
-                Log.e(getClass().getName(), "初始化失败，错误码：" + code);
+                LogUtils.e(getClass().getName(), "初始化失败，错误码：" + code);
             }
         }
     };
@@ -74,7 +77,6 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
         mIat.setParameter(SpeechConstant.RESULT_TYPE, "json");
         //2.设置听写参数，详见《科大讯飞MSC API手册(Android)》SpeechConstant类
         mIat.setParameter(SpeechConstant.DOMAIN, "iat");//设置应用领域
-
         //获取设置界面的数据
         SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(mContext);
         if (share.getBoolean(mContext.getResources().getString(R.string.language), true)) {//返回语言的类型
@@ -100,13 +102,13 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
      * islast为true是最后的标点。false是返回结果
      */
     private RecognizerDialogListener mRecognizerDialogListener = new RecognizerDialogListener() {
+
         public void onResult(RecognizerResult results, boolean isLast) {
             if (!isLast) {
                 //取消弹框通知观察者
                 mIatDialog.dismiss();
                 result = SingleGson.getRequestQueue().fromJson(results.getResultString(), XunFei_Speak_Bean.class);
-                setChanged();
-                XunFei_Recogning.this.notifyObservers(result);
+                callback.SpliceRecogingByXunFei(SpliceXunFei(result));
             }
         }
 
@@ -114,7 +116,7 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
          * 识别回调错误.
          */
         public void onError(SpeechError error) {
-            Log.e(getClass().getName(), "ui_error-===" + error.getPlainDescription(true));
+            LogUtils.e(getClass().getName(), "ui_error-===" + error.getPlainDescription(true));
         }
 
     };
@@ -125,38 +127,33 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
     @Override
     public void onBeginOfSpeech() {
         // 此回调表示：sdk内部录音机已经准备好了，用户可以开始语音输入
-        Log.e(getClass().getName(), "开始说话");
+//        LogUtils.e(getClass().getName(), "开始说话");
     }
 
     @Override
     public void onError(SpeechError error) {
-        // 错误码：10118(您没有说话)，可能是录音机权限被禁，需要提示用户打开应用的录音权限。
-        // 如果使用本地功能（语记）需要提示用户开启语记的录音权限。
-        Log.e(getClass().getName(), error.getPlainDescription(true));
+        // 错误码：10118(您没有说话)，可能是录音机权限被禁，需要提示用户打开应用的录音权限。如果使用本地功能（语记）需要提示用户开启语记的录音权限。
+//        LogUtils.e(getClass().getName(), error.getPlainDescription(true));
     }
 
     @Override
     public void onEndOfSpeech() {
         // 此回调表示：检测到了语音的尾端点，已经进入识别过程，不再接受语音输入
-        Log.e(getClass().getName(), "结束说话");
+//        LogUtils.e(getClass().getName(), "结束说话");
     }
 
     @Override
     public void onResult(RecognizerResult results, boolean isLast) {
-        Log.e(getClass().getName(), "resultttt" + results.getResultString() + "ffffff==" + isLast);
         if (!isLast) {
-            //通知观察者
             result = SingleGson.getRequestQueue().fromJson(results.getResultString(), XunFei_Speak_Bean.class);
-            setChanged();
-            Log.e(getClass().getName(), "tttt222===" + results.getResultString());
-            XunFei_Recogning.this.notifyObservers(result);
+            callback.SpliceRecogingByXunFei(SpliceXunFei(result));
         }
     }
 
     @Override
     public void onVolumeChanged(int volume, byte[] data) {
-//        Log.e(getClass().getName(), "当前正在说话，音量大小：" + volume);
-//        Log.e(getClass().getName(), "返回音频数据：" + data.length);
+//        LogUtils.e(getClass().getName(), "当前正在说话，音量大小：" + volume);
+//        LogUtils.e(getClass().getName(), "返回音频数据：" + data.length);
     }
 
     @Override
@@ -167,6 +164,15 @@ public class XunFei_Recogning extends java.util.Observable implements Recognizer
         //		String sid = obj.getString(SpeechEvent.KEY_EVENT_SESSION_ID);
         //		Log.d(TAG, "session id =" + sid);
         //	}
+    }
+
+    private String SpliceXunFei(XunFei_Speak_Bean bean) {
+        StringBuilder sb = new StringBuilder();
+        List<XunFei_Speak_Bean.WsEntity> entity = bean.getWs();
+        for (int i = 0; i < entity.size(); i++) {//拼接讯飞的结果
+            sb.append(entity.get(i).getCw().get(0).getW());
+        }
+        return sb.toString();
     }
 
     public void unConncetion() {

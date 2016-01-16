@@ -2,21 +2,9 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config>
-        <target>android-21</target>
-      </config>
+      <config />
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-        <config>
-          <theme>@style/ActionBarTheme</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/music_act.xml">
-        <config>
-          <theme>@style/ActionBarTheme</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/weather_cast.xml">
         <config>
           <theme>@style/ActionBarTheme</theme>
@@ -34,142 +22,22 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6577b4e-0b4a-46a4-ba09-c9b7e357cbbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/BulerTransformation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Contains_keyWord_bean.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/service/CoreService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/DownloadImgUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/ImageLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/ImageSizeUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Music_Result_Bean.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/MyResultCallback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientSingle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/adapter/PopView_Adapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Ring.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Search.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/ScreenUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Widget_Utils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/adapter_rxjava_2_0_0_beta2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/converter_gson_2_0_0_beta2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/design_23_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-v19/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_txt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/okhttp_2_7_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/okhttp_urlconnection_2_7_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/okio_1_6_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/retrofit_2_0_0_beta2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/rxbinding_0_3_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/rxjava_1_0_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/slidableactivity_2_0_4.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/design_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/drawee_0_7_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_1_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/percent_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/rxjava_1_0_14.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/generated/source/buildConfig/release/com/jeremyfeinstein/slidingmenu/lib/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/generated/source/r/release/com/jeremyfeinstein/slidingmenu/lib/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/release/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/release/aapt/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/release/classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/release/res/layout/slidingmenumain.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/release/res/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/androidTest/debug/com/jeremyfeinstein/slidingmenu/lib/test/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/debug/com/jeremyfeinstein/slidingmenu/lib/MenuInterface.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CustomViewAbove$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CustomViewAbove$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CustomViewAbove$OnPageChangeListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CustomViewAbove$SimpleOnPageChangeListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CustomViewAbove.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/CustomViewBehind.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/MenuInterface.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$CanvasTransformer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$OnCloseListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$OnClosedListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$OnOpenListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$OnOpenedListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$SavedState$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu$SavedState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingActivityBase.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingActivityHelper$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingActivityHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingFragmentActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingListActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/classes/release/com/jeremyfeinstein/slidingmenu/lib/app/SlidingPreferenceActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/incremental/aidl/release/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/incremental/mergeAssets/release/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/incremental/packageResources/release/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/manifests/tmp/manifestMerger4094330472480002650.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/outputs/aar/SlidingLibrary-release.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/tmp/packageReleaseJar/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/libs/gson-2.2.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/BaseSwipeBackActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/MusicBean.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/MusicImgBean.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/view/SystemBarTintManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_right_in.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/slide_shadow.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_1_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/fbcore_0_7_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/rxlifecycle_0_3_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/fresco_0_7_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/rxandroid_1_0_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/imagepipeline_0_7_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/rxlifecycle_components_0_3_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/percent_23_1_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_1_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_23_1_1.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/SearchWeatherBean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/SearchWeather_Bean.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/SpeakBean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/XunFei_Speak_Bean.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/model/Main_Model.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/model/Main_CallBack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Recogning.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/XunFei_Recogning.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/view/ProgressWheel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/widget/ProgressWheel.java" />
+    <list default="true" id="45727c14-7a25-451f-b3f7-0fe79f04a39f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMusice_Presenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/RxBus.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/material_ripple_1_0_2.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/percent_23_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/slidableactivity_2_0_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/manifests/tmp/manifestMerger3520093224312922884.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/MenuInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Music_Result_Bean.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Ring.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Search.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleRequestQueue.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Contains_keyWord_bean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/Contains_keyWord_bean.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/SearchWeather_Bean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/SearchWeather_Bean.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/XunFei_Speak_Bean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/XunFei_Speak_Bean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SlidingLibrary/build/outputs/aar/SlidingLibrary-debug.aar" afterPath="$PROJECT_DIR$/SlidingLibrary/build/outputs/aar/SlidingLibrary-debug.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/bundles/debug/classes.jar" />
@@ -178,45 +46,20 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/SlidingLibrary/build/intermediates/resources/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/BaseActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/BaseActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/CacheBean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/CacheBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder.java" afterPath="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/CanvasTransformerBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Commutils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Commutils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/ConfigTb.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/ConfigTb.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/HttpUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/HttpUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMain_Presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMain_Presenter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Main_presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Main_presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/MenuInterface.java" afterPath="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/MenuInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/view/MainView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/view/MainView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Main_presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Main_presenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/view/MusicView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/view/MusicView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/model/Music_Model.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/model/Music_Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Player_Presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Player_Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/MyReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/MyReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/Myapplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/Myapplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleRequestQueue.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleRequestQueue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SlidingLibrary/SlidingLibrary.iml" afterPath="$PROJECT_DIR$/SlidingLibrary/SlidingLibrary.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Utils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/WeatherDao.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/WeatherDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/Wel_Activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/Wel_Activity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Music_Presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Music_Presenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/XunFei_Recogning.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/XunFei_Recogning.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/drawer_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/drawer_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_main2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_main2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/music_act.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/music_act.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_likes_counter.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_likes_counter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_likes_counter.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_likes_counter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-v19/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-v19/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/topbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/topbar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/weather_cast.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_cast.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Beautiful_Music.iws" />
@@ -238,122 +81,112 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Music_Activity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39058524">
-              <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
-              <folding>
-                <element signature="e#2552#2560#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/BaseActivity.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="12" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+              <caret line="81" column="24" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Wel_Activity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Wel_Activity.java">
+      <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/view/MainView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+              <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Runnable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../sdk/android-sdk-macosx/sources/android-23/java/lang/Runnable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#1207#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Music_Activity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="228" column="21" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
+              <folding>
+                <element signature="e#2429#2437#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Music_Presenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Music_Presenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Contains_keyWord_bean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/Contains_keyWord_bean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchWeather_Bean.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/SearchWeather_Bean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.342723">
+              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Main_presenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Main_presenter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Main_presenter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.428572">
-              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PopView_Adapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/adapter/PopView_Adapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#791#792#0" expanded="true" />
-                <element signature="e#856#857#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
-                <element signature="e#960#961#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item_txt.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_txt.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.857143">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Contains_keyWord_bean.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Contains_keyWord_bean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.84375">
-              <caret line="111" column="29" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="29" />
-              <folding>
-                <element signature="e#3944#3945#0" expanded="true" />
-                <element signature="e#3974#3975#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2666#2713#0" expanded="true" />
-                <element signature="e#3415#3467#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -363,8 +196,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="resourceFile" />
         <option value="Class" />
-        <option value="layoutResourceFile_vertical" />
       </list>
     </option>
   </component>
@@ -1018,6 +851,11 @@
                 <option name="name" value="preDexRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare Beautiful_Music:SlidingLibrary:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareBeautiful_MusicSlidingLibraryUnspecifiedLibrary" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:appcompat-v7:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportAppcompatV72311Library" />
@@ -1028,11 +866,6 @@
                 <option name="name" value="prepareComAndroidSupportDesign2311Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:percent:23.1.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportPercent2311Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:recyclerview-v7:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportRecyclerviewV72311Library" />
@@ -1041,6 +874,11 @@
                 <option name="description" value="Prepare com.android.support:support-v4:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportSupportV42311Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.balysv:material-ripple:1.0.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComBalysvMaterialRipple102Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.eftimoff:android-pathview:1.0.6" />
@@ -1056,11 +894,6 @@
                 <option name="description" value="Prepare com.minimize.library:seekbar-compat:0.2.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComMinimizeLibrarySeekbarCompat024Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.r0adkll:slidableactivity:2.0.4" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComR0adkllSlidableactivity204Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.romainpiel.shimmer:library:1.4.0" />
@@ -2077,6 +1910,11 @@
                 <option name="name" value="preReleaseUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare Beautiful_Music:SlidingLibrary:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareBeautiful_MusicSlidingLibraryUnspecifiedLibrary" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:appcompat-v7:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportAppcompatV72311Library" />
@@ -2087,11 +1925,6 @@
                 <option name="name" value="prepareComAndroidSupportDesign2311Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:percent:23.1.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportPercent2311Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:recyclerview-v7:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportRecyclerviewV72311Library" />
@@ -2100,6 +1933,11 @@
                 <option name="description" value="Prepare com.android.support:support-v4:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportSupportV42311Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.balysv:material-ripple:1.0.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComBalysvMaterialRipple102Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.eftimoff:android-pathview:1.0.6" />
@@ -2115,11 +1953,6 @@
                 <option name="description" value="Prepare com.minimize.library:seekbar-compat:0.2.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComMinimizeLibrarySeekbarCompat024Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.r0adkll:slidableactivity:2.0.4" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComR0adkllSlidableactivity204Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.romainpiel.shimmer:library:1.4.0" />
@@ -2289,7 +2122,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$/../../../../OtherWorkSpace/wodeayi" value="4337989490000" />
-        <entry key="$PROJECT_DIR$" value="5778788800000" />
+        <entry key="$PROJECT_DIR$" value="5780712296000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2587,8 +2420,8 @@
                             <option value="$PROJECT_DIR$/../../../sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.1.0/63735f48b82bcd24cdd33821342428252eb1ca5a/butterknife-6.1.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.balysv/material-ripple/1.0.2/8d6d7c69d4513f3fd647a6f397deb422daf37d6/material-ripple-1.0.2.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.minimize.library/seekbar-compat/0.2.4/da8abb3d90d38905fc872028450d929fc9fd0146/seekbar-compat-0.2.4.aar" />
-                            <option value="$PROJECT_DIR$/../../../sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/percent/23.1.1/percent-23.1.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.romainpiel.shimmer/library/1.4.0/63bfa6e9d23965c1d62f9b81f3f05c5d3b320cab/library-1.4.0.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.eftimoff/android-pathview/1.0.6/4e329479f0279a50a9fe8571de59a0cb7e911315/android-pathview-1.0.6.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.2.1/7720412c18b152d72e18b410430d1ba9752c6fd8/core-1.2.1.aar" />
@@ -2601,7 +2434,6 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.trello/rxlifecycle-components/0.3.1/6558f3751849f1573b42b68163660cb2de7d6c6d/rxlifecycle-components-0.3.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.0/1477ec5caf8319ab4b51eb43553cd66aa86fdea5/okhttp-2.7.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.7.0/d9986de376d6aaeadd5e2c12390f99d17dc9f6e8/okhttp-urlconnection-2.7.0.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.r0adkll/slidableactivity/2.0.4/3f5a574399db62f70725f6ccb6ee1f4d445ab6b5/slidableactivity-2.0.4.aar" />
                             <option value="$PROJECT_DIR$/../../../sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton.rxbinding/rxbinding/0.3.0/45592fd62ec33c670a0293b2893901a93c0005a/rxbinding-0.3.0.aar" />
@@ -2750,57 +2582,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/MenuInterface.java" />
-        <option value="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/BaseSwipeBackActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-v19/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/model/AndroidOS.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/music_act.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/CacheBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/DownloadImgUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/ImageSizeUtil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/ImageLoader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/Myapplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleRequestQueue.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/HttpUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/XunFeiSpeakBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/WeatherDao.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/SearchWeatherBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/ScreenUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Presenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Utils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main2.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientSingle.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientSingle2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/litepal.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpCallback.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/MyResultCallback.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Music_Bean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Search.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Ring.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Music_Result_Bean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Contains_keyWord_bean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Main_presenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/ConfigTb.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Widget_Utils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/model/Main_CallBack.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/l/Main_presenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/pop_search.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/CacheBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Widget_Utils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/topbar_search.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/ScreenUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/list_pop_background.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/weather_cast.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_txt.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/adapter/PopView_Adapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/Wel_Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/ConfigTb.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/slide_shadow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/BaseSwipeBackActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/Setting_Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/Wel_Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/app/Myapplication.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/LogUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-v19/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/app/BaseSwipeBackActivity.java" />
+        <option value="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/app/SlidingPreferenceActivity.java" />
+        <option value="$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/app/SlidingActivityHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/app/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/topbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/view/IView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/RxBus.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Contains_keyWord_bean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/music_act.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/view/MusicView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/XunFei_Recogning.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Music_Presenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMusice_Presenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/XunFei_Speak_Bean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Main_presenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMain_Presenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/view/MainView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java" />
       </list>
     </option>
   </component>
@@ -2815,10 +2647,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1278" />
+    <option name="x" value="1280" />
     <option name="y" value="23" />
-    <option name="width" value="1897" />
-    <option name="height" value="1413" />
+    <option name="width" value="2560" />
+    <option name="height" value="1417" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2843,6 +2675,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2872,6 +2706,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="SlidingLibrary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beautiful_Music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beautiful_Music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlidingLibrary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beautiful_Music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beautiful_Music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlidingLibrary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2978,10 +2860,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3101,183 +2979,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="raw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mipmap-xxhdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mipmap-xhdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beautiful_Music" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3371,7 +3073,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
+              <option name="myItemId" value="view" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3439,7 +3141,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mutils" />
+              <option name="myItemId" value="presenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3473,7 +3179,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="mutils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3575,7 +3281,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultentity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3609,7 +3319,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="postentity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3635,7 +3349,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3657,9 +3379,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beautiful_Music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beautiful_Music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jniLibs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -3670,36 +3409,48 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../sdk/android-sdk-macosx" />
     <property name="recentsLimit" value="5" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="a16e4a04" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_22" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/PhotoNoter-master" />
+    <property name="SearchEverywhereHistoryKey" value="utils&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/mutils/Utils.java&#10;confi&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/entity/ConfigTb.java&#10;myap&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/app/Myapplication.java&#10;config&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/entity/ConfigTb.java&#10;strings&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/res/values/strings.xml&#10;widget&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/mutils/Widget_Utils.java&#10;wid&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/mutils/Widget_Utils.java&#10;wel&#9;PSI&#9;JAVA://com.life.me.Wel_Activity" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="db27f556" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_22" />
-    <property name="SearchEverywhereHistoryKey" value="httputil&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/mutils/HttpUtils.java&#10;mainac&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/MainActivity.java&#10;cach&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/entity/CacheBean.java&#10;weatherda&#9;PSI&#9;JAVA://com.life.me.entity.SearchWeatherBean.ResultsEntity#weather_data&#10;gson&#9;FILE&#9;file:///Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/src/main/java/com/life/me/mutils/SingleGson.java&#10;buildcon&#9;PSI&#9;JAVA://com.life.me.BuildConfig&#10;httpu&#9;PSI&#9;JAVA://com.life.me.mutils.HttpUtils" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestProject" />
     <property name="FullScreen" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="308" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="337" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="357" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1476" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="303" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="338" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="359" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1478" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/life/me/adapter" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/life/me/http" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/imageloder" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/anim" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.life.me.http" />
-      <recent name="com.life.me.dao" />
+    <key name="android.template.packageName">
       <recent name="com.life.me" />
-      <recent name="com.life.me.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/life/me/mutils" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src/main" />
+      <recent name="$PROJECT_DIR$/app/src/main/jinLibs" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -3759,6 +3510,15 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -3785,7 +3545,6 @@
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="JAR_PATH" value="$PROJECT_DIR$/app/libs/gson-2.2.4.jar" />
       <envs />
       <method />
     </configuration>
@@ -3868,47 +3627,54 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e6577b4e-0b4a-46a4-ba09-c9b7e357cbbb" name="Default" comment="" />
-      <created>1450671414588</created>
+      <changelist id="45727c14-7a25-451f-b3f7-0fe79f04a39f" name="Default" comment="" />
+      <created>1451980159790</created>
       <option name="number" value="Default" />
-      <updated>1450671414588</updated>
+      <updated>1451980159790</updated>
     </task>
+    <task id="LOCAL-00001" summary="重构主页">
+      <created>1452926511436</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1452926511436</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1278" y="23" width="1897" height="1413" extended-state="0" />
+    <frame x="1280" y="23" width="2560" height="1417" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328279" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36384794" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32806623" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2964367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974482" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297953" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297953" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19078591" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19816586" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20318423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39875874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2767248" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973205" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39984533" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -3922,183 +3688,118 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="重构主页" />
+    <MESSAGE value="修改讯飞处理方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改讯飞处理方式" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="57" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleGson.java">
+    <entry file="file://$PROJECT_DIR$/SlidingLibrary/src/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/MyReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleRequestQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/XunFei_Speak_Bean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/dao/WeatherDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <caret line="58" column="51" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/SearchWeather_Bean.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4821#4822#0" expanded="false" />
-            <element signature="e#4864#4865#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/ScreenUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/support-v4/23.1.1/support-v4-23.1.1-sources.jar!/android/support/v4/view/MenuItemCompat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        <state vertical-scroll-proportion="-0.5714286">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main2.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/2.0.0-beta2/225058b001d33c5c26021faa3eae47ced669fd3c/retrofit-2.0.0-beta2-sources.jar!/retrofit/Retrofit.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/app/Myapplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="293" column="19" selection-start-line="293" selection-start-column="19" selection-end-line="293" selection-end-column="19" />
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.0/c42142ccf0ef4655895632817a1a72b0df0a6d88/okhttp-2.7.0-sources.jar!/com/squareup/okhttp/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.0/c42142ccf0ef4655895632817a1a72b0df0a6d88/okhttp-2.7.0-sources.jar!/com/squareup/okhttp/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.0/c42142ccf0ef4655895632817a1a72b0df0a6d88/okhttp-2.7.0-sources.jar!/com/squareup/okhttp/ResponseBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="22" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.0/c42142ccf0ef4655895632817a1a72b0df0a6d88/okhttp-2.7.0-sources.jar!/com/squareup/okhttp/OkHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="479" column="0" selection-start-line="479" selection-start-column="0" selection-end-line="479" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientSingle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Player_Presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/litepal.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/MyResultCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="324" column="37" selection-start-line="324" selection-start-column="37" selection-end-line="324" selection-end-column="37" />
+          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/OkHttpClientSingle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="23" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.857143">
+          <caret line="33" column="90" selection-start-line="33" selection-start-column="90" selection-end-line="33" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/dao/WeatherDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/SingleGson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/ScreenUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/MyReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/LogUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -4106,326 +3807,48 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/HttpUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="83" selection-start-line="76" selection-start-column="83" selection-end-line="76" selection-end-column="83" />
+          <caret line="83" column="7" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Music_Presenter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/DeviceInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Search.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Commutils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
-          <folding>
-            <element signature="e#1340#1341#0" expanded="false" />
-            <element signature="e#1366#1367#0" expanded="false" />
-            <element signature="e#1404#1405#0" expanded="false" />
-            <element signature="e#1434#1435#0" expanded="false" />
-          </folding>
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Post_Get_Ring.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/BulerTransformation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding>
-            <element signature="e#1316#1317#0" expanded="false" />
-            <element signature="e#1344#1345#0" expanded="false" />
-            <element signature="e#1383#1384#0" expanded="false" />
-            <element signature="e#1417#1418#0" expanded="false" />
-          </folding>
+          <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Music_Result_Bean.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Widget_Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#3360#3361#0" expanded="true" />
-            <element signature="e#3398#3399#0" expanded="true" />
-            <element signature="e#3450#3451#0" expanded="true" />
-            <element signature="e#3494#3495#0" expanded="true" />
-            <element signature="e#3533#3534#0" expanded="true" />
-            <element signature="e#3567#3568#0" expanded="true" />
-            <element signature="e#3613#3614#0" expanded="true" />
-            <element signature="e#3651#3652#0" expanded="true" />
-            <element signature="e#3694#3695#0" expanded="true" />
-            <element signature="e#3732#3733#0" expanded="true" />
-            <element signature="e#3780#3781#0" expanded="true" />
-            <element signature="e#3820#3821#0" expanded="true" />
-            <element signature="e#3864#3865#0" expanded="true" />
-            <element signature="e#3896#3897#0" expanded="true" />
-            <element signature="e#3942#3943#0" expanded="true" />
-            <element signature="e#3980#3981#0" expanded="true" />
-            <element signature="e#4026#4027#0" expanded="true" />
-            <element signature="e#4064#4065#0" expanded="true" />
-            <element signature="e#4106#4107#0" expanded="true" />
-            <element signature="e#4140#4141#0" expanded="true" />
-            <element signature="e#4183#4184#0" expanded="true" />
-            <element signature="e#4221#4222#0" expanded="true" />
-            <element signature="e#4263#4264#0" expanded="true" />
-            <element signature="e#4297#4298#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4381#4382#0" expanded="true" />
-            <element signature="e#4425#4426#0" expanded="true" />
-            <element signature="e#4461#4462#0" expanded="true" />
-            <element signature="e#4503#4504#0" expanded="true" />
-            <element signature="e#4537#4538#0" expanded="true" />
-            <element signature="e#4579#4580#0" expanded="true" />
-            <element signature="e#4613#4614#0" expanded="true" />
-            <element signature="e#4662#4663#0" expanded="true" />
-            <element signature="e#4706#4707#0" expanded="true" />
-            <element signature="e#4760#4761#0" expanded="true" />
-            <element signature="e#4806#4807#0" expanded="true" />
-            <element signature="e#4861#4862#0" expanded="true" />
-            <element signature="e#4911#4912#0" expanded="true" />
-            <element signature="e#5211#5212#0" expanded="true" />
-            <element signature="e#5265#5266#0" expanded="true" />
-            <element signature="e#5441#5442#0" expanded="true" />
-            <element signature="e#5479#5480#0" expanded="true" />
-            <element signature="e#5520#5521#0" expanded="true" />
-            <element signature="e#5556#5557#0" expanded="true" />
-            <element signature="e#5597#5598#0" expanded="true" />
-            <element signature="e#5633#5634#0" expanded="true" />
-            <element signature="e#5680#5681#0" expanded="true" />
-            <element signature="e#5722#5723#0" expanded="true" />
-            <element signature="e#5771#5772#0" expanded="true" />
-            <element signature="e#5815#5816#0" expanded="true" />
-            <element signature="e#5869#5870#0" expanded="true" />
-            <element signature="e#5915#5916#0" expanded="true" />
-            <element signature="e#5963#5964#0" expanded="true" />
-            <element signature="e#6003#6004#0" expanded="true" />
-            <element signature="e#6044#6045#0" expanded="true" />
-            <element signature="e#6080#6081#0" expanded="true" />
-            <element signature="e#6131#6132#0" expanded="true" />
-            <element signature="e#6177#6178#0" expanded="true" />
-            <element signature="e#6224#6225#0" expanded="true" />
-            <element signature="e#6266#6267#0" expanded="true" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6346#6347#0" expanded="true" />
-            <element signature="e#6393#6394#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="e#6480#6481#0" expanded="true" />
-            <element signature="e#6520#6521#0" expanded="true" />
-            <element signature="e#6575#6576#0" expanded="true" />
-            <element signature="e#6625#6626#0" expanded="true" />
-            <element signature="e#6670#6671#0" expanded="true" />
-            <element signature="e#6710#6711#0" expanded="true" />
-            <element signature="e#6760#6761#0" expanded="true" />
-            <element signature="e#6802#6803#0" expanded="true" />
-            <element signature="e#6845#6846#0" expanded="true" />
-            <element signature="e#6883#6884#0" expanded="true" />
-            <element signature="e#6931#6932#0" expanded="true" />
-            <element signature="e#6971#6972#0" expanded="true" />
-            <element signature="e#7017#7018#0" expanded="true" />
-            <element signature="e#7055#7056#0" expanded="true" />
-            <element signature="e#7105#7106#0" expanded="true" />
-            <element signature="e#7137#7138#0" expanded="true" />
-            <element signature="e#7171#7172#0" expanded="true" />
-            <element signature="e#7201#7202#0" expanded="true" />
-            <element signature="e#7238#7239#0" expanded="true" />
-            <element signature="e#7271#7272#0" expanded="true" />
-            <element signature="e#7300#7301#0" expanded="true" />
-            <element signature="e#7328#7329#0" expanded="true" />
-            <element signature="e#7362#7363#0" expanded="true" />
-            <element signature="e#7392#7393#0" expanded="true" />
-            <element signature="e#7423#7424#0" expanded="true" />
-            <element signature="e#7453#7454#0" expanded="true" />
-            <element signature="e#7488#7489#0" expanded="true" />
-            <element signature="e#7519#7520#0" expanded="true" />
-            <element signature="e#7554#7555#0" expanded="true" />
-            <element signature="e#7581#7582#0" expanded="true" />
-            <element signature="e#7615#7616#0" expanded="true" />
-            <element signature="e#7645#7646#0" expanded="true" />
-            <element signature="e#7679#7680#0" expanded="true" />
-            <element signature="e#7709#7710#0" expanded="true" />
-            <element signature="e#7741#7742#0" expanded="true" />
-            <element signature="e#7769#7770#0" expanded="true" />
-            <element signature="e#7800#7801#0" expanded="true" />
-            <element signature="e#7830#7831#0" expanded="true" />
-            <element signature="e#7862#7863#0" expanded="true" />
-            <element signature="e#7890#7891#0" expanded="true" />
-            <element signature="e#7924#7925#0" expanded="true" />
-            <element signature="e#7954#7955#0" expanded="true" />
-            <element signature="e#7987#7988#0" expanded="true" />
-            <element signature="e#8016#8017#0" expanded="true" />
-            <element signature="e#8048#8049#0" expanded="true" />
-            <element signature="e#8076#8077#0" expanded="true" />
-            <element signature="e#8108#8109#0" expanded="true" />
-            <element signature="e#8136#8137#0" expanded="true" />
-            <element signature="e#8170#8171#0" expanded="true" />
-            <element signature="e#8203#8204#0" expanded="true" />
-            <element signature="e#8241#8242#0" expanded="true" />
-            <element signature="e#8275#8276#0" expanded="true" />
-            <element signature="e#8312#8313#0" expanded="true" />
-            <element signature="e#8348#8349#0" expanded="true" />
-            <element signature="e#8390#8391#0" expanded="true" />
-            <element signature="e#8431#8432#0" expanded="true" />
-            <element signature="e#8473#8474#0" expanded="true" />
-            <element signature="e#8511#8512#0" expanded="true" />
-            <element signature="e#8550#8551#0" expanded="true" />
-            <element signature="e#8588#8589#0" expanded="true" />
-            <element signature="e#8632#8633#0" expanded="true" />
-            <element signature="e#8675#8676#0" expanded="true" />
-            <element signature="e#8706#8707#0" expanded="true" />
-            <element signature="e#8736#8737#0" expanded="true" />
-            <element signature="e#8766#8767#0" expanded="true" />
-            <element signature="e#8795#8796#0" expanded="true" />
-            <element signature="e#8825#8826#0" expanded="true" />
-            <element signature="e#8854#8855#0" expanded="true" />
-            <element signature="e#8887#8888#0" expanded="true" />
-            <element signature="e#8919#8920#0" expanded="true" />
-            <element signature="e#8953#8954#0" expanded="true" />
-            <element signature="e#8986#8987#0" expanded="true" />
-            <element signature="e#9024#9025#0" expanded="true" />
-            <element signature="e#9058#9059#0" expanded="true" />
-            <element signature="e#9093#9094#0" expanded="true" />
-            <element signature="e#9124#9125#0" expanded="true" />
-            <element signature="e#9154#9155#0" expanded="true" />
-            <element signature="e#9183#9184#0" expanded="true" />
-            <element signature="e#9218#9219#0" expanded="true" />
-            <element signature="e#9252#9253#0" expanded="true" />
-            <element signature="e#9285#9286#0" expanded="true" />
-            <element signature="e#9317#9318#0" expanded="true" />
-            <element signature="e#9350#9351#0" expanded="true" />
-            <element signature="e#9379#9380#0" expanded="true" />
-            <element signature="e#9412#9413#0" expanded="true" />
-            <element signature="e#9444#9445#0" expanded="true" />
-            <element signature="e#9476#9477#0" expanded="true" />
-            <element signature="e#9507#9508#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9580#9581#0" expanded="true" />
-            <element signature="e#9612#9613#0" expanded="true" />
-            <element signature="e#9643#9644#0" expanded="true" />
-            <element signature="e#9679#9680#0" expanded="true" />
-            <element signature="e#9711#9712#0" expanded="true" />
-            <element signature="e#9742#9743#0" expanded="true" />
-            <element signature="e#9772#9773#0" expanded="true" />
-            <element signature="e#9807#9808#0" expanded="true" />
-            <element signature="e#9838#9839#0" expanded="true" />
-            <element signature="e#9872#9873#0" expanded="true" />
-            <element signature="e#9902#9903#0" expanded="true" />
-            <element signature="e#9943#9944#0" expanded="true" />
-            <element signature="e#9970#9971#0" expanded="true" />
-            <element signature="e#10554#10555#0" expanded="true" />
-            <element signature="e#10598#10599#0" expanded="true" />
-            <element signature="e#10647#10648#0" expanded="true" />
-            <element signature="e#10695#10696#0" expanded="true" />
-            <element signature="e#10752#10753#0" expanded="true" />
-            <element signature="e#10808#10809#0" expanded="true" />
-            <element signature="e#10861#10862#0" expanded="true" />
-            <element signature="e#10913#10914#0" expanded="true" />
-            <element signature="e#10964#10965#0" expanded="true" />
-            <element signature="e#11014#11015#0" expanded="true" />
-            <element signature="e#11196#11197#0" expanded="true" />
-            <element signature="e#11252#11253#0" expanded="true" />
-            <element signature="e#11309#11310#0" expanded="true" />
-            <element signature="e#11365#11366#0" expanded="true" />
-            <element signature="e#11410#11411#0" expanded="true" />
-            <element signature="e#11454#11455#0" expanded="true" />
-            <element signature="e#11499#11500#0" expanded="true" />
-            <element signature="e#11543#11544#0" expanded="true" />
-            <element signature="e#11598#11599#0" expanded="true" />
-            <element signature="e#11652#11653#0" expanded="true" />
-            <element signature="e#11693#11694#0" expanded="true" />
-            <element signature="e#11733#11734#0" expanded="true" />
-            <element signature="e#11782#11783#0" expanded="true" />
-            <element signature="e#11830#11831#0" expanded="true" />
-            <element signature="e#11885#11886#0" expanded="true" />
-            <element signature="e#11939#11940#0" expanded="true" />
-            <element signature="e#11984#11985#0" expanded="true" />
-            <element signature="e#12028#12029#0" expanded="true" />
-            <element signature="e#12087#12088#0" expanded="true" />
-            <element signature="e#12145#12146#0" expanded="true" />
-            <element signature="e#12179#12180#0" expanded="true" />
-            <element signature="e#12216#12217#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#12291#12292#0" expanded="true" />
-            <element signature="e#12331#12332#0" expanded="true" />
-            <element signature="e#12374#12375#0" expanded="true" />
-            <element signature="e#12412#12413#0" expanded="true" />
-            <element signature="e#12453#12454#0" expanded="true" />
-            <element signature="e#12490#12491#0" expanded="true" />
-            <element signature="e#12530#12531#0" expanded="true" />
-            <element signature="e#12573#12574#0" expanded="true" />
-            <element signature="e#12619#12620#0" expanded="true" />
-            <element signature="e#12659#12660#0" expanded="true" />
-            <element signature="e#12702#12703#0" expanded="true" />
-            <element signature="e#12742#12743#0" expanded="true" />
-            <element signature="e#12785#12786#0" expanded="true" />
-            <element signature="e#12819#12820#0" expanded="true" />
-            <element signature="e#12856#12857#0" expanded="true" />
-            <element signature="e#12890#12891#0" expanded="true" />
-            <element signature="e#12927#12928#0" expanded="true" />
-            <element signature="e#12966#12967#0" expanded="true" />
-            <element signature="e#13008#13009#0" expanded="true" />
-            <element signature="e#13040#13041#0" expanded="true" />
-            <element signature="e#13075#13076#0" expanded="true" />
-            <element signature="e#13111#13112#0" expanded="true" />
-            <element signature="e#13150#13151#0" expanded="true" />
-            <element signature="e#13189#13190#0" expanded="true" />
-            <element signature="e#13231#13232#0" expanded="true" />
-            <element signature="e#13265#13266#0" expanded="true" />
-            <element signature="e#13302#13303#0" expanded="true" />
-            <element signature="e#13343#13344#0" expanded="true" />
-            <element signature="e#13387#13388#0" expanded="true" />
-            <element signature="e#13510#13511#0" expanded="true" />
-            <element signature="e#13554#13555#0" expanded="true" />
-            <element signature="e#13591#13592#0" expanded="true" />
-            <element signature="e#13628#13629#0" expanded="true" />
-          </folding>
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/2.0.0-beta2/225058b001d33c5c26021faa3eae47ced669fd3c/retrofit-2.0.0-beta2-sources.jar!/retrofit/http/POST.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/RxBus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#1025#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/2.0.0-beta2/225058b001d33c5c26021faa3eae47ced669fd3c/retrofit-2.0.0-beta2-sources.jar!/retrofit/http/GET.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#1023#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/2.0.0-beta2/225058b001d33c5c26021faa3eae47ced669fd3c/retrofit-2.0.0-beta2-sources.jar!/retrofit/http/Body.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#1467#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4437,10 +3860,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Setting_Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Music_Player_Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/topbar.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.0">
+          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.257143">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/app/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/music_act.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.571428">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../sdk/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1-sources.jar!/android/support/annotation/NonNull.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#1201#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/view/MusicView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/XunFei_Recogning.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+          <folding>
+            <element signature="e#2628#2680#0" expanded="true" />
+            <element signature="e#6348#6349#0" expanded="true" />
+            <element signature="e#6405#6406#0" expanded="true" />
+            <element signature="e#6437#6438#0" expanded="true" />
+            <element signature="e#6497#6498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMusice_Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/postentity/Post_Get_Ring.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/postentity/Post_Get_Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/CacheBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -4448,172 +4009,132 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/ConfigTb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="107" selection-start-line="11" selection-start-column="107" selection-end-line="11" selection-end-column="107" />
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/mutils/Widget_Utils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/bmobentity/LocationTb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/life/me/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.939394">
-          <caret line="2896" column="32" selection-start-line="2896" selection-start-column="32" selection-end-line="2896" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.16/2e5ded06594e14fc251f4c50cb10fe499d6f477e/rxjava-1.0.16-sources.jar!/rx/functions/Action1.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/bmobentity/TokenTb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.16/2e5ded06594e14fc251f4c50cb10fe499d6f477e/rxjava-1.0.16-sources.jar!/rx/Observable.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/XunFei_Speak_Bean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8026" column="29" selection-start-line="8026" selection-start-column="17" selection-end-line="8026" selection-end-column="29" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/music_act.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.857143">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Myapplication.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/IMain_Presenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_txt.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.857143">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/adapter/PopView_Adapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/dao/ApiDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#856#857#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/Contains_keyWord_bean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.84375">
-          <caret line="111" column="29" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="29" />
-          <folding>
-            <element signature="e#3944#3945#0" expanded="true" />
-            <element signature="e#3974#3975#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/Main_presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+    <entry file="file://$PROJECT_DIR$/../../../sdk/android-sdk-macosx/sources/android-23/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#1207#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Main_presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.428572">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Wel_Activity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/view/MainView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding />
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2666#2713#0" expanded="true" />
-            <element signature="e#3415#3467#0" expanded="true" />
-          </folding>
+          <caret line="81" column="24" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/BaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/http/ApiService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="12" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
-          <folding />
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/Music_Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39058524">
-          <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="228" column="21" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
           <folding>
-            <element signature="e#2552#2560#0" expanded="true" />
+            <element signature="e#2429#2437#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/presenter/iml/Music_Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/Contains_keyWord_bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/life/me/entity/resultentity/SearchWeather_Bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.342723">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

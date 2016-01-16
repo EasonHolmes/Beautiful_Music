@@ -3,7 +3,8 @@ package com.life.me.view;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 
-import com.life.me.entity.SearchWeather_Bean;
+import com.life.me.entity.resultentity.SearchWeather_Bean;
+
 
 /**
  * Created by cuiyang on 16/1/5.

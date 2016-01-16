@@ -3,7 +3,8 @@ package com.life.me.dao;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.life.me.entity.SearchWeather_Bean;
+
+import com.life.me.entity.resultentity.SearchWeather_Bean;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;

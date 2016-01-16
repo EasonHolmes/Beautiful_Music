@@ -1,4 +1,4 @@
-package com.life.me.entity;
+package com.life.me.entity.resultentity;
 
 import java.util.List;
 
@@ -6,24 +6,6 @@ import java.util.List;
  * Created by cuiyang on 15/12/23.
  */
 public class Contains_keyWord_bean {
-
-
-    /**
-     * resCode : 0
-     * parentPath : 400-searchRing_linhuimin(xiaojingtengxueyuan)
-     * totalPage : 1
-     * pageNum : 1
-     * totalRows : 2
-     * resList : [{"resId":988277,"resName":"Are You Ready(最美和声)","resType":5,"resDesc":"Are You Ready(最美和声)<br>林惠敏+杨丹(萧敬腾学员)<br>","parentId":3,"randomId":0,"moduleKey":null,"moduleVersion":"0","actionList":null,"listenCount":277,"faviorCount":0,"commentCount":0,"shareCount":0,"picture":null,"resPic":null,"iconUrl":null,"flag":{"crFlag":1,"downFlag":0,"crListenFlag":1,"listenFlag":1,"priceFlag":0,"listenPriceFlag":0,"favoriteFlag":0,"zlListenFlag":0,"mvFlag":0,"hqFlag":0,"overdueFlag":0,"type":0,"hifiFlag":0,"surpassFlag":0,"sqFlag":0,"advertiseFlag":0},"resScore":3,"singer":"林惠敏+杨丹(萧敬腾学员)","album":null,"playTime":130,"invalidate":null,"contentId":2742051,"lyric":null,"albumId":0,"singerId":0,"limit":0,"contentIdBlank":false},{"resId":988269,"resName":"萧敬腾女汉子逆袭神曲(最美和声)","resType":5,"resDesc":"萧敬腾女汉子逆袭神曲(最美和声)<br>林惠敏(萧敬腾学员)<br>","parentId":3,"randomId":0,"moduleKey":null,"moduleVersion":"0","actionList":null,"listenCount":3871,"faviorCount":9,"commentCount":1,"shareCount":0,"picture":null,"resPic":null,"iconUrl":null,"flag":{"crFlag":1,"downFlag":0,"crListenFlag":1,"listenFlag":1,"priceFlag":0,"listenPriceFlag":0,"favoriteFlag":0,"zlListenFlag":0,"mvFlag":0,"hqFlag":0,"overdueFlag":0,"type":0,"hifiFlag":0,"surpassFlag":0,"sqFlag":0,"advertiseFlag":0},"resScore":3,"singer":"林惠敏(萧敬腾学员)","album":null,"playTime":135,"invalidate":null,"contentId":2742053,"lyric":null,"albumId":0,"singerId":0,"limit":0,"contentIdBlank":false}]
-     * resInfo : 成功
-     */
-
-    private String resCode;
-    private String parentPath;
-    private int totalPage;
-    private int pageNum;
-    private int totalRows;
-    private String resInfo;
     /**
      * resId : 988277
      * resName : Are You Ready(最美和声)
@@ -57,63 +39,16 @@ public class Contains_keyWord_bean {
 
     private List<ResListEntity> resList;
 
-    public void setResCode(String resCode) {
-        this.resCode = resCode;
-    }
-
-    public void setParentPath(String parentPath) {
-        this.parentPath = parentPath;
-    }
-
-    public void setTotalPage(int totalPage) {
-        this.totalPage = totalPage;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public void setTotalRows(int totalRows) {
-        this.totalRows = totalRows;
-    }
-
-    public void setResInfo(String resInfo) {
-        this.resInfo = resInfo;
-    }
 
     public void setResList(List<ResListEntity> resList) {
         this.resList = resList;
-    }
-
-    public String getResCode() {
-        return resCode;
-    }
-
-    public String getParentPath() {
-        return parentPath;
-    }
-
-    public int getTotalPage() {
-        return totalPage;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public int getTotalRows() {
-        return totalRows;
-    }
-
-    public String getResInfo() {
-        return resInfo;
     }
 
     public List<ResListEntity> getResList() {
         return resList;
     }
 
-    public static class ResListEntity {
+    public class ResListEntity {
         private int resId;
         private String resName;
         private int resType;
@@ -386,7 +321,7 @@ public class Contains_keyWord_bean {
             return contentIdBlank;
         }
 
-        public static class FlagEntity {
+        public class FlagEntity {
             private int crFlag;
             private int downFlag;
             private int crListenFlag;

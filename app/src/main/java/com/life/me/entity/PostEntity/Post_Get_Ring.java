@@ -1,4 +1,4 @@
-package com.life.me.entity;
+package com.life.me.entity.postentity;
 
 /**
  * Created by cuiyang on 15/12/24.

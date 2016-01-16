@@ -1,15 +1,11 @@
 package com.life.me.presenter.iml;
 
-
 import com.life.me.app.BaseActivity;
 
 /**
  * Created by cuiyang on 15/10/1.
  */
 public abstract class Music_Presenter extends BaseActivity {
-
-
-
 
 
 //    /**

@@ -1,10 +1,9 @@
 package com.life.me.http;
 
-import com.life.me.entity.Contains_keyWord_bean;
-import com.life.me.entity.Post_Get_Search;
-import com.life.me.entity.SearchWeather_Bean;
+import com.life.me.entity.postentity.Post_Get_Search;
+import com.life.me.entity.resultentity.Contains_keyWord_bean;
+import com.life.me.entity.resultentity.SearchWeather_Bean;
 
-import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;

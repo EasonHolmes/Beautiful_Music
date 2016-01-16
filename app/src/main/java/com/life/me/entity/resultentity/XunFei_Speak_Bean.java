@@ -1,4 +1,4 @@
-package com.life.me.entity;
+package com.life.me.entity.resultentity;
 
 import java.util.List;
 

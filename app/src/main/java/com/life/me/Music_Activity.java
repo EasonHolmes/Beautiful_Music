@@ -8,40 +8,33 @@ import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.life.me.adapter.PopView_Adapter;
-import com.life.me.entity.Contains_keyWord_bean;
-import com.life.me.entity.Post_Get_Search;
-import com.life.me.entity.XunFei_Speak_Bean;
+import com.life.me.entity.postentity.Post_Get_Search;
+import com.life.me.entity.resultentity.Contains_keyWord_bean;
 import com.life.me.http.ApiClient;
-import com.life.me.model.Music_Model;
 import com.life.me.mutils.BulerTransformation;
 import com.life.me.mutils.HttpUtils;
-import com.life.me.mutils.ScreenUtils;
 import com.life.me.mutils.Widget_Utils;
 import com.life.me.presenter.iml.Music_Player_Presenter;
 import com.life.me.presenter.iml.Music_Presenter;
 import com.life.me.presenter.iml.XunFei_Recogning;
+import com.life.me.view.MusicView;
 import com.life.me.widget.ProgressWheel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import app.minimize.com.seek_bar_compat.SeekBarCompat;
 import butterknife.ButterKnife;
@@ -52,7 +45,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by cuiyang on 15/9/28.
  */
-public class Music_Activity extends Music_Presenter implements Observer, Music_Model,
+public class Music_Activity extends Music_Presenter implements MusicView,
         View.OnClickListener, SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
 
@@ -74,7 +67,7 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
     SearchView searchView;
     @InjectView(R.id.pop_list)
     RecyclerView popList;
-    private XunFei_Recogning recogin;//被观察者
+    private XunFei_Recogning recogin;
     private Music_Player_Presenter myPlayer;//播放控制器
     private Context mContext;
     private PopView_Adapter adapter;
@@ -83,7 +76,6 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
     private final int SHOW_DIALOG = 1;
     private final int DISS_DIALOG = 2;
     private final int SET_TITLE = 3;
-    private boolean isOne = true;
 
     private BulerTransformation bulerTransformation;
 
@@ -127,7 +119,6 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
         adapter.setOnItemClickListener(new PopView_Adapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-
             }
         });
 
@@ -137,30 +128,20 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
 
         imgMusics.setOnClickListener(this);
 
-        recogin = new XunFei_Recogning();
-
-        recogin.addObserver(this);
+        recogin = new XunFei_Recogning(this, this);
 
     }
 
-    /**
-     * 讯飞语音的结果回调
-     */
+
     @Override
-    public void update(Observable observable, Object data) {
-        XunFei_Speak_Bean speakBean = ((XunFei_Speak_Bean) data);
-        StringBuilder sb = new StringBuilder();
-        List<XunFei_Speak_Bean.WsEntity> entity = speakBean.getWs();
-        for (int i = 0; i < entity.size(); i++) {//拼接讯飞的结果
-            sb.append(entity.get(i).getCw().get(0).getW());
-        }
-        Log.e(getClass().getName(), "search_content==" + sb.toString());
-        Snackbar.make(rootLayout, sb.toString(), Snackbar.LENGTH_SHORT).show();
-//        presenter.getMusic_Result(sb.toString(), mContext, this);
+    public void SpliceRecogingByXunFei(String SpliceStr) {
+        Log.e(getClass().getName(), "search_content==" + SpliceStr);
+        Snackbar.make(rootLayout, SpliceStr, Snackbar.LENGTH_SHORT).show();
+////        presenter.getMusic_Result(sb.toString(), mContext, this);
     }
 
     @Override
-    public void getMusic(String musicUrl, String singerName, String songName) {
+    public void getMusicResult(String musicUrl, String singerName, String songName) {
         new Thread(() -> {
             myPlayer.playUrl(musicUrl);
         }).start();
@@ -170,17 +151,16 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
     }
 
     @Override
-    public void getMusicImg(String imgUrl) {
+    public void getMusiceImage(String imgUrl) {
         Picasso.with(this).load(imgUrl).into(imgBackground);
         Picasso.with(this).load(imgUrl).transform(bulerTransformation).into(bulerImg);
     }
 
     @Override
-    public void error(String error) {//错误信息
+    public void errorResult(String error) {
         progressWheel.setVisibility(View.GONE);
         Snackbar.make(rootLayout, error, Snackbar.LENGTH_LONG).show();
     }
-
 
     /**
      * 进度改变
@@ -266,30 +246,21 @@ public class Music_Activity extends Music_Presenter implements Observer, Music_M
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_musics:
-                if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
+                if (!HttpUtils.getSingleton().hasNetwork(mContext))
                     Widget_Utils.showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
-                    return;
-                }
-                if (isOne) {
-                    recogin.initRecogn(mContext);
-                    myPlayer.mediaPlayer.pause();
-                    isOne = false;
-                } else {
-                    recogin.setParam(mContext);
+                else
                     hand.obtainMessage(SHOW_DIALOG).sendToTarget();
-                    myPlayer.mediaPlayer.pause();
-                }
+                myPlayer.mediaPlayer.pause();
                 break;
         }
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (recogin != null) {
-            //取消讯飞连接和被观察者
             recogin.unConncetion();
-            recogin.deleteObserver(Music_Activity.this);
             recogin = null;
         }
         if (myPlayer != null) {
