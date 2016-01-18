@@ -43,10 +43,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/pop_list"
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:background="@color/black"
-                android:alpha="0.5"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
 
             <com.life.me.widget.ProgressWheel
                 android:id="@+id/progress_wheel"
@@ -54,8 +52,8 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:visibility="gone"
-                wheel:matProg_barColor="#5588FF"
-                wheel:matProg_barWidth="7dp"
+                wheel:matProg_barColor="@color/toolbar_background2"
+                wheel:matProg_barWidth="6dp"
                 wheel:matProg_fillRadius="true"
                 wheel:matProg_progressIndeterminate="true"/>
 
@@ -94,12 +92,11 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
-                <app.minimize.com.seek_bar_compat.SeekBarCompat
+                <android.support.v7.widget.AppCompatSeekBar
                     android:id="@+id/progress_seek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:thumbColor="@color/toolbar_background2"/>
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
             <ImageView

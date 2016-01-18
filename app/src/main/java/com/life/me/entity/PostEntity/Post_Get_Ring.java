@@ -28,8 +28,8 @@ public class Post_Get_Ring {
 
     private int sid = 249253307;
     private String networkType = "wifi";
-    private String format ="json" ;
-    private int resId;
+    private String format = "json";
+    public int resId;
     private int kind = 4;
     private String protocolCode = "2.0";
     private String timestamp = "20151224113414";
@@ -40,15 +40,11 @@ public class Post_Get_Ring {
     private String appVerCode = "V7.002.002.696ctch1";
     private String method = "get_ring";
     private String imsi = "204043431728399";
-    private int bitRate= 0;
+    private int bitRate = 0;
     private String parentPath = "400";
     private int resType = 5;
 
-    public int getResId() {
-        return resId;
-    }
-
-    public void setResId(int resId) {
+    public Post_Get_Ring(int resId) {
         this.resId = resId;
     }
 }

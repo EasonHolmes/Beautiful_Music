@@ -5,5 +5,14 @@ package com.life.me.presenter;
  */
 public interface IMusice_Presenter extends IPresenter {
 
-    void getMusicResult(int res);
+
+    /**
+     * 关键字查找歌曲列表
+     */
+    void getMusicListBySearch(String name);
+
+    /**
+     * 获取音乐文件
+     */
+    void getMusicRing(int resId);
 }

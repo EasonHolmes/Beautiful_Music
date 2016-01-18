@@ -17,7 +17,7 @@ import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.life.me.R;
-import com.life.me.entity.XunFei_Speak_Bean;
+import com.life.me.entity.resultentity.XunFei_Speak_Bean;
 import com.life.me.mutils.LogUtils;
 import com.life.me.mutils.SingleGson;
 import com.life.me.view.MusicView;

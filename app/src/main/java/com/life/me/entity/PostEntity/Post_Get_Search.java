@@ -42,13 +42,9 @@ public class Post_Get_Search {
     private String method = "search";
     private String imsi = "204043431728399";
     private String parentPath = "400";
-    private String key;
+    public String key;
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
+    public  Post_Get_Search(String key){
         this.key = key;
     }
 }

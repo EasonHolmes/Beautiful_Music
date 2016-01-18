@@ -5,12 +5,12 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import app.minimize.com.seek_bar_compat.SeekBarCompat;
 
 /**
  * Created by cuiyang on 15/9/30.
@@ -19,7 +19,7 @@ public class Music_Player_Presenter implements MediaPlayer.OnBufferingUpdateList
         MediaPlayer.OnPreparedListener {
 
     public MediaPlayer mediaPlayer; // 媒体播放器
-    private SeekBarCompat seekBar; // 拖动条
+    private AppCompatSeekBar seekBar; // 拖动条
     private Timer mTimer = new Timer(); // 计时器
 
 
@@ -38,7 +38,7 @@ public class Music_Player_Presenter implements MediaPlayer.OnBufferingUpdateList
     });
 
     // 初始化播放器
-    public Music_Player_Presenter(SeekBarCompat seekBar) {
+    public Music_Player_Presenter(AppCompatSeekBar seekBar) {
         this.seekBar = seekBar;
         try {
             mediaPlayer = new MediaPlayer();

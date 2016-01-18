@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.life.me.R;
+import com.life.me.entity.resultentity.Contains_keyWord_bean;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,13 +29,11 @@ import java.util.List;
  */
 public class PopView_Adapter extends RecyclerView.Adapter<PopView_Adapter.ViewHolder> {
 
-    private List<String> stringList;
+    private List<Contains_keyWord_bean.ResListEntity> stringList;
     private Context mContext;
     private ClickListener clickListener;
-    private DecelerateInterpolator mDecelerateInterpolator = new DecelerateInterpolator(2f);
-    private static final int PHOTO_ANIMATION_DELAY = 700;
 
-    public PopView_Adapter(Context mContext, List<String> stringList) {
+    public PopView_Adapter(Context mContext, List<Contains_keyWord_bean.ResListEntity> stringList) {
         this.stringList = stringList;
         this.mContext = mContext;
 
@@ -45,12 +44,10 @@ public class PopView_Adapter extends RecyclerView.Adapter<PopView_Adapter.ViewHo
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_txt, parent, false));
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(stringList.get(position));
-        if (position <= 12) {
-            animatePhoto(holder);
-        }
+        holder.title.setText(stringList.get(position).getResName() + "  " + stringList.get(position).getSinger());
     }
 
     @Override
@@ -63,21 +60,12 @@ public class PopView_Adapter extends RecyclerView.Adapter<PopView_Adapter.ViewHo
         return stringList == null ? 0 : stringList.size();
     }
 
-    private void animatePhoto(ViewHolder holder) {
-        long animationDelay = PHOTO_ANIMATION_DELAY + holder.getPosition() * 50;
-        holder.title.animate()
-                .scaleY(1)
-                .setDuration(500)
-                .setInterpolator(mDecelerateInterpolator)
-                .setStartDelay(animationDelay)
-                .start();
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             title = (TextView) itemView.findViewById(R.id.item_txt);
         }
 

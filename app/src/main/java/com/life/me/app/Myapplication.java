@@ -35,7 +35,7 @@ public class Myapplication extends Application {
         Bmob.initialize(Myapplication.this, "03d70b2e98eee0a88cf31f0423409771");//初始化bmob
         SpeechUtility.createUtility(Myapplication.this, SpeechConstant.APPID + "=5608ae61");//初始化讯飞
         LitePalApplication.initialize(Myapplication.this);//初始化litepal
-//        initJpush();//初始化极光
+        initJpush();//初始化极光
     }
 
 

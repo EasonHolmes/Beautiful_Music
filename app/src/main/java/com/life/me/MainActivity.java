@@ -259,6 +259,7 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        subscription.unsubscribe();
+        if (subscription != null)
+            subscription.unsubscribe();
     }
 }

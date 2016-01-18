@@ -1,6 +1,5 @@
 package com.life.me;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,78 +7,31 @@ import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.life.me.adapter.PopView_Adapter;
-import com.life.me.entity.postentity.Post_Get_Search;
-import com.life.me.entity.resultentity.Contains_keyWord_bean;
-import com.life.me.http.ApiClient;
-import com.life.me.mutils.BulerTransformation;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.Widget_Utils;
 import com.life.me.presenter.iml.Music_Player_Presenter;
 import com.life.me.presenter.iml.Music_Presenter;
 import com.life.me.presenter.iml.XunFei_Recogning;
 import com.life.me.view.MusicView;
-import com.life.me.widget.ProgressWheel;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import app.minimize.com.seek_bar_compat.SeekBarCompat;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by cuiyang on 15/9/28.
  */
 public class Music_Activity extends Music_Presenter implements MusicView,
-        View.OnClickListener, SearchView.OnQueryTextListener, SearchView.OnCloseListener {
-
-
-    @InjectView(R.id.img_background)
-    ImageView imgBackground;
-    @InjectView(R.id.img_musics)
-    ImageView imgMusics;
-    @InjectView(R.id.root_layout)
-    LinearLayout rootLayout;
-    @InjectView(R.id.progress_seek)
-    SeekBarCompat musicProgress;
-    @InjectView(R.id.buler_img)
-    ImageView bulerImg;
-    @InjectView(R.id.Music_title)
-    TextView MusicTitle;
-    @InjectView(R.id.progress_wheel)
-    ProgressWheel progressWheel;
-
-    SearchView searchView;
-    @InjectView(R.id.pop_list)
-    RecyclerView popList;
-    private XunFei_Recogning recogin;
-    private Music_Player_Presenter myPlayer;//播放控制器
-    private Context mContext;
-    private PopView_Adapter adapter;
-    private List<String> contains_list = new ArrayList<String>();
-
-    private final int SHOW_DIALOG = 1;
-    private final int DISS_DIALOG = 2;
-    private final int SET_TITLE = 3;
-
-    private BulerTransformation bulerTransformation;
+        View.OnClickListener, SearchView.OnQueryTextListener {
 
     private String title;
+
+
     private final Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -99,17 +51,11 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     });
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.music_act);
-        ButterKnife.inject(this);
-        mContext = this;
-        bulerTransformation = new BulerTransformation(mContext);
-        initView();
-    }
-
-    private void initView() {
-        super.initToolbar(getResources().getString(R.string.music_act_title), true);
+    public void onViewCreated(Bundle savedInstanceState) {
+        myPlayer = new Music_Player_Presenter(musicProgress);
+        musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
+        imgMusics.setOnClickListener(this);
+        recogin = new XunFei_Recogning(this, this);
 
         adapter = new PopView_Adapter(Music_Activity.this, contains_list);
         popList.setLayoutManager(new LinearLayoutManager(mContext));
@@ -119,35 +65,15 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         adapter.setOnItemClickListener(new PopView_Adapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
+                getMusicRing(contains_list.get(position).getResId());
             }
         });
-
-        myPlayer = new Music_Player_Presenter(musicProgress);
-
-        musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
-
-        imgMusics.setOnClickListener(this);
-
-        recogin = new XunFei_Recogning(this, this);
-
     }
-
 
     @Override
     public void SpliceRecogingByXunFei(String SpliceStr) {
         Log.e(getClass().getName(), "search_content==" + SpliceStr);
-        Snackbar.make(rootLayout, SpliceStr, Snackbar.LENGTH_SHORT).show();
-////        presenter.getMusic_Result(sb.toString(), mContext, this);
-    }
-
-    @Override
-    public void getMusicResult(String musicUrl, String singerName, String songName) {
-        new Thread(() -> {
-            myPlayer.playUrl(musicUrl);
-        }).start();
-        title = singerName + ":" + songName;
-        hand.obtainMessage(SET_TITLE, title).sendToTarget();
-//        presenter.getMusic_Img(mContext, singerName + songName, this);
+        getMusicListBySearch(SpliceStr);
     }
 
     @Override
@@ -163,14 +89,13 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     }
 
     /**
-     * 进度改变
+     * 进度改变SeekBar.OnSeekBarChangeListener
      */
     class SeekBarChangeEvent implements SeekBar.OnSeekBarChangeListener {
         int progress;
 
         @Override
-        public void onProgressChanged(SeekBar seekBar, int progress,
-                                      boolean fromUser) {
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             /**
              * 等歌开始放了的时候再让他消失
              */
@@ -202,14 +127,11 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
         searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setOnQueryTextListener(this);
-        searchView.setOnCloseListener(this);
         return super.onCreateOptionsMenu(menu);
     }
 
-    //搜索框搜索
     @Override
     public boolean onQueryTextSubmit(String query) {
-        progressWheel.setVisibility(View.VISIBLE);
         return false;
     }
 
@@ -217,30 +139,13 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     public boolean onQueryTextChange(String newText) {
         if (newText.length() > 0) {
             popList.setVisibility(View.VISIBLE);
-            Post_Get_Search get = new Post_Get_Search();
-            get.setKey(newText);
-            ApiClient.SERVICE_rx.getContains_key_MusicName(get)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(contains_keyWord_bean -> setQueryChangeData(contains_keyWord_bean));
+            getMusicListBySearch(newText);
         } else {
             popList.setVisibility(View.GONE);
         }
         return false;
     }
 
-    private void setQueryChangeData(Contains_keyWord_bean contains_keyWord_bean) {
-        contains_list.clear();
-        for (Contains_keyWord_bean.ResListEntity cr : contains_keyWord_bean.getResList()) {
-            contains_list.add(cr.getResName() + " " + cr.getSinger());
-        }
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public boolean onClose() {
-        return false;
-    }
 
     @Override
     public void onClick(View v) {

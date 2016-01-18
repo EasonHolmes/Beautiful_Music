@@ -70,7 +70,6 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.balysv:material-ripple:1.0.2'
 
-    compile 'com.minimize.library:seekbar-compat:0.2.4'
     //闪光的textview
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
     //制作SVG图路线
