@@ -95,7 +95,7 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
         // 经测试在代码里直接声明透明状态栏更有效
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);//这个直接连半透明都没有了
         }
 //        mToolBar.setPadding(0, ScreenUtils.dip2px(mContext, 26), 0, 0);
@@ -259,7 +259,7 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (subscription != null)
+        if (subscription != null && subscription.isUnsubscribed())
             subscription.unsubscribe();
     }
 }

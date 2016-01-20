@@ -28,7 +28,11 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -94,16 +98,22 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
     @Override
     public void getMusicRing(int resId) {
         ApiClient.SERVICE_rx.getMusicResult(new Post_Get_Ring(resId))
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .filter(musicAndImgResult_bean1 -> musicAndImgResult_bean1 != null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(musicAndImgResult_bean -> {
                     progressWheel.setVisibility(View.VISIBLE);
                     popList.setVisibility(View.GONE);
                     MusicTitle.setText(musicAndImgResult_bean.getSingger() + musicAndImgResult_bean.getResName());
-                    myPlayer.playUrl(musicAndImgResult_bean.getFullListUrl());
-                    myPlayer.mediaPlayer.getDuration();
-                    progressWheel.setVisibility(View.GONE);
-                },error -> LogUtils.e(getClass().getName(), "getRing_error===" + error.getMessage()));
+
+                    Observable.just(musicAndImgResult_bean.getFullListUrl())
+                            .filter(s -> s != null)
+                            .observeOn(Schedulers.newThread())
+                            .subscribe(s1 -> {
+                                myPlayer.playUrl(s1);
+                                progressWheel.setVisibility(View.GONE);
+                            }, error -> LogUtils.e(getClass().getName(), "player_error" + error.getMessage()));
+
+                }, error -> LogUtils.e(getClass().getName(), "getRing_error===" + error.getMessage()));
     }
 }

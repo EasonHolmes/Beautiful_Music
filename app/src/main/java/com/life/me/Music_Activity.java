@@ -8,7 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.widget.SeekBar;
 
 import com.life.me.adapter.PopView_Adapter;
 import com.life.me.mutils.HttpUtils;
+import com.life.me.mutils.LogUtils;
 import com.life.me.mutils.Widget_Utils;
 import com.life.me.presenter.iml.Music_Player_Presenter;
 import com.life.me.presenter.iml.Music_Presenter;
@@ -62,17 +62,12 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         popList.setAdapter(adapter);
         popList.setBackground(getResources().getDrawable(R.drawable.list_pop_background));
         popList.getBackground().setAlpha(100);
-        adapter.setOnItemClickListener(new PopView_Adapter.ClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                getMusicRing(contains_list.get(position).getResId());
-            }
-        });
+        adapter.setOnItemClickListener((position, v) -> getMusicRing(contains_list.get(position).getResId()));
     }
 
     @Override
     public void SpliceRecogingByXunFei(String SpliceStr) {
-        Log.e(getClass().getName(), "search_content==" + SpliceStr);
+        LogUtils.e(getClass().getName(), "search_content==" + SpliceStr);
         getMusicListBySearch(SpliceStr);
     }
 

@@ -3,6 +3,7 @@ package com.life.me.presenter.iml;
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.life.me.entity.ConfigTb;
 import com.life.me.entity.bmobentity.LocationTb;
 import com.life.me.entity.bmobentity.TokenTb;
 import com.life.me.entity.resultentity.SearchWeather_Bean;
+import com.life.me.mutils.DeviceInfo;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.Utils;
 import com.life.me.mutils.Widget_Utils;
@@ -47,7 +49,7 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by cuiyang on 15/9/23.
  */
-public abstract class Main_presenter extends AppCompatActivity implements IMain_Presenter,View.OnClickListener {
+public abstract class Main_presenter extends AppCompatActivity implements IMain_Presenter, View.OnClickListener {
     @InjectView(R.id.mToolBar)
     protected Toolbar mToolBar;
     @InjectView(R.id.main_Wimg)
@@ -249,7 +251,7 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
     @Override
     public void uploadLocation() {
         BmobQuery<TokenTb> query = new BmobQuery<TokenTb>();
-        query.addWhereEqualTo("deviceId", ((Myapplication) getApplication()).getToken(Main_presenter.this));
+        query.addWhereEqualTo("deviceId", DeviceInfo.getInstance(this).getToken());
         query.findObjects(Main_presenter.this, new FindListener<TokenTb>() {
             @Override
             public void onSuccess(List<TokenTb> object) {

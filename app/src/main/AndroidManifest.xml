@@ -16,7 +16,7 @@
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <!-- 用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!-- 访问网络，网络定位需要上网-->
@@ -27,7 +27,7 @@
 
     <!--bmob start-->
     <uses-permission android:name="android.permission.READ_LOGS"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS"/>-->
     <!--bmob end-->
 
     <!--获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->

@@ -44,10 +44,15 @@ public class HttpUtils {
     }
 
     public boolean hasNetwork(Context context) {
-        ConnectivityManager connectManager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectManager.getActiveNetworkInfo();
-        return null != networkInfo && networkInfo.isAvailable() && networkInfo.isConnected();
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        boolean isWifiConn = networkInfo.isConnected();
+        networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        boolean isMobileConn = networkInfo.isConnected();
+        if (isWifiConn || isMobileConn)
+            return true;
+        else
+            return false;
     }
 
 //    public void getPostForByJson(RequestQueue v, String url, final Object object, final RequestCallBack callback) {
