@@ -71,7 +71,7 @@ public class PopView_Adapter extends RecyclerView.Adapter<PopView_Adapter.ViewHo
 
         @Override
         public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), v);
+            clickListener.onItemClick(getPosition(), v);
         }
     }
 

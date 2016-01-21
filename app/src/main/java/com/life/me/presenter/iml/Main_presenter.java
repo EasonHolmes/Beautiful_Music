@@ -1,11 +1,7 @@
 package com.life.me.presenter.iml;
 
 import android.annotation.SuppressLint;
-import android.app.Service;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,11 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
 import com.life.me.R;
-import com.life.me.app.Myapplication;
 import com.life.me.dao.WeatherDao;
 import com.life.me.entity.CacheBean;
 import com.life.me.entity.ConfigTb;
@@ -32,6 +26,7 @@ import com.life.me.entity.bmobentity.TokenTb;
 import com.life.me.entity.resultentity.SearchWeather_Bean;
 import com.life.me.mutils.DeviceInfo;
 import com.life.me.mutils.HttpUtils;
+import com.life.me.mutils.LogUtils;
 import com.life.me.mutils.Utils;
 import com.life.me.mutils.Widget_Utils;
 import com.life.me.mutils.imageloder.ImageLoader;
@@ -39,6 +34,8 @@ import com.life.me.presenter.IMain_Presenter;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -59,19 +56,19 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
     @InjectView(R.id.main_Wweather)
     protected TextView mainWweather;
     @InjectView(R.id.txt_nuan)
-    protected TextSwitcher txtNuan;
+    protected TextView txtNuan;
     @InjectView(R.id.img_one)
     protected ImageSwitcher imgOne;
     @InjectView(R.id.img_two)
     protected ImageSwitcher imgTwo;
     @InjectView(R.id.img_three)
     protected ImageSwitcher imgThree;
-    @InjectView(R.id.img_one_fu)
-    protected ImageSwitcher imgOneFu;
-    @InjectView(R.id.img_two_fu)
-    protected ImageSwitcher imgTwoFu;
-    @InjectView(R.id.img_three_fu)
-    protected ImageSwitcher imgThreeFu;
+//    @InjectView(R.id.img_one_fu)
+//    protected ImageSwitcher imgOneFu;
+//    @InjectView(R.id.img_two_fu)
+//    protected ImageSwitcher imgTwoFu;
+//    @InjectView(R.id.img_three_fu)
+//    protected ImageSwitcher imgThreeFu;
     @InjectView(R.id.txt_tommor)
     protected TextView txtTommor;
     @InjectView(R.id.txt_tommorandtommor)
@@ -102,12 +99,13 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
 
     protected ActionBarDrawerToggle mDrawerToggle;
     protected HttpUtils httpUtils;
-    //BaiduLocation Servers
-    protected final LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
-    protected final String tempcoor = "bd09ll";
-    protected Vibrator mVibrator;
-    protected LocationClient mLocationClient;
-    //BaiduLocation Servers
+
+    //高德start声明AMapLocationClient类对象
+    public AMapLocationClient locationClient = null;
+    //声明mLocationOption对象
+    public AMapLocationClientOption locationOption = null;
+    //高德end
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -115,13 +113,32 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+
         httpUtils = HttpUtils.getSingleton();
-        //初始化百度client
-        mLocationClient = new LocationClient(this);
         if (Utils.hasFile())
             ImageLoader.getInstance().loadImage(ConfigTb.Photo_Path, mainBackground, false);
+
         new Shimmer().setDuration(1500).start(honeyTxt);
+
         onViewCreated(savedInstanceState);
+    }
+
+    protected AMapLocationClientOption setLocationOption() {
+        locationOption = new AMapLocationClientOption();
+        ////设置是否返回地址信息（默认返回地址信息）
+        locationOption.setNeedAddress(true);
+        //设置是否只定位一次,默认为false
+        locationOption.setOnceLocation(true);
+        //设置是否强制刷新WIFI，默认为强制刷新
+        locationOption.setWifiActiveScan(true);
+        //设置是否允许模拟位置,默认为false，不允许模拟位置
+        locationOption.setMockEnable(false);
+        //设置定位间隔,单位毫秒,默认为2000ms
+        locationOption.setInterval(2000);
+        // 设置定位模式为高精度模式
+        locationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        // 设置定位监听
+        return locationOption;
     }
 
     @Override
@@ -129,7 +146,7 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
         if (bean.getResults() != null && bean.getResults().size() > 0) {
             return true;
         } else {
-            Widget_Utils.showDialog(this, "没有查询到天气信息");
+            Widget_Utils.showSnackbar(linearLayout, "没有查询到天气信息");
             return false;
         }
     }
@@ -142,13 +159,13 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
                     setTitleWeather(list.get(i), mainWimg);
                     break;
                 case 1:
-                    setUI(list.get(i), imgOne, imgOneFu, txtTommor, dateOne);
+                    setUI(list.get(i), imgOne, null, txtTommor, dateOne);
                     break;
                 case 2:
-                    setUI(list.get(i), imgTwo, imgTwoFu, txtTommorandtommor, dateTwo);
+                    setUI(list.get(i), imgTwo, null, txtTommorandtommor, dateTwo);
                     break;
                 case 3:
-                    setUI(list.get(i), imgThree, imgThreeFu, txtThreetommor, datethree);
+                    setUI(list.get(i), imgThree, null, txtThreetommor, datethree);
                     break;
             }
         }
@@ -195,50 +212,23 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
         } else {
             setimg(v, R.mipmap.yintian);
         }
-        if (weather.getNightPictureUrl().contains("leizhenyu.png")) {
-            setimg(v2, R.mipmap.leizhenyu);
-        } else if (weather.getNightPictureUrl().contains("xiaoyu.png")) {
-            setimg(v2, R.mipmap.xiaoyu);
-        } else if (weather.getNightPictureUrl().contains("yu.png")) {
-            setimg(v2, R.mipmap.zhongyu);
-        } else if (weather.getNightPictureUrl().contains("duoyun.png")) {
-            setimg(v2, R.mipmap.duoyun);
-        } else if (weather.getNightPictureUrl().contains("qing.png")) {
-            setimg(v2, R.mipmap.qingtian);
-        } else if (weather.getNightPictureUrl().contains("wu.png")) {
-            setimg(v2, R.mipmap.youwu);
-        } else {
-            setimg(v2, R.mipmap.yintian);
-        }
+//        if (weather.getNightPictureUrl().contains("leizhenyu.png")) {
+//            setimg(v2, R.mipmap.leizhenyu);
+//        } else if (weather.getNightPictureUrl().contains("xiaoyu.png")) {
+//            setimg(v2, R.mipmap.xiaoyu);
+//        } else if (weather.getNightPictureUrl().contains("yu.png")) {
+//            setimg(v2, R.mipmap.zhongyu);
+//        } else if (weather.getNightPictureUrl().contains("duoyun.png")) {
+//            setimg(v2, R.mipmap.duoyun);
+//        } else if (weather.getNightPictureUrl().contains("qing.png")) {
+//            setimg(v2, R.mipmap.qingtian);
+//        } else if (weather.getNightPictureUrl().contains("wu.png")) {
+//            setimg(v2, R.mipmap.youwu);
+//        } else {
+//            setimg(v2, R.mipmap.yintian);
+//        }
         nuan.setText(weather.getTemperature());
         date.setText(weather.getDate());
-    }
-
-    /**
-     * 初始化定位信息
-     *
-     * @param mContext
-     * @param mLocationClient
-     * @param listener
-     */
-    public void startLocation(Context mContext, LocationClient mLocationClient, BDLocationListener listener) {
-        mLocationClient.registerLocationListener(listener);
-        mVibrator = (Vibrator) mContext.getSystemService(Service.VIBRATOR_SERVICE);
-
-        mLocationClient.start();//定位SDK start之后会默认发起一次定位请求，开发者无须判断isstart并主动调用request
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(tempMode);//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
-        option.setCoorType(tempcoor);//可选，默认gcj02，设置返回的定位结果坐标系，
-        int span = 1000;
-        option.setScanSpan(span);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
-        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
-        option.setOpenGps(true);//可选，默认false,设置是否使用gps
-        option.setLocationNotify(true);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
-        option.setIgnoreKillProcess(true);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
-        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
-        option.setIsNeedLocationDescribe(false);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
-        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
-        mLocationClient.setLocOption(option);
     }
 
     @Override
@@ -249,14 +239,14 @@ public abstract class Main_presenter extends AppCompatActivity implements IMain_
     }
 
     @Override
-    public void uploadLocation() {
+    public void uploadLocation(String addr) {
         BmobQuery<TokenTb> query = new BmobQuery<TokenTb>();
         query.addWhereEqualTo("deviceId", DeviceInfo.getInstance(this).getToken());
         query.findObjects(Main_presenter.this, new FindListener<TokenTb>() {
             @Override
             public void onSuccess(List<TokenTb> object) {
                 LocationTb location = new LocationTb();
-                location.setLocName(CacheBean.addr);
+                location.setLocName(addr);
                 if (object != null && object.size() > 0) {
                     location.setDeviceId((TokenTb) object.get(0));
                 }

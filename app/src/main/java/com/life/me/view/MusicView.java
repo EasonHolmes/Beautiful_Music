@@ -10,7 +10,5 @@ public interface MusicView {
      */
     void SpliceRecogingByXunFei(String SpliceStr);
 
-    void getMusiceImage(String imgUrl);
-
     void errorResult(String error);
 }

@@ -1,23 +1,18 @@
 package com.life.me;
 
-import android.*;
 import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Path;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,14 +22,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import com.eftimoff.androipathview.PathView;
-import com.life.me.entity.bmobentity.TokenTb;
 import com.life.me.mutils.DeviceInfo;
-import com.life.me.mutils.Widget_Utils;
-import com.life.me.presenter.iml.Main_presenter;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import butterknife.ButterKnife;
@@ -118,13 +108,12 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-//                checkPermission();
-                initJpush();
+                checkPermission();
             }
         });
     }
 
-    private void initJpush() {
+    private void initJpushAndStartNext() {
         JPushInterface.init(this);            // 初始化 JPush
         pushTags.add("1");//添加tag分组
         pushTags.add("2");
@@ -134,40 +123,41 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
             @Override
             public void gotResult(int i, String s, Set<String> strings) {
                 if (i == 0) {
-                    Log.e(getClass().getName(), "ok successful==");
+                    Log.e(getClass().getName(), "ok successfuljpush==");
                 }
             }
         });
         startMainActivity();
     }
 
-//    @TargetApi(Build.VERSION_CODES.M)
-//    private void checkPermission() {
-//        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
-//        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-//            requestPermissions(new String[] {Manifest.permission.READ_PHONE_STATE},
-//                    PREAD_PHONE_STATEREQUEST_CODE);
-//            return;
-//        }
-//    }
-//
-//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        doNext(requestCode, grantResults);
-//    }
-//
-//    private void doNext(int requestCode, int[] grantResults) {
-//        if (requestCode == PREAD_PHONE_STATEREQUEST_CODE) {
-//            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                initJpush();
-//            } else {
-//                AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
-//                dialog.setMessage("由于定位需要,请在设置给予权限,我们不会泄漏任何用户个人资料");
-//                dialog.setNegativeButton("确定",null);
-//                dialog.show();
-//            }
-//        }
-//    }
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_PHONE_STATE},
+                    PREAD_PHONE_STATEREQUEST_CODE);
+            return;
+        }
+        initJpushAndStartNext();
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        doNext(requestCode, grantResults);
+    }
+
+    private void doNext(int requestCode, int[] grantResults) {
+        if (requestCode == PREAD_PHONE_STATEREQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                initJpushAndStartNext();
+            } else {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+                dialog.setMessage("由于定位需要,请在设置给予权限,我们不会泄漏任何用户个人资料");
+                dialog.setNegativeButton("确定", (dialog1, which) -> finish());
+                dialog.show();
+            }
+        }
+    }
 
     private void startMainActivity() {
         Intent i = new Intent(Wel_Activity.this, MainActivity.class);

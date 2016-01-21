@@ -31,5 +31,5 @@ public interface IMain_Presenter extends IPresenter {
     /**
      * 上传位置
      */
-    void uploadLocation();
+    void uploadLocation(String addr);
 }

@@ -21,12 +21,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.Poi;
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
 import com.life.me.dao.ApiDao;
 import com.life.me.dao.WeatherDao;
-import com.life.me.entity.CacheBean;
 import com.life.me.entity.ConfigTb;
 import com.life.me.entity.resultentity.SearchWeather_Bean;
 import com.life.me.http.ApiClient;
@@ -42,8 +41,10 @@ import com.squareup.picasso.Picasso;
 import org.litepal.crud.DataSupport;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -57,8 +58,6 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
     private final int GET_FORM_GALLERY = 1;
     private final int REFRESH = 2;
     private Subscription subscription;
-    private String Latitude;
-    private String Longitude;
     private boolean isOne = true;
 
     private Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
@@ -83,6 +82,13 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
         setToolbar(mToolBar);
         setPushContent(getIntent().getStringExtra(getResources().getString(R.string.push_content)));//推送传过来的内容
         setOnclickListener(drawerView, imgMusic);//设置一个空的键听要不侧边栏会透过去影响后面的手势
+
+        //初始化定位
+        locationClient = new AMapLocationClient(this.getApplicationContext());
+        locationClient.setLocationListener(new MapLocationListener());
+        locationClient.setLocationOption(setLocationOption());
+        //初始化定位
+
         refreshLayout.setColorSchemeResources(R.color.toolbar_background2);
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.post(() -> refreshLayout.setRefreshing(true));
@@ -114,11 +120,11 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
     @Override
     public void getWeatherResult(String Longitude, String Latitude) {
         if (TextUtils.isEmpty(Longitude) || TextUtils.isEmpty(Longitude)) {
-            Widget_Utils.showDialog(mContext, getResources().getString(R.string.not_have_location));
+            Widget_Utils.showSnackbar(linearLayout, getResources().getString(R.string.not_have_location));
             return;
         }
-        Action1 action1 = searchWeatherBean -> saveDataAndUpdateUi((SearchWeather_Bean) searchWeatherBean);
-        Action1<Throwable> onError = error -> Widget_Utils.showDialog(mContext, "哎哟喂,没有拿到数据");
+        Action1<SearchWeather_Bean> action1 = searchWeatherBean -> saveDataAndUpdateUi((SearchWeather_Bean) searchWeatherBean);
+        Action1<Throwable> onError = error -> Widget_Utils.setSnackbarClicklistener(linearLayout, "哎哟喂,没有拿到数据", "再来一次", v -> onRefresh()).show();
         subscription = ApiClient.SERVICE_rx.getWeather(ConfigTb.getWeatherResult + Longitude + "," + Latitude + ConfigTb.baidu_mcode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -144,9 +150,13 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
     public void saveDataAndUpdateUi(SearchWeather_Bean searchWeatherBean) {
         if (getWeatherFilter(searchWeatherBean))
             ApiDao.saveWeather(searchWeatherBean);
-        hand.postDelayed(() -> hand.obtainMessage(UPDATE_HEADER_WEATHCER, DataSupport.order("id asc")
-                .find(WeatherDao.class))
+        hand.postDelayed(() -> hand.obtainMessage(UPDATE_HEADER_WEATHCER, getLocalWeather())
                 .sendToTarget(), 500);
+    }
+
+    private List<WeatherDao> getLocalWeather() {
+        return DataSupport.order("id asc")
+                .find(WeatherDao.class);
     }
 
     @SuppressLint("SetTextI18n")
@@ -178,11 +188,13 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
 
     private void getRefreshRresult() {
         if (!httpUtils.hasNetwork(mContext)) {
-            Widget_Utils.showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
-            hand.obtainMessage(REFRESH).sendToTarget();
+            Widget_Utils.showSnackbar(linearLayout, "亲爱的,要打开你的网络哦.么么哒");
+            List<WeatherDao> bean = getLocalWeather();
+            hand.postDelayed(() -> hand.obtainMessage(UPDATE_HEADER_WEATHCER, bean != null ? bean : new ArrayList<WeatherDao>())
+                    .sendToTarget(), 500);
         } else {
-            //开启地图定位 上传位置和查询天气
-            startLocation(this, mLocationClient, new MyLocationListener());
+            //开启地图定位 MapLocationListener回调方法上传位置和查询天气
+            locationClient.startLocation();
         }
     }
 
@@ -215,35 +227,10 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
             if (isSave) {
                 setBackground(ConfigTb.Photo_Path);
             } else {
-                Widget_Utils.showDialog(mContext, "设置失败");
+                Widget_Utils.showSnackbar(linearLayout, "设置失败");
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    /**
-     * 实现实时位置回调监听
-     */
-    public class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            CacheBean.addr = location.getAddrStr();
-            Latitude = String.valueOf(location.getLatitude());
-            Longitude = String.valueOf(location.getLongitude());
-            List<Poi> list1 = location.getPoiList();// POI信息
-            if (list1 != null) {
-                CacheBean.addr = CacheBean.addr + list1.get(0).getName();
-            }
-            LogUtils.e(getClass().getName(), "location====" + CacheBean.addr + "Latitude====" +
-                    Latitude + "Longitude====" + Longitude);
-            mLocationClient.stop();
-            getWeatherResult(Longitude, Latitude);
-            if (isOne) {
-                uploadLocation();
-                isOne = false;
-            }
-        }
     }
 
     @Override
@@ -261,5 +248,47 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
         super.onDestroy();
         if (subscription != null && subscription.isUnsubscribed())
             subscription.unsubscribe();
+        locationClient.onDestroy();
+        locationClient = null;
+        locationOption = null;
+    }
+
+    public class MapLocationListener implements AMapLocationListener {
+
+        @Override
+        public void onLocationChanged(AMapLocation amapLocation) {
+            if (amapLocation != null) {
+                if (amapLocation.getErrorCode() == 0) {
+                    if (isOne) {
+                        uploadLocation(amapLocation.getAddress());
+                        isOne = false;
+                    }
+                    getWeatherResult(amapLocation.getLongitude() + "", amapLocation.getLatitude() + "");
+
+                    //定位成功回调信息，设置相关消息
+//                    amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
+//                    amapLocation.getAccuracy();//获取精度信息
+//                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                    Date date = new Date(amapLocation.getTime());
+//                    df.format(date);//定位时间
+//                    amapLocation.getAddress();//地址，如果option中设置isNeedAddress为false，则没有此结果，网络定位结果中会有地址信息，GPS定位不返回地址信息。
+//                    amapLocation.getCountry();//国家信息
+//                    amapLocation.getProvince();//省信息
+//                    amapLocation.getCity();//城市信息
+//                    amapLocation.getDistrict();//城区信息
+//                    amapLocation.getStreet();//街道信息
+//                    amapLocation.getStreetNum();//街道门牌号信息
+//                    amapLocation.getCityCode();//城市编码
+//                    amapLocation.getAdCode();//地区编码
+
+
+                } else {
+                    //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                    LogUtils.e("AmapError", "location Error, ErrCode:"
+                            + amapLocation.getErrorCode() + ", errInfo:"
+                            + amapLocation.getErrorInfo());
+                }
+            }
+        }
     }
 }

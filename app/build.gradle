@@ -60,7 +60,7 @@ retrolambda {
     javaVersion JavaVersion.VERSION_1_7//最低兼容java版本
 }
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':SlidingLibrary')
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:support-v4:23.0.1'
@@ -69,7 +69,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.balysv:material-ripple:1.0.2'
-
     //闪光的textview
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
     //制作SVG图路线
@@ -86,13 +85,13 @@ dependencies {
     compile 'com.trello:rxlifecycle-components:0.3.1'
     compile 'com.squareup.okhttp:okhttp:2.7.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.0'
-//    compile 'com.google.code.gson:gson:2.4'
-    //Rx + retrofit end
+    //    compile 'com.google.code.gson:gson:2.4'
 
+    //Rx + retrofit end
     compile files('libs/jpush-sdk-release1.7.5.jar')
     compile files('libs/volley.jar')
-    compile files('libs/locSDK_6.03.jar')
     compile files('libs/Bmob_Push_V0.6beta_20150408.jar')
     compile files('libs/BmobSDK_V3.4.3_0828.jar')
     compile files('libs/Msc.jar')
+    compile files('libs/AMap_Location_v2.3.0_20160112.jar')
 }

@@ -1,6 +1,7 @@
 package com.life.me.mutils;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,6 +22,8 @@ import com.life.me.entity.bmobentity.TokenTb;
 
 import java.io.File;
 import java.util.UUID;
+
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by cuiyang on 15-4-28.
@@ -47,71 +50,42 @@ public class DeviceInfo {
         SharedPreferences share = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
         String tokens = share.getString("token", "");
         if (TextUtils.isEmpty(tokens)) {
-            String tem = makeDeviceIdForToken();
-            String device = tem.substring(9, tem.length());
+            String device = getUniquePsuedoID();
             share.edit().putString("token", device).apply();
             TokenTb tb = new TokenTb();
             tb.setDeviceId(device);
-            tb.save(mContext);
+            tb.save(mContext, new SaveListener() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onFailure(int i, String s) {
+                    LogUtils.e(getClass().getName(), "iiii==_" + i + "ss" + s);
+                }
+            });
             return device;
         } else {
             return tokens;
         }
     }
 
-    public String makeDeviceIdForToken() {
-        String handSetInfo =
-                "手机型号:" + android.os.Build.MODEL +
-                        "系统版本:" + android.os.Build.VERSION.RELEASE + getMacInfo(false);
-        return handSetInfo;
+    //获得独一无二的Psuedo ID
+    public static String getUniquePsuedoID() {
+        String m_szDevIDShort = "35" +
+                Build.BOARD.length() % 10 + Build.BRAND.length() % 10 +
 
+                Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 +
 
-//        final TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-//        final String tmDevice, tmSerial, androidId;
-//        tmDevice = "" + tm.getDeviceId();
-//        tmSerial = "" + tm.getSimSerialNumber();//cdma SIM卡唯一编号
-//        //第一开机时才会有
-//        androidId = "" + Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
-//        UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
-//        String uniqueId = deviceUuid.toString();
-//        if (tmDevice.length() > 1) {
-//            return "DeviceId:" + tmDevice + "-1";
-//        }
-//        if (tmSerial.length() > 1) {
-//            return "DeviceId:" + tmSerial + "-2";
-//        }
-//        if (androidId.length() > 1) {
-//            return "DeviceId:" + androidId + "-3";
-//        }
-//        if (uniqueId.length() > 1) {
-//            return "DeviceId:" + uniqueId + "-4";
-//        }
-//        return null;
-    }
+                Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 +
 
-    //获取手机wifi mac信息
-    public String getMacInfo(boolean isOnly) {
-        WifiManager wifi = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = wifi.getConnectionInfo();
-        String maxText = info.getMacAddress();
-        String ipText = intToIp(info.getIpAddress());
-        String status = "";
-        if (wifi.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
-            status = "WIFI_STATE_ENABLED";
-        }
-        String ssid = info.getSSID();
-        if (isOnly) {
-            return ssid;
-        }
+                Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 +
 
-        return "mac:" + maxText
-                + "ip:" + ipText
-                + "ssid :" + ssid
-                ;
-    }
+                Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 +
 
-    private String intToIp(int ip) {
-        return (ip & 0xFF) + "." + ((ip >> 8) & 0xFF) + "." + ((ip >> 16) & 0xFF) + "."
-                + ((ip >> 24) & 0xFF);
+                Build.TAGS.length() % 10 + Build.TYPE.length() % 10 +
+
+                Build.USER.length() % 10; //13 位
+        return m_szDevIDShort;
     }
 }

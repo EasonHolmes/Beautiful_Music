@@ -21,6 +21,7 @@ import com.life.me.mutils.BulerTransformation;
 import com.life.me.mutils.LogUtils;
 import com.life.me.presenter.IMusice_Presenter;
 import com.life.me.widget.ProgressWheel;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by cuiyang on 15/10/1.
  */
-public abstract class Music_Presenter extends BaseActivity implements IMusice_Presenter {
+public abstract class Music_Presenter extends BaseActivity implements IMusice_Presenter, View.OnClickListener {
 
     @InjectView(R.id.img_background)
     protected ImageView imgBackground;
@@ -76,9 +77,17 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_act);
         ButterKnife.inject(this);
+
         mContext = this;
+
         super.initToolbar(getResources().getString(R.string.music_act_title), true);
+
         bulerTransformation = new BulerTransformation(mContext);
+
+        imgMusics.setOnClickListener(this);
+
+        myPlayer = new Music_Player_Presenter(musicProgress);
+
         onViewCreated(savedInstanceState);
     }
 
@@ -92,6 +101,7 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
                     contains_list.clear();
                     contains_list.addAll(contains_keyWord_bean.getResList());
                     adapter.notifyDataSetChanged();
+                    popList.setVisibility(View.VISIBLE);
                 }, error -> LogUtils.e(getClass().getName(), "musicList_error===" + error.getMessage()));
     }
 
@@ -102,18 +112,28 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
                 .filter(musicAndImgResult_bean1 -> musicAndImgResult_bean1 != null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(musicAndImgResult_bean -> {
+
                     progressWheel.setVisibility(View.VISIBLE);
                     popList.setVisibility(View.GONE);
                     MusicTitle.setText(musicAndImgResult_bean.getSingger() + musicAndImgResult_bean.getResName());
-
-                    Observable.just(musicAndImgResult_bean.getFullListUrl())
-                            .filter(s -> s != null)
-                            .observeOn(Schedulers.newThread())
-                            .subscribe(s1 -> {
-                                myPlayer.playUrl(s1);
-                                progressWheel.setVisibility(View.GONE);
-                            }, error -> LogUtils.e(getClass().getName(), "player_error" + error.getMessage()));
+                    setAlbum(musicAndImgResult_bean.getPics().get(0).getPicUrl());
+                    startPlayer(musicAndImgResult_bean.getFullListUrl());
 
                 }, error -> LogUtils.e(getClass().getName(), "getRing_error===" + error.getMessage()));
+    }
+
+    private void startPlayer(String playUrl) {
+        Observable.just(playUrl)
+                .filter(s -> s != null)
+                .observeOn(Schedulers.io())
+                .subscribe(s1 -> {
+                    myPlayer.playUrl(s1);
+                    progressWheel.setVisibility(View.GONE);
+                }, error -> LogUtils.e(getClass().getName(), "player_error" + error.getMessage()));
+    }
+
+    private void setAlbum(String imgUrl) {
+        Picasso.with(this).load(imgUrl).placeholder(R.mipmap.music_mic).into(imgBackground);
+        Picasso.with(this).load(imgUrl).placeholder(R.mipmap.music_mic).transform(bulerTransformation).into(bulerImg);
     }
 }

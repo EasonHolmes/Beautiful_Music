@@ -1,11 +1,16 @@
 package com.life.me;
 
+import android.*;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -13,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.life.me.adapter.PopView_Adapter;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.LogUtils;
@@ -30,7 +37,7 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         View.OnClickListener, SearchView.OnQueryTextListener {
 
     private String title;
-
+    private final int REQUEST_MIC_CODE = 10;
 
     private final Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
@@ -52,29 +59,21 @@ public class Music_Activity extends Music_Presenter implements MusicView,
 
     @Override
     public void onViewCreated(Bundle savedInstanceState) {
-        myPlayer = new Music_Player_Presenter(musicProgress);
         musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
-        imgMusics.setOnClickListener(this);
-        recogin = new XunFei_Recogning(this, this);
 
         adapter = new PopView_Adapter(Music_Activity.this, contains_list);
         popList.setLayoutManager(new LinearLayoutManager(mContext));
         popList.setAdapter(adapter);
         popList.setBackground(getResources().getDrawable(R.drawable.list_pop_background));
         popList.getBackground().setAlpha(100);
-        adapter.setOnItemClickListener((position, v) -> getMusicRing(contains_list.get(position).getResId()));
+        adapter.setOnItemClickListener((position, v) ->
+                getMusicRing(contains_list.get(position).getResId()));
     }
 
     @Override
     public void SpliceRecogingByXunFei(String SpliceStr) {
         LogUtils.e(getClass().getName(), "search_content==" + SpliceStr);
         getMusicListBySearch(SpliceStr);
-    }
-
-    @Override
-    public void getMusiceImage(String imgUrl) {
-        Picasso.with(this).load(imgUrl).into(imgBackground);
-        Picasso.with(this).load(imgUrl).transform(bulerTransformation).into(bulerImg);
     }
 
     @Override
@@ -133,7 +132,6 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     @Override
     public boolean onQueryTextChange(String newText) {
         if (newText.length() > 0) {
-            popList.setVisibility(View.VISIBLE);
             getMusicListBySearch(newText);
         } else {
             popList.setVisibility(View.GONE);
@@ -146,14 +144,53 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_musics:
-                if (!HttpUtils.getSingleton().hasNetwork(mContext))
-                    Widget_Utils.showDialog(mContext, "亲爱的,要打开你的网络哦.么么哒");
-                else
-                    hand.obtainMessage(SHOW_DIALOG).sendToTarget();
-                myPlayer.mediaPlayer.pause();
+                checkPermission();
                 break;
         }
 
+    }
+
+    private void pleaseSpeak() {
+        if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
+            Widget_Utils.showSnackbar(popList, "亲爱的,要打开你的网络哦.么么哒");
+        } else {
+            if (recogin == null) {
+                SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5608ae61");//初始化讯飞
+                recogin = new XunFei_Recogning(this, this);
+            }
+            hand.obtainMessage(SHOW_DIALOG).sendToTarget();
+        }
+        myPlayer.mediaPlayer.pause();
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.RECORD_AUDIO},
+                    REQUEST_MIC_CODE);
+            return;
+        } else {
+            pleaseSpeak();
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        doNext(requestCode, grantResults);
+    }
+
+    private void doNext(int requestCode, int[] grantResults) {
+        if (requestCode == REQUEST_MIC_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                pleaseSpeak();
+            } else {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+                dialog.setMessage("请在设置中开启录音权限");
+                dialog.setNegativeButton("确定", null);
+                dialog.show();
+            }
+        }
     }
 
     @Override

@@ -13,6 +13,5 @@ import java.io.File;
  * Created by cuiyang on 15/9/24.
  */
 public class CacheBean {
-    public static String addr;
 
 }
