@@ -11,4 +11,8 @@ public interface MusicView {
     void SpliceRecogingByXunFei(String SpliceStr);
 
     void errorResult(String error);
+
+    void playerPause();
+
+
 }

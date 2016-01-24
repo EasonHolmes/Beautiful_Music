@@ -1,5 +1,7 @@
 package com.life.me.presenter;
 
+import android.view.View;
+
 /**
  * Created by cuiyang on 16/1/16.
  */
@@ -15,4 +17,6 @@ public interface IMusice_Presenter extends IPresenter {
      * 获取音乐文件
      */
     void getMusicRing(int resId);
+
+     void setOnclickListener(View... views);
 }

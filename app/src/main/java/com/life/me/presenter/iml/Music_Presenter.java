@@ -3,6 +3,7 @@ package com.life.me.presenter.iml;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSeekBar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.View;
@@ -30,10 +31,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -57,17 +55,23 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
     protected ProgressWheel progressWheel;
     @InjectView(R.id.pop_list)
     protected RecyclerView popList;
+    @InjectView(R.id.img_pause)
+    protected ImageView img_pause;
+    @InjectView(R.id.img_last)
+    protected ImageView img_last;
+    @InjectView(R.id.img_next)
+    protected ImageView img_next;
     protected SearchView searchView;
 
     protected final int SHOW_DIALOG = 1;
     protected final int DISS_DIALOG = 2;
-    protected final int SET_TITLE = 3;
+
 
     protected Context mContext;
     protected BulerTransformation bulerTransformation;
 
     protected XunFei_Recogning recogin;
-    protected Music_Player_Presenter myPlayer;//播放控制器
+    protected Music_Player_Helper myPlayer;//播放控制器
 
     protected PopView_Adapter adapter;
     protected List<Contains_keyWord_bean.ResListEntity> contains_list = new ArrayList<Contains_keyWord_bean.ResListEntity>();
@@ -77,17 +81,19 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_act);
         ButterKnife.inject(this);
-
         mContext = this;
-
         super.initToolbar(getResources().getString(R.string.music_act_title), true);
-
         bulerTransformation = new BulerTransformation(mContext);
 
-        imgMusics.setOnClickListener(this);
+        myPlayer = new Music_Player_Helper(musicProgress);
 
-        myPlayer = new Music_Player_Presenter(musicProgress);
+        adapter = new PopView_Adapter(Music_Presenter.this, contains_list);
+        popList.setLayoutManager(new LinearLayoutManager(mContext));
+        popList.setAdapter(adapter);
+        popList.setBackground(getResources().getDrawable(R.drawable.list_pop_background));
+        popList.getBackground().setAlpha(100);
 
+        setOnclickListener(imgMusics, img_pause, img_last, img_next);
         onViewCreated(savedInstanceState);
     }
 
@@ -115,7 +121,7 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
 
                     progressWheel.setVisibility(View.VISIBLE);
                     popList.setVisibility(View.GONE);
-                    MusicTitle.setText(musicAndImgResult_bean.getSingger() + musicAndImgResult_bean.getResName());
+                    MusicTitle.setText(musicAndImgResult_bean.getSingger() + " : " + musicAndImgResult_bean.getResName());
                     setAlbum(musicAndImgResult_bean.getPics().get(0).getPicUrl());
                     startPlayer(musicAndImgResult_bean.getFullListUrl());
 
@@ -127,7 +133,7 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
                 .filter(s -> s != null)
                 .observeOn(Schedulers.io())
                 .subscribe(s1 -> {
-                    myPlayer.playUrl(s1);
+                    myPlayer.startPlayUrl(s1);
                     progressWheel.setVisibility(View.GONE);
                 }, error -> LogUtils.e(getClass().getName(), "player_error" + error.getMessage()));
     }
@@ -135,5 +141,12 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
     private void setAlbum(String imgUrl) {
         Picasso.with(this).load(imgUrl).placeholder(R.mipmap.music_mic).into(imgBackground);
         Picasso.with(this).load(imgUrl).placeholder(R.mipmap.music_mic).transform(bulerTransformation).into(bulerImg);
+    }
+
+    @Override
+    public void setOnclickListener(View... views) {
+        for (View v : views) {
+            v.setOnClickListener(this);
+        }
     }
 }

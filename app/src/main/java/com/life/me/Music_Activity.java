@@ -1,6 +1,6 @@
 package com.life.me;
 
-import android.*;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -11,24 +11,18 @@ import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 
-import com.iflytek.cloud.SpeechConstant;
-import com.iflytek.cloud.SpeechUtility;
-import com.life.me.adapter.PopView_Adapter;
 import com.life.me.mutils.HttpUtils;
 import com.life.me.mutils.LogUtils;
 import com.life.me.mutils.Widget_Utils;
-import com.life.me.presenter.iml.Music_Player_Presenter;
 import com.life.me.presenter.iml.Music_Presenter;
 import com.life.me.presenter.iml.XunFei_Recogning;
 import com.life.me.view.MusicView;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by cuiyang on 15/9/28.
@@ -36,10 +30,11 @@ import com.squareup.picasso.Picasso;
 public class Music_Activity extends Music_Presenter implements MusicView,
         View.OnClickListener, SearchView.OnQueryTextListener {
 
-    private String title;
     private final int REQUEST_MIC_CODE = 10;
+    private int currentPosition = 0;
 
     private final Handler hand = new Handler(Looper.getMainLooper(), new Handler.Callback() {
+        @SuppressLint("SetTextI18n")
         @Override
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
@@ -49,9 +44,6 @@ public class Music_Activity extends Music_Presenter implements MusicView,
                 case DISS_DIALOG:
                     recogin.dissDialog();
                     break;
-                case SET_TITLE:
-                    if (title != null) MusicTitle.setText(title + "");
-                    break;
             }
             return false;
         }
@@ -59,15 +51,12 @@ public class Music_Activity extends Music_Presenter implements MusicView,
 
     @Override
     public void onViewCreated(Bundle savedInstanceState) {
+        recogin = new XunFei_Recogning(Music_Activity.this, this);
         musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
-
-        adapter = new PopView_Adapter(Music_Activity.this, contains_list);
-        popList.setLayoutManager(new LinearLayoutManager(mContext));
-        popList.setAdapter(adapter);
-        popList.setBackground(getResources().getDrawable(R.drawable.list_pop_background));
-        popList.getBackground().setAlpha(100);
-        adapter.setOnItemClickListener((position, v) ->
-                getMusicRing(contains_list.get(position).getResId()));
+        adapter.setOnItemClickListener((position, v) -> {
+            getMusicRing(contains_list.get(position).getResId());
+            currentPosition = position;
+        });
     }
 
     @Override
@@ -80,6 +69,17 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     public void errorResult(String error) {
         progressWheel.setVisibility(View.GONE);
         Snackbar.make(rootLayout, error, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void playerPause() {
+        if (myPlayer.mediaPlayer.isPlaying()) {
+            myPlayer.mediaPlayer.pause();
+            img_pause.setImageResource(R.mipmap.img_play);
+        } else {
+            myPlayer.mediaPlayer.start();
+            img_pause.setImageResource(R.mipmap.img_pause);
+        }
     }
 
     /**
@@ -146,6 +146,21 @@ public class Music_Activity extends Music_Presenter implements MusicView,
             case R.id.img_musics:
                 checkPermission();
                 break;
+            case R.id.img_pause:
+                playerPause();
+                break;
+            case R.id.img_next:
+                //到列表最后一个再下一曲就第一首
+                int p = currentPosition + 1 >= contains_list.size() ? 0 : currentPosition + 1;
+                currentPosition = p;
+                getMusicRing(contains_list.get(p).getResId());
+                break;
+            case R.id.img_last:
+                //到列表第一首就列表最后一首
+                int p1 = currentPosition - 1 < 0 ? contains_list.size() - 1 : currentPosition - 1;
+                currentPosition = p1;
+                getMusicRing(contains_list.get(p1).getResId());
+                break;
         }
 
     }
@@ -154,10 +169,6 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         if (!HttpUtils.getSingleton().hasNetwork(mContext)) {
             Widget_Utils.showSnackbar(popList, "亲爱的,要打开你的网络哦.么么哒");
         } else {
-            if (recogin == null) {
-                SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5608ae61");//初始化讯飞
-                recogin = new XunFei_Recogning(this, this);
-            }
             hand.obtainMessage(SHOW_DIALOG).sendToTarget();
         }
         myPlayer.mediaPlayer.pause();
@@ -170,9 +181,8 @@ public class Music_Activity extends Music_Presenter implements MusicView,
             requestPermissions(new String[]{android.Manifest.permission.RECORD_AUDIO},
                     REQUEST_MIC_CODE);
             return;
-        } else {
-            pleaseSpeak();
         }
+        pleaseSpeak();
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

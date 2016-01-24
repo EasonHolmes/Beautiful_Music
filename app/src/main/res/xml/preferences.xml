@@ -17,14 +17,6 @@
             android:summaryOff="英文"
             android:summaryOn="中文(默认)"
             android:title="语音类型"/>
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="@string/quality"
-            android:layout="@layout/preference_item"
-            android:summaryOff="标准品质"
-            android:summaryOn="压缩品质(默认)"
-            android:title="音频质量"/>
-
     </PreferenceCategory>
     <PreferenceCategory
         android:layout="@layout/preference_category_widget"
@@ -36,16 +28,8 @@
             android:title="版本"/>
         <Preference
             android:layout="@layout/preference_item"
-            android:summary="歌名加歌手名更易匹配"
-            android:title="备注"/>
-        <Preference
-            android:layout="@layout/preference_item"
             android:summary="MyGithub：https://github.com/EasonHolmes"
             android:title="作者：Eason'Cui"/>
-        <Preference
-            android:layout="@layout/preference_item"
-            android:summary="讯飞、天天动听、百度(LBS&amp;天气)"
-            android:title="鸣谢"/>
 
     </PreferenceCategory>
 </PreferenceScreen>
