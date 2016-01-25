@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.eftimoff.androipathview.PathView;
 import com.life.me.mutils.DeviceInfo;
+import com.life.me.mutils.LogUtils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -50,7 +51,6 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     private final int PREAD_PHONE_STATEREQUEST_CODE = 10;
     String drawerContent;
 
-    private Set<String> pushTags = new HashSet<String>();//tag相当于分组。可以把某一些用户设置同样的tag就能某一组发了,一般在程序里动态获取服务器某些信息后添加
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,32 +113,16 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
         });
     }
 
-    private void initJpushAndStartNext() {
-        JPushInterface.init(this);            // 初始化 JPush
-        pushTags.add("1");//添加tag分组
-        pushTags.add("2");
-        //根据token设置设备别名
-        String id = DeviceInfo.getInstance(this).getToken().substring(0, 13);
-        JPushInterface.setAliasAndTags(this, id, pushTags, new TagAliasCallback() {
-            @Override
-            public void gotResult(int i, String s, Set<String> strings) {
-                if (i == 0) {
-                    Log.e(getClass().getName(), "ok successfuljpush==");
-                }
-            }
-        });
-        startMainActivity();
-    }
 
     @TargetApi(Build.VERSION_CODES.M)
     private void checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_PHONE_STATE},
-                    PREAD_PHONE_STATEREQUEST_CODE);
-            return;
-        }
-        initJpushAndStartNext();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED | checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PREAD_PHONE_STATEREQUEST_CODE);
+                return;
+            }
+        startMainActivity();
     }
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -148,8 +132,8 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
 
     private void doNext(int requestCode, int[] grantResults) {
         if (requestCode == PREAD_PHONE_STATEREQUEST_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                initJpushAndStartNext();
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                startMainActivity();
             } else {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
                 dialog.setMessage("由于定位需要,请在设置给予权限,我们不会泄漏任何用户个人资料");
@@ -179,5 +163,11 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     protected void onPause() {
         super.onPause();
         JPushInterface.onPause(Wel_Activity.this);//是做用户统计的
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        th/is.unregisterReceiver();
     }
 }

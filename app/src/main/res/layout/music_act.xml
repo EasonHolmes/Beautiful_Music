@@ -56,9 +56,9 @@
                 wheel:matProg_barWidth="6dp"
                 wheel:matProg_fillRadius="true"
                 wheel:matProg_progressIndeterminate="true"/>
-
         </FrameLayout>
 
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,34 +99,39 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/img_last"
                         android:layout_width="50dp"
                         android:layout_height="25dp"
-                        android:layout_weight="1"
-                        android:src="@mipmap/img_last_one_music"/>
+                        android:layout_marginRight="15dp"
+                        android:src="@mipmap/img_last_one_music"
+                        tools:ignore="RtlHardcoded"/>
 
                     <ImageView
                         android:id="@+id/img_pause"
                         android:layout_width="45dp"
                         android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:src="@mipmap/img_pause"/>
 
                     <ImageView
                         android:id="@+id/img_next"
                         android:layout_width="50dp"
                         android:layout_height="25dp"
-                        android:layout_weight="1"
-                        android:src="@mipmap/img_next_music"/>
+                        android:layout_marginLeft="15dp"
+                        android:src="@mipmap/img_next_music"
+                        tools:ignore="RtlHardcoded"/>
                 </LinearLayout>
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/img_musics"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/mic"/>
 

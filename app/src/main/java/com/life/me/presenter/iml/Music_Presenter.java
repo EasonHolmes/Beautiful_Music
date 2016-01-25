@@ -1,6 +1,7 @@
 package com.life.me.presenter.iml;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -132,10 +133,7 @@ public abstract class Music_Presenter extends BaseActivity implements IMusice_Pr
         Observable.just(playUrl)
                 .filter(s -> s != null)
                 .observeOn(Schedulers.io())
-                .subscribe(s1 -> {
-                    myPlayer.startPlayUrl(s1);
-                    progressWheel.setVisibility(View.GONE);
-                }, error -> LogUtils.e(getClass().getName(), "player_error" + error.getMessage()));
+                .subscribe(myPlayer::startPlayUrl, error -> LogUtils.e(getClass().getName(), "player_error" + error.getMessage()));
     }
 
     private void setAlbum(String imgUrl) {

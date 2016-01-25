@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/AMap_Location_v2.3.0_20160112.jar"
+        jar="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/libs/jpush-android-2.0.6.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="bfe17aa93c71a6973a53fcbaf7bfe2f3a1859dcf">
-        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/AMap_Location_v2.3.0_20160112-f5f96548ee5d360445a965d065685b68d737d47a.jar" />
+        sha1="970e671dce88c41ca0b207e7f5383dae2a2253ce">
+        <dex dex="/Users/cuiyang/Documents/work/workspace/Private/Beautiful_Music/app/build/intermediates/pre-dexed/debug/jpush-android-2.0.6-dcdf9e2330da820bffdf52e7606670f16a15381e.jar" />
     </item>
 
 </items>

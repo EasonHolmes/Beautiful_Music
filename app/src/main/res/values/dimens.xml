@@ -6,6 +6,8 @@
     <dimen name="activity_vertical_margin">0dp</dimen>
     <dimen name="sliding_margin">18dp</dimen>
     <dimen name="btn_fab_size">56dp</dimen>
+    <dimen name="toolbar_padding_top">0dp</dimen>
+
 
     <!-- circleImageView -->
     <declare-styleable name="CircleImageView">

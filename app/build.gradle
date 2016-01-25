@@ -88,10 +88,10 @@ dependencies {
     //    compile 'com.google.code.gson:gson:2.4'
 
     //Rx + retrofit end
-    compile files('libs/jpush-sdk-release1.7.5.jar')
     compile files('libs/volley.jar')
     compile files('libs/Bmob_Push_V0.6beta_20150408.jar')
     compile files('libs/BmobSDK_V3.4.3_0828.jar')
     compile files('libs/Msc.jar')
     compile files('libs/AMap_Location_v2.3.0_20160112.jar')
+    compile files('libs/jpush-android-2.0.6.jar')
 }
