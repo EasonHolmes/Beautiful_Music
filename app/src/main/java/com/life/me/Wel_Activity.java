@@ -144,13 +144,31 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     }
 
     private void startMainActivity() {
+        initJpush();
         Intent i = new Intent(Wel_Activity.this, MainActivity.class);
         //把推送的内容带过去
         i.putExtra(mContext.getResources().getString(R.string.push_content), drawerContent);
         startActivity(i);
-        //push推的  style.xml中添加<item name="android:windowIsTranslucent">true</item>因为有这个属性会变成进入的activity push覆盖上来的效果
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         finish();
+    }
+
+    private void initJpush() {
+        Set<String> pushTags = new HashSet<String>();
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+        pushTags.add("1");//添加tag分组
+        pushTags.add("2");
+        //根据token设置设备别名
+        String id = DeviceInfo.getInstance(this).getToken();
+        JPushInterface.setAliasAndTags(this, id, pushTags,new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                if (i == 0) {
+                    LogUtils.e(getClass().getName(), "ok successfuljpush==");
+                }
+            }
+        });
     }
 
     @Override

@@ -7,12 +7,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
-import android.view.View;
-
-import com.life.me.entity.resultentity.Contains_keyWord_bean;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,7 +14,7 @@ import java.util.TimerTask;
 /**
  * Created by cuiyang on 15/9/30.
  */
-public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListener,
+public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListener,MediaPlayer.OnCompletionListener,
         MediaPlayer.OnPreparedListener {
 
     public MediaPlayer mediaPlayer; // 媒体播放器
@@ -46,9 +40,11 @@ public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListene
         this.seekBar = seekBar;
         try {
             mediaPlayer = new MediaPlayer();
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);// 设置媒体流类型
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC
+            );// 设置媒体流类型
             mediaPlayer.setOnBufferingUpdateListener(this);
             mediaPlayer.setOnPreparedListener(this);
+            mediaPlayer.setOnCompletionListener(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,23 +85,19 @@ public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListene
             mediaPlayer = null;
         }
     }
-//
+
+    //
     // 播放准备OnPreparedListener
     @Override
     public void onPrepared(MediaPlayer mp) {
         mp.start();
         Log.e("mediaPlayer", "onPrepared");
     }
-//
-//    // 播放完成OnCompletelistener
-//    @Override
-//    public void onCompletion(MediaPlayer mp) {
-//        Log.e("mediaPlayer", "onCompletion");
-//        //循环播放
-////        mp.start();
-//        //下一曲
-//        //到列表最后一个再下一曲就第一首
-//    }
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        //循环播放
+        mp.start();
+    }
 
     /**
      * 缓冲更新
@@ -117,4 +109,5 @@ public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListene
 //                * mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration();
 //        Log.i(currentProgress + "% play播放进度", percent + " buffer-缓冲进度");
     }
+
 }

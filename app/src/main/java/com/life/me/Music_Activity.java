@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar;
 
@@ -29,7 +30,7 @@ import com.life.me.view.MusicView;
  * Created by cuiyang on 15/9/28.
  */
 public class Music_Activity extends Music_Presenter implements MusicView,
-        View.OnClickListener, SearchView.OnQueryTextListener, MediaPlayer.OnCompletionListener {
+        View.OnClickListener, SearchView.OnQueryTextListener {
 
     private final int REQUEST_MIC_CODE = 10;
     private int currentPosition = 0;
@@ -53,7 +54,6 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     @Override
     public void onViewCreated(Bundle savedInstanceState) {
         recogin = new XunFei_Recogning(Music_Activity.this, this);
-        myPlayer.mediaPlayer.setOnCompletionListener(this);
         musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
         adapter.setOnItemClickListener((position, v) -> {
             getMusicRing(contains_list.get(position).getResId());
@@ -84,11 +84,6 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         }
     }
 
-    @Override
-    public void onCompletion(MediaPlayer mp) {
-        getMusicRing(contains_list.get(nextMusic_position()).getResId());
-    }
-
     /**
      * 进度改变SeekBar.OnSeekBarChangeListener
      */
@@ -97,10 +92,7 @@ public class Music_Activity extends Music_Presenter implements MusicView,
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            /**
-             * 等歌开始放了的时候再让他消失
-             */
-            if (progress < 2) {//小于2就只进一次了不会一直changed就更新
+            if (progress < 2) {
                 progressWheel.setVisibility(View.GONE);
                 hand.obtainMessage(DISS_DIALOG).sendToTarget();
             }
@@ -111,7 +103,6 @@ public class Music_Activity extends Music_Presenter implements MusicView,
 
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
-
         }
 
         @Override
@@ -177,7 +168,7 @@ public class Music_Activity extends Music_Presenter implements MusicView,
         //到列表第一首就列表最后一首
         int p = currentPosition - 1 < 0 ? contains_list.size() - 1 : currentPosition - 1;
         currentPosition = p;
-        return p;
+        return currentPosition;
     }
 
 

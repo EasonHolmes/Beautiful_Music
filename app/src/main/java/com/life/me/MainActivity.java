@@ -167,7 +167,8 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
             share.edit().putString(getResources().getString(R.string.push_content), drawerContent).apply();
             honeyTxt.setText(drawerContent + "");
         } else {
-            honeyTxt.setText(share.getString(getResources().getString(R.string.push_content), "I love you my Lover"));
+            honeyTxt.setText(share.getString(getResources().getString(R.string.push_content),
+                    getString(R.string.push_empty)));
         }
     }
 
