@@ -3,6 +3,7 @@ package com.life.me;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +29,7 @@ import com.life.me.view.MusicView;
  * Created by cuiyang on 15/9/28.
  */
 public class Music_Activity extends Music_Presenter implements MusicView,
-        View.OnClickListener, SearchView.OnQueryTextListener {
+        View.OnClickListener, SearchView.OnQueryTextListener, MediaPlayer.OnCompletionListener {
 
     private final int REQUEST_MIC_CODE = 10;
     private int currentPosition = 0;
@@ -52,6 +53,7 @@ public class Music_Activity extends Music_Presenter implements MusicView,
     @Override
     public void onViewCreated(Bundle savedInstanceState) {
         recogin = new XunFei_Recogning(Music_Activity.this, this);
+        myPlayer.mediaPlayer.setOnCompletionListener(this);
         musicProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
         adapter.setOnItemClickListener((position, v) -> {
             getMusicRing(contains_list.get(position).getResId());
@@ -80,6 +82,11 @@ public class Music_Activity extends Music_Presenter implements MusicView,
             myPlayer.mediaPlayer.start();
             img_pause.setImageResource(R.mipmap.img_pause);
         }
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        getMusicRing(contains_list.get(nextMusic_position()).getResId());
     }
 
     /**
@@ -150,20 +157,29 @@ public class Music_Activity extends Music_Presenter implements MusicView,
                 playerPause();
                 break;
             case R.id.img_next:
-                //到列表最后一个再下一曲就第一首
-                int p = currentPosition + 1 >= contains_list.size() ? 0 : currentPosition + 1;
-                currentPosition = p;
-                getMusicRing(contains_list.get(p).getResId());
+                getMusicRing(contains_list.get(nextMusic_position()).getResId());
                 break;
             case R.id.img_last:
-                //到列表第一首就列表最后一首
-                int p1 = currentPosition - 1 < 0 ? contains_list.size() - 1 : currentPosition - 1;
-                currentPosition = p1;
-                getMusicRing(contains_list.get(p1).getResId());
+                getMusicRing(contains_list.get(lastMusic_position()).getResId());
                 break;
         }
 
     }
+
+    private int nextMusic_position() {
+        //到列表最后一个再下一曲就第一首
+        int p = currentPosition + 1 >= contains_list.size() ? 0 : currentPosition + 1;
+        currentPosition = p;
+        return currentPosition;
+    }
+
+    private int lastMusic_position() {
+        //到列表第一首就列表最后一首
+        int p = currentPosition - 1 < 0 ? contains_list.size() - 1 : currentPosition - 1;
+        currentPosition = p;
+        return p;
+    }
+
 
     private void pleaseSpeak() {
         if (!HttpUtils.getSingleton().hasNetwork(mContext)) {

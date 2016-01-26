@@ -2,11 +2,13 @@ package com.life.me.mutils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 
+import com.life.me.R;
 import com.squareup.picasso.Transformation;
 
 /**
@@ -39,9 +41,10 @@ public class BulerTransformation implements Transformation {
             ScriptIntrinsicBlur blur =
                     ScriptIntrinsicBlur.create(rs, overlayAlloc.getElement());
             blur.setInput(overlayAlloc);
-            blur.setRadius(15);
+            blur.setRadius(12);
             blur.forEach(overlayAlloc);
             overlayAlloc.copyTo(bkg);
+            rs.destroy();
             return bkg;
         } catch (Exception e) {
             Log.e(getClass().getName(), "blur_error==" + e.getMessage());

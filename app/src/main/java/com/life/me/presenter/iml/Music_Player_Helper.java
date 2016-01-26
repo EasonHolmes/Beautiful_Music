@@ -7,7 +7,12 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
+import android.view.View;
 
+import com.life.me.entity.resultentity.Contains_keyWord_bean;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -15,13 +20,12 @@ import java.util.TimerTask;
 /**
  * Created by cuiyang on 15/9/30.
  */
-public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener,
+public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListener,
         MediaPlayer.OnPreparedListener {
 
     public MediaPlayer mediaPlayer; // 媒体播放器
     private AppCompatSeekBar seekBar; // 拖动条
     private Timer mTimer = new Timer(); // 计时器
-
 
     private final Handler handler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
@@ -45,7 +49,6 @@ public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListene
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);// 设置媒体流类型
             mediaPlayer.setOnBufferingUpdateListener(this);
             mediaPlayer.setOnPreparedListener(this);
-            mediaPlayer.setOnCompletionListener(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,21 +89,23 @@ public class Music_Player_Helper implements MediaPlayer.OnBufferingUpdateListene
             mediaPlayer = null;
         }
     }
-
+//
     // 播放准备OnPreparedListener
     @Override
     public void onPrepared(MediaPlayer mp) {
         mp.start();
         Log.e("mediaPlayer", "onPrepared");
     }
-
-    // 播放完成OnCompletelistener
-    @Override
-    public void onCompletion(MediaPlayer mp) {
-        Log.e("mediaPlayer", "onCompletion");
-        //循环播放
-        mp.start();
-    }
+//
+//    // 播放完成OnCompletelistener
+//    @Override
+//    public void onCompletion(MediaPlayer mp) {
+//        Log.e("mediaPlayer", "onCompletion");
+//        //循环播放
+////        mp.start();
+//        //下一曲
+//        //到列表最后一个再下一曲就第一首
+//    }
 
     /**
      * 缓冲更新
