@@ -1,6 +1,5 @@
 # Beautiful_Music
 <br>
-##Version:1.0
 <br>
 ###小功能app
 ####语音搜歌 在线播放 查看天气
