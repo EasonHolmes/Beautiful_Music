@@ -52,13 +52,15 @@ public class Setting_Activity extends BaseActivity {
             addPreferencesFromResource(R.xml.preferences);
         }
 
-        @Override
-        public boolean onPreferenceTreeClick(@NonNull PreferenceScreen preferenceScreen, @NonNull Preference preference) {//判断是哪个控件被点击了
-            if ("language".equals(preference.getKey())) {
-                CheckBoxPreference checkBoxPreference = (CheckBoxPreference) findPreference("language");
-            }
-            return true;
-        }
+//        @Override
+//        public boolean onPreferenceTreeClick(@NonNull PreferenceScreen preferenceScreen, @NonNull Preference preference) {//判断是哪个控件被点击了
+//            if ("language".equals(preference.getKey())) {
+//                CheckBoxPreference checkBoxPreference = (CheckBoxPreference) findPreference("language");
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
 
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {

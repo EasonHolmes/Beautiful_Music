@@ -15,6 +15,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -150,8 +151,8 @@ public class MainActivity extends Main_presenter implements MainView, View.OnCli
     public void saveDataAndUpdateUi(SearchWeather_Bean searchWeatherBean) {
         if (getWeatherFilter(searchWeatherBean))
             ApiDao.saveWeather(searchWeatherBean);
-        hand.postDelayed(() -> hand.obtainMessage(UPDATE_HEADER_WEATHCER, getLocalWeather())
-                .sendToTarget(), 500);
+            hand.postDelayed(() -> hand.obtainMessage(UPDATE_HEADER_WEATHCER, getLocalWeather())
+                    .sendToTarget(), 500);
     }
 
     private List<WeatherDao> getLocalWeather() {

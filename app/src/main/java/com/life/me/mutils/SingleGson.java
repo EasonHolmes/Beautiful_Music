@@ -1,9 +1,5 @@
 package com.life.me.mutils;
 
-import android.content.Context;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 /**

@@ -104,5 +104,22 @@ public class SearchWeather_Bean {
                 return des;
             }
         }
+
+        @Override
+        public String toString() {
+            return "ResultsEntity{" +
+                    "currentCity='" + currentCity + '\'' +
+                    ", pm25='" + pm25 + '\'' +
+                    ", index=" + index +
+                    ", weather_data=" + weather_data +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "SearchWeather_Bean{" +
+                "results=" + results +
+                '}';
     }
 }

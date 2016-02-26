@@ -14,8 +14,8 @@
     <string name="push_content">content</string>
     <string name="drawer_content_file">drawer_content</string>
     <string name="music_act_title">ForYou</string>
-    <string name="main_act_title">史燕博专用APP</string>
-    <string name="push_empty">每天送你一句温暖的话 I love you</string>
+    <string name="main_act_title">@string/app_name</string>
+    <string name="push_empty">每天送你一句温暖的话</string>
 
     <string name="main_background">主题背景</string>
 

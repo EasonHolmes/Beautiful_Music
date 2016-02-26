@@ -24,13 +24,13 @@ public class Widget_Utils {
 
     public static void showSnackbar(View view, String msg) {
         Snackbar snackbar = Snackbar.make(view, msg, Snackbar.LENGTH_LONG);
-        snackbar.getView().setBackgroundResource(R.color.background_allShareFragment3);
+//        snackbar.getView().setBackgroundResource(R.color.background_allShareFragment3);
         snackbar.show();
     }
 
     public static Snackbar setSnackbarClicklistener(View view, String msg, String actionTxt, View.OnClickListener listener) {
         Snackbar snackbar = Snackbar.make(view, msg, Snackbar.LENGTH_LONG);
-        snackbar.getView().setBackgroundResource(R.color.background_allShareFragment3);
+//        snackbar.getView().setBackgroundResource(R.color.background_allShareFragment3);
         snackbar.setAction(actionTxt, listener);
 //        View text = snackbar.getView();
 //        ((TextView) text.findViewById(R.id.snackbar_action)).setTextColor(Color.parseColor("#FFFFFF"));

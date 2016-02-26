@@ -4,16 +4,16 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.life.me.R;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected Toolbar mToolbar;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mDrawerToggle;

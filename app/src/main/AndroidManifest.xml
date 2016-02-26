@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--高德end-->
     <!--bmob start-->
     <uses-permission android:name="android.permission.READ_LOGS"/>

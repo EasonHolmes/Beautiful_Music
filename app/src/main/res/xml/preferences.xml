@@ -29,7 +29,12 @@
         <Preference
             android:layout="@layout/preference_item"
             android:summary="MyGithub：https://github.com/EasonHolmes"
-            android:title="作者：Eason'Cui"/>
-
+            android:title="作者：Eason'Cui">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/EasonHolmes"
+                android:targetPackage="com.android.browser"/>
+        </Preference>
     </PreferenceCategory>
+
 </PreferenceScreen>

@@ -7,7 +7,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Path;
@@ -15,23 +14,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import com.eftimoff.androipathview.PathView;
-import com.life.me.mutils.DeviceInfo;
-import com.life.me.mutils.LogUtils;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.jpush.android.api.JPushInterface;
-import cn.jpush.android.api.TagAliasCallback;
 
 /**
  * Created by cuiyang on 15/9/22.
@@ -72,6 +64,7 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     }
 
     private void welAnimation() {
+        welTxt.setVisibility(View.GONE);
         final Path path = makeConvexArrow(50, 100);
         pathView.setPath(path);
         pathView.setFillAfter(true);
@@ -144,31 +137,12 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     }
 
     private void startMainActivity() {
-        initJpush();
         Intent i = new Intent(Wel_Activity.this, MainActivity.class);
         //把推送的内容带过去
         i.putExtra(mContext.getResources().getString(R.string.push_content), drawerContent);
         startActivity(i);
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         finish();
-    }
-
-    private void initJpush() {
-        Set<String> pushTags = new HashSet<String>();
-        JPushInterface.setDebugMode(true);
-        JPushInterface.init(this);
-        pushTags.add("1");//添加tag分组
-        pushTags.add("2");
-        //根据token设置设备别名
-        String id = DeviceInfo.getInstance(this).getToken();
-        JPushInterface.setAliasAndTags(this, id, pushTags,new TagAliasCallback() {
-            @Override
-            public void gotResult(int i, String s, Set<String> set) {
-                if (i == 0) {
-                    LogUtils.e(getClass().getName(), "ok successfuljpush==");
-                }
-            }
-        });
     }
 
     @Override
@@ -181,11 +155,5 @@ public class Wel_Activity extends AppCompatActivity implements PathView.Animator
     protected void onPause() {
         super.onPause();
         JPushInterface.onPause(Wel_Activity.this);//是做用户统计的
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        th/is.unregisterReceiver();
     }
 }
